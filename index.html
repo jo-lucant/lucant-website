@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LUCANT — Integración Tecnológica</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;800&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#060809;--s1:#0B0F12;--card:#131920;--card2:#192028;
+  --border:rgba(255,255,255,0.06);
+  --gold:#DFA535;--gold2:#F0BC54;--gold-dim:rgba(223,165,53,0.13);
+  --cyan:#2EC4E8;--cyan-dim:rgba(46,196,232,0.1);
+  --red:#E84040;--red-dim:rgba(232,64,64,0.1);
+  --green:#38C87A;--green-dim:rgba(56,200,122,0.1);
+  --purple:#9B6FE8;--purple-dim:rgba(155,111,232,0.1);
+  --white:#EAE8E2;--muted:rgba(234,232,226,0.42);--muted2:rgba(234,232,226,0.65);
+  --F:'Syne',sans-serif;--FD:'Bebas Neue',sans-serif;--FM:'JetBrains Mono',monospace;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--white);font-family:var(--F);overflow-x:hidden;}
+a{color:inherit;text-decoration:none;}
+canvas#bg{position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.2;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1rem 3rem;background:rgba(6,8,9,0.92);backdrop-filter:blur(16px);border-bottom:.5px solid var(--border);}
+.logo{font-family:var(--FD);font-size:1.85rem;letter-spacing:.1em;}
+.logo em{color:var(--gold);font-style:normal;}
+.nav-links{display:flex;gap:2rem;}
+.nav-links a{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);transition:color .2s;}
+.nav-links a:hover{color:var(--gold);}
+.nav-cta{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;padding:.48rem 1.2rem;border:1px solid var(--gold);color:var(--gold);border-radius:2px;transition:background .2s,color .2s;}
+.nav-cta:hover{background:var(--gold);color:var(--black);}
+
+/* HERO */
+#hero{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:0 3rem;overflow:hidden;}
+.eyebrow{font-family:var(--FM);font-size:.62rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:1.4rem;opacity:0;animation:fU .8s .2s forwards;}
+h1{font-family:var(--FD);font-size:clamp(3.8rem,9vw,8.5rem);line-height:.92;letter-spacing:.02em;text-transform:uppercase;opacity:0;animation:fU .9s .4s forwards;}
+h1 .g{color:var(--gold);}
+h1 .out{-webkit-text-stroke:1px rgba(234,232,226,.2);color:transparent;}
+.hero-sub{margin-top:1.8rem;max-width:480px;font-size:.92rem;color:var(--muted2);line-height:1.85;opacity:0;animation:fU .9s .6s forwards;}
+.hero-btns{margin-top:2.5rem;display:flex;gap:1rem;flex-wrap:wrap;opacity:0;animation:fU .9s .8s forwards;}
+.btn-g{padding:.78rem 2rem;background:var(--gold);color:var(--black);font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border-radius:2px;transition:background .2s,transform .15s;display:inline-block;}
+.btn-g:hover{background:var(--gold2);transform:translateY(-2px);}
+.btn-o{padding:.78rem 2rem;background:transparent;color:var(--white);font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--border);border-radius:2px;transition:border-color .2s,color .2s;display:inline-block;}
+.btn-o:hover{border-color:var(--cyan);color:var(--cyan);}
+.hero-tags{position:absolute;right:3rem;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:.5rem;opacity:0;animation:fU 1s 1s forwards;}
+.ht{font-family:var(--FM);font-size:.57rem;letter-spacing:.13em;text-transform:uppercase;padding:.3rem .8rem;border-radius:2px;}
+@keyframes fU{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+
+/* SHARED */
+section{position:relative;z-index:1;}
+.inner{max-width:1200px;margin:0 auto;padding:5.5rem 3rem;}
+.stag{font-family:var(--FM);font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:.7rem;}
+.sh{font-family:var(--FD);font-size:clamp(2rem,4vw,3.8rem);letter-spacing:.04em;text-transform:uppercase;line-height:1;margin-bottom:1.4rem;}
+.sl{max-width:500px;color:var(--muted2);font-size:.9rem;line-height:1.85;margin-bottom:3rem;}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .6s,transform .6s;}
+.reveal.on{opacity:1;transform:translateY(0);}
+
+/* SERVICES GRID */
+#servicios{background:var(--s1);border-top:.5px solid var(--border);}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:var(--border);}
+.sc{background:var(--card);padding:2rem;position:relative;overflow:hidden;transition:background .3s;cursor:default;}
+.sc:hover{background:var(--card2);}
+.sc-ico{width:40px;height:40px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:1.15rem;margin-bottom:1rem;}
+.sc h3{font-size:.95rem;font-weight:700;margin-bottom:.4rem;}
+.sc p{font-size:.8rem;color:var(--muted);line-height:1.72;}
+.sc-bar{position:absolute;bottom:0;left:0;right:0;height:2px;transform:scaleX(0);transform-origin:left;transition:transform .35s;}
+.sc:hover .sc-bar{transform:scaleX(1);}
+
+/* PRODUCTS */
+#productos{background:var(--black);}
+.prod-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5px;background:var(--border);}
+.pc{background:var(--card);padding:2.5rem;position:relative;overflow:hidden;transition:background .3s;}
+.pc:hover{background:var(--card2);}
+.pbadge{display:inline-block;font-family:var(--FM);font-size:.55rem;letter-spacing:.15em;text-transform:uppercase;padding:.2rem .6rem;border-radius:2px;margin-bottom:.9rem;}
+.pname{font-family:var(--FD);font-size:3.8rem;line-height:1;margin-bottom:.25rem;}
+.pfull{font-size:.72rem;color:var(--muted);margin-bottom:.9rem;}
+.pdesc{font-size:.82rem;color:rgba(234,232,226,.55);line-height:1.75;max-width:380px;}
+.pghost{position:absolute;right:1.5rem;bottom:.5rem;font-family:var(--FD);font-size:7rem;opacity:.04;pointer-events:none;transition:opacity .3s;}
+.pc:hover .pghost{opacity:.1;}
+
+/* CTA */
+#cta{background:var(--gold);padding:5rem 3rem;text-align:center;position:relative;overflow:hidden;}
+#cta::before{content:'LUCANT';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--FD);font-size:18vw;color:rgba(6,8,9,.06);white-space:nowrap;pointer-events:none;}
+.cta-in{position:relative;z-index:1;max-width:620px;margin:0 auto;}
+.cta-tag{font-family:var(--FM);font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;color:rgba(6,8,9,.4);margin-bottom:.7rem;}
+.cta-h{font-family:var(--FD);font-size:clamp(2.2rem,5vw,4.5rem);letter-spacing:.03em;text-transform:uppercase;color:var(--black);line-height:1;margin-bottom:1rem;}
+.cta-p{font-size:.9rem;color:rgba(6,8,9,.58);margin-bottom:2rem;line-height:1.78;}
+.btn-dk{display:inline-block;padding:.88rem 2.4rem;background:var(--black);color:var(--gold);font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;border-radius:2px;transition:background .2s;}
+.btn-dk:hover{background:#0f1419;}
+
+/* FOOTER */
+footer{background:var(--s1);border-top:.5px solid var(--border);padding:3rem;}
+.fg{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:2.5rem;padding-bottom:2rem;border-bottom:.5px solid var(--border);}
+.fb{font-family:var(--FD);font-size:2.1rem;letter-spacing:.08em;margin-bottom:.5rem;}
+.fb em{color:var(--gold);font-style:normal;}
+.ft{font-size:.8rem;color:var(--muted);line-height:1.72;max-width:250px;}
+.fcol h4{font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:.9rem;}
+.fcol-links{display:flex;flex-direction:column;gap:.45rem;}
+.fcol-links a{font-size:.8rem;color:rgba(234,232,226,.6);transition:color .2s;}
+.fcol-links a:hover{color:var(--gold);}
+.fbot{max-width:1200px;margin:1.6rem auto 0;display:flex;justify-content:space-between;align-items:center;}
+.fcopy{font-family:var(--FM);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
+.floc{display:flex;align-items:center;gap:.4rem;font-family:var(--FM);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
+.fdot{width:5px;height:5px;border-radius:50%;background:var(--gold);animation:bk 2s ease-in-out infinite;}
+@keyframes bk{0%,100%{opacity:1;}50%{opacity:.15;}}
+
+/* RESPONSIVE */
+@media(max-width:960px){
+  nav{padding:.9rem 1.5rem;}
+  .nav-links,.hero-tags{display:none;}
+  #hero,.inner{padding-left:1.5rem;padding-right:1.5rem;}
+  #hero{padding-top:5rem;}
+  .inner{padding-top:3.5rem;padding-bottom:3.5rem;}
+  .svc-grid{grid-template-columns:1fr 1fr;}
+  .prod-grid{grid-template-columns:1fr;}
+  .fg{grid-template-columns:1fr 1fr;}
+  .fbot{flex-direction:column;gap:.7rem;text-align:center;}
+  #cta{padding:3.5rem 1.5rem;}
+  footer{padding:2rem 1.5rem;}
+}
+@media(max-width:580px){
+  .svc-grid{grid-template-columns:1fr;}
+  .fg{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<canvas id="bg"></canvas>
+
+<nav>
+  <div class="logo">LU<em>C</em>ANT</div>
+  <div class="nav-links">
+    <a href="#servicios">Servicios</a>
+    <a href="#productos">Productos</a>
+    <a href="#cta">Contacto</a>
+  </div>
+  <a href="mailto:info@lucant.co" class="nav-cta">Cotizar</a>
+</nav>
+
+<section id="hero">
+  <div class="eyebrow">Colombia · Tecnología · Innovación</div>
+  <h1>
+    Sistemas<br>
+    <span class="g">que</span><br>
+    <span class="out">protegen</span><br>
+    <span class="g">&amp; conectan</span>
+  </h1>
+  <p class="hero-sub">Seguridad electrónica, infraestructura de redes, energía solar y software a medida. Soluciones integrales para proyectos que importan.</p>
+  <div class="hero-btns">
+    <a href="#servicios" class="btn-g">Nuestros Servicios</a>
+    <a href="#productos" class="btn-o">Productos Propios</a>
+  </div>
+  <div class="hero-tags">
+    <span class="ht" style="background:var(--cyan-dim);color:var(--cyan);border:.5px solid rgba(46,196,232,.3);">CCTV</span>
+    <span class="ht" style="background:var(--red-dim);color:var(--red);border:.5px solid rgba(232,64,64,.3);">Control de Acceso</span>
+    <span class="ht" style="background:var(--purple-dim);color:var(--purple);border:.5px solid rgba(155,111,232,.3);">Incendios</span>
+    <span class="ht" style="background:var(--gold-dim);color:var(--gold);border:.5px solid rgba(223,165,53,.3);">Redes &amp; Data Centers</span>
+    <span class="ht" style="background:var(--gold-dim);color:var(--gold);border:.5px solid rgba(223,165,53,.3);">Automatización</span>
+    <span class="ht" style="background:var(--green-dim);color:var(--green);border:.5px solid rgba(56,200,122,.3);">Energía Solar</span>
+    <span class="ht" style="background:var(--cyan-dim);color:var(--cyan);border:.5px solid rgba(46,196,232,.3);">Software</span>
+    <span class="ht" style="background:var(--gold-dim);color:var(--gold);border:.5px solid rgba(223,165,53,.3);">Proyectos MGA</span>
+  </div>
+</section>
+
+<section id="servicios">
+  <div class="inner">
+    <div class="stag reveal">Servicios</div>
+    <h2 class="sh reveal">Lo que hacemos</h2>
+    <p class="sl reveal">Desde la seguridad electrónica hasta la formulación de proyectos públicos. Una sola empresa, todo el alcance.</p>
+  </div>
+  <div class="svc-grid reveal">
+    <div class="sc">
+      <div class="sc-ico" style="background:var(--cyan-dim);">📷</div>
+      <h3>CCTV &amp; Videovigilancia</h3>
+      <p>Diseño e instalación de sistemas de cámaras IP para interior y exterior. Centros de monitoreo con grabación continua y gestión de video profesional.</p>
+      <div class="sc-bar" style="background:var(--cyan);"></div>
+    </div>
+    <div class="sc">
+      <div class="sc-ico" style="background:var(--red-dim);">🔐</div>
+      <h3>Control de Acceso</h3>
+      <p>Lectoras, controladoras, cerraduras electromecánicas, torniquetes y barreras vehiculares. Gestión centralizada de permisos y registros de ingreso.</p>
+      <div class="sc-bar" style="background:var(--red);"></div>
+    </div>
+    <div class="sc">
+      <div class="sc-ico" style="background:var(--purple-dim);">🔥</div>
+      <h3>Detección de Incendios</h3>
+      <p>Paneles inteligentes direccionables, detectores de humo, temperatura y CO₂, pulsadores, sirenas y módulos de control bajo norma UL.</p>
+      <div class="sc-bar" style="background:var(--purple);"></div>
+    </div>
+    <div class="sc">
+      <div class="sc-ico" style="background:var(--gold-dim);">🌐</div>
+      <h3>Redes &amp; Cableado Estructurado</h3>
+      <p>Infraestructura de datos certificada: cableado Cat 6A, fibra óptica OM4, gabinetes, switches L3, Wi-Fi empresarial y sistemas de tierra.</p>
+      <div class="sc-bar" style="background:var(--gold);"></div>
+    </div>
+    <div class="sc">
+      <div class="sc-ico" style="background:var(--gold-dim);">🏗️</div>
+      <h3>Data Centers</h3>
+      <p>Diseño e implementación de cuartos de datos. Racks, PDUs, canalización, tierra física y servidores para sistemas de seguridad y almacenamiento.</p>
+      <div class="sc-bar" style="background:var(--gold);"></div>
+    </div>
+    <div class="sc">
+      <div class="sc-ico" style="background:rgba(255,200,80,.1);">⚡</div>
+      <h3>Automatización de Edificios</h3>
+      <p>Control HVAC con BACnet, iluminación KNX y medición de energía con Power Monitoring. Gráficos de operación y puesta en marcha incluida.</p>
+      <div class="sc-bar" style="background:var(--gold2);"></div>
+    </div>
+    <div class="sc">
+      <div class="sc-ico" style="background:var(--green-dim);">☀️</div>
+      <h3>Energía Solar Fotovoltaica</h3>
+      <p>Sistemas on-grid y off-grid para edificaciones y comunidades remotas. Instalación, monitoreo en tiempo real y mantenimiento preventivo.</p>
+      <div class="sc-bar" style="background:var(--green);"></div>
+    </div>
+    <div class="sc">
+      <div class="sc-ico" style="background:var(--cyan-dim);">💻</div>
+      <h3>Desarrollo de Software</h3>
+      <p>Aplicaciones web a medida, sistemas de gestión institucional, dashboards y herramientas administrativas para el sector público y privado.</p>
+      <div class="sc-bar" style="background:var(--cyan);"></div>
+    </div>
+    <div class="sc">
+      <div class="sc-ico" style="background:var(--gold-dim);">📋</div>
+      <h3>Formulación de Proyectos</h3>
+      <p>Proyectos de inversión pública bajo MGA y Marco Lógico del DNP, con documentos técnicos, estudios de mercado y radicación ante SUIFP.</p>
+      <div class="sc-bar" style="background:var(--gold);"></div>
+    </div>
+  </div>
+</section>
+
+<section id="productos">
+  <div class="inner">
+    <div class="stag reveal">Productos Propios</div>
+    <h2 class="sh reveal">Software hecho<br>en LUCANT</h2>
+    <p class="sl reveal">Plataformas propias construidas para territorios y organizaciones colombianas.</p>
+  </div>
+  <div class="prod-grid reveal">
+    <div class="pc">
+      <span class="pbadge" style="background:var(--gold-dim);color:var(--gold);border:.5px solid rgba(223,165,53,.28);">Software Institucional</span>
+      <div class="pname">SARI</div>
+      <div class="pfull">Sistema de Administración de Resguardos Indígenas</div>
+      <p class="pdesc">Plataforma web para la gestión y seguimiento de resguardos indígenas. Desarrollada para las comunidades Wayuu de La Guajira.</p>
+      <div class="pghost">SARI</div>
+    </div>
+    <div class="pc">
+      <span class="pbadge" style="background:var(--green-dim);color:var(--green);border:.5px solid rgba(56,200,122,.28);">Energía Solar</span>
+      <div class="pname" style="color:var(--green);">GALUX</div>
+      <div class="pfull">Sistema de Monitoreo Solar Fotovoltaico</div>
+      <p class="pdesc">Dashboard de generación, consumo y rendimiento de instalaciones solares en tiempo real. Alertas y reportes automáticos.</p>
+      <div class="pghost" style="color:var(--green);">GLUX</div>
+    </div>
+    <div class="pc">
+      <span class="pbadge" style="background:var(--cyan-dim);color:var(--cyan);border:.5px solid rgba(46,196,232,.28);">Gestión Pública</span>
+      <div class="pname" style="color:var(--cyan);">SIAL</div>
+      <div class="pfull">Sistema de Información y Administración Local</div>
+      <p class="pdesc">Herramienta de gestión para entidades territoriales. Centraliza procesos y facilita la toma de decisiones con datos.</p>
+      <div class="pghost" style="color:var(--cyan);">SIAL</div>
+    </div>
+    <div class="pc">
+      <span class="pbadge" style="background:var(--purple-dim);color:var(--purple);border:.5px solid rgba(155,111,232,.28);">Entretenimiento</span>
+      <div class="pname" style="color:var(--purple);">GAMES</div>
+      <div class="pfull">Desarrollo de Videojuegos</div>
+      <p class="pdesc">Experiencias interactivas con identidad cultural latinoamericana. Juegos educativos y entretenimiento indie de producción propia.</p>
+      <div class="pghost" style="color:var(--purple);">▶</div>
+    </div>
+  </div>
+</section>
+
+<section id="cta">
+  <div class="cta-in">
+    <div class="cta-tag">¿Tienes un proyecto?</div>
+    <h2 class="cta-h">Construyamos algo que dure</h2>
+    <p class="cta-p">Desde el diseño hasta la puesta en funcionamiento. Hablemos sobre tu próximo proyecto.</p>
+    <a href="mailto:info@lucant.co" class="btn-dk">Solicitar cotización</a>
+  </div>
+</section>
+
+<footer>
+  <div class="fg">
+    <div>
+      <div class="fb">LU<em>C</em>ANT</div>
+      <p class="ft">Integración tecnológica avanzada. Seguridad, redes, energía solar y software a medida en Colombia.</p>
+    </div>
+    <div class="fcol">
+      <h4>Servicios</h4>
+      <div class="fcol-links">
+        <a href="#servicios">CCTV</a>
+        <a href="#servicios">Control de Acceso</a>
+        <a href="#servicios">Incendios</a>
+        <a href="#servicios">Redes &amp; Data Centers</a>
+        <a href="#servicios">Automatización</a>
+        <a href="#servicios">Energía Solar</a>
+      </div>
+    </div>
+    <div class="fcol">
+      <h4>Tecnología &amp; Proyectos</h4>
+      <div class="fcol-links">
+        <a href="#productos">SARI</a>
+        <a href="#productos">GALUX</a>
+        <a href="#productos">SIAL</a>
+        <a href="#productos">Videojuegos</a>
+        <a href="#servicios">Formulación MGA</a>
+      </div>
+    </div>
+  </div>
+  <div class="fbot">
+    <div class="fcopy">© 2025 LUCANT — Todos los derechos reservados</div>
+    <div class="floc"><div class="fdot"></div>Colombia · La Guajira &amp; Atlántico</div>
+  </div>
+</footer>
+
+<script>
+const cv=document.getElementById('bg'),cx=cv.getContext('2d');
+let W,H,pts=[];
+function rsz(){W=cv.width=innerWidth;H=cv.height=innerHeight;}
+rsz();addEventListener('resize',rsz);
+const clrs=['#DFA535','#2EC4E8','#E84040','#9B6FE8','#38C87A'];
+for(let i=0;i<60;i++)pts.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.2,vy:(Math.random()-.5)*.2,r:Math.random()*1.4+.3,c:clrs[Math.floor(Math.random()*clrs.length)]});
+(function draw(){cx.clearRect(0,0,W,H);pts.forEach(p=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0)p.x=W;if(p.x>W)p.x=0;if(p.y<0)p.y=H;if(p.y>H)p.y=0;cx.beginPath();cx.arc(p.x,p.y,p.r,0,Math.PI*2);cx.fillStyle=p.c;cx.fill();});requestAnimationFrame(draw);})();
+
+const obs=new IntersectionObserver(es=>{es.forEach((e,i)=>{if(e.isIntersecting)setTimeout(()=>e.target.classList.add('on'),i*60);});},{threshold:.08});
+document.querySelectorAll('.reveal').forEach(r=>obs.observe(r));
+</script>
+</body>
+</html>
