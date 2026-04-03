@@ -4,126 +4,186 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>LUCANT — Integración Tecnológica</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;800&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<meta name="description" content="Seguridad electrónica, redes, energía solar y software a medida en Colombia.">
+<link rel="icon" type="image/svg+xml" href="logo.svg">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
-  --black:#060809;--s1:#0B0F12;--card:#131920;--card2:#192028;
-  --border:rgba(255,255,255,0.06);
-  --gold:#DFA535;--gold2:#F0BC54;--gold-dim:rgba(223,165,53,0.13);
-  --cyan:#2EC4E8;--cyan-dim:rgba(46,196,232,0.1);
-  --red:#E84040;--red-dim:rgba(232,64,64,0.1);
-  --green:#38C87A;--green-dim:rgba(56,200,122,0.1);
-  --purple:#9B6FE8;--purple-dim:rgba(155,111,232,0.1);
-  --white:#EAE8E2;--muted:rgba(234,232,226,0.42);--muted2:rgba(234,232,226,0.65);
-  --F:'Syne',sans-serif;--FD:'Bebas Neue',sans-serif;--FM:'JetBrains Mono',monospace;
+  --black:#050608;--s1:#0a0d10;--s2:#0e1216;--card:#12171d;--card2:#181f27;
+  --border:rgba(255,255,255,0.06);--border2:rgba(255,255,255,0.1);
+  --gold:#DFA535;--gold2:#F0BC54;--gold3:#FFD470;--gold-dim:rgba(223,165,53,0.08);--gold-dim2:rgba(223,165,53,0.15);
+  --cyan:#2EC4E8;--cyan-dim:rgba(46,196,232,0.08);
+  --red:#E84040;--red-dim:rgba(232,64,64,0.08);
+  --green:#38C87A;--green-dim:rgba(56,200,122,0.08);
+  --purple:#9B6FE8;--purple-dim:rgba(155,111,232,0.08);
+  --white:#F0EDE7;--muted:rgba(240,237,231,0.4);--muted2:rgba(240,237,231,0.6);
+  --F:'Inter',system-ui,sans-serif;--FM:'JetBrains Mono',monospace;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
-body{background:var(--black);color:var(--white);font-family:var(--F);overflow-x:hidden;}
+body{background:var(--black);color:var(--white);font-family:var(--F);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
 a{color:inherit;text-decoration:none;}
-canvas#bg{position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.2;}
+
+/* CANVAS */
+canvas#bg{position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.15;}
+
+/* GRAIN OVERLAY */
+body::after{content:'';position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:.03;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
 
 /* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1rem 3rem;background:rgba(6,8,9,0.92);backdrop-filter:blur(16px);border-bottom:.5px solid var(--border);}
-.logo{font-family:var(--FD);font-size:1.85rem;letter-spacing:.1em;}
-.logo em{color:var(--gold);font-style:normal;}
-.nav-links{display:flex;gap:2rem;}
-.nav-links a{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);transition:color .2s;}
-.nav-links a:hover{color:var(--gold);}
-.nav-cta{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;padding:.48rem 1.2rem;border:1px solid var(--gold);color:var(--gold);border-radius:2px;transition:background .2s,color .2s;}
-.nav-cta:hover{background:var(--gold);color:var(--black);}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:.85rem 3rem;background:rgba(5,6,8,0.85);backdrop-filter:blur(20px) saturate(1.4);border-bottom:1px solid var(--border);transition:padding .3s;}
+nav.scrolled{padding:.6rem 3rem;}
+.logo{display:flex;align-items:center;gap:.65rem;}
+.logo img{width:32px;height:32px;}
+.logo-text{font-weight:800;font-size:1.1rem;letter-spacing:.14em;text-transform:uppercase;}
+.logo-text span{color:var(--gold);}
+.nav-links{display:flex;gap:2.2rem;}
+.nav-links a{font-size:.7rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);transition:color .25s;position:relative;}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1.5px;background:var(--gold);transition:width .25s;}
+.nav-links a:hover{color:var(--white);}
+.nav-links a:hover::after{width:100%;}
+.nav-cta{font-size:.65rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:.55rem 1.4rem;background:var(--gold);color:var(--black);border-radius:4px;transition:all .25s;}
+.nav-cta:hover{background:var(--gold2);transform:translateY(-1px);box-shadow:0 4px 20px rgba(223,165,53,0.3);}
 
 /* HERO */
-#hero{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:5rem 3rem 0;overflow:hidden;}
-.eyebrow{font-family:var(--FM);font-size:.62rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:1.4rem;opacity:0;animation:fU .8s .2s forwards;}
-h1{font-family:var(--FD);font-size:clamp(3.8rem,9vw,8.5rem);line-height:.92;letter-spacing:.02em;text-transform:uppercase;opacity:0;animation:fU .9s .4s forwards;}
-h1 .g{color:var(--gold);}
-h1 .out{-webkit-text-stroke:1px rgba(234,232,226,.2);color:transparent;}
-.hero-sub{margin-top:1.8rem;max-width:480px;font-size:.92rem;color:var(--muted2);line-height:1.85;opacity:0;animation:fU .9s .6s forwards;}
+#hero{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:7rem 3rem 4rem;overflow:hidden;}
+.hero-glow{position:absolute;top:-20%;right:-10%;width:700px;height:700px;background:radial-gradient(circle,rgba(223,165,53,0.06) 0%,transparent 70%);pointer-events:none;}
+.hero-glow2{position:absolute;bottom:-30%;left:-15%;width:600px;height:600px;background:radial-gradient(circle,rgba(46,196,232,0.04) 0%,transparent 70%);pointer-events:none;}
+.hero-content{position:relative;max-width:800px;}
+.eyebrow{font-family:var(--FM);font-size:.6rem;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:2rem;display:flex;align-items:center;gap:.8rem;opacity:0;animation:fU .8s .2s forwards;}
+.eyebrow::before{content:'';width:32px;height:1px;background:var(--gold);}
+.hero-title{font-size:clamp(3rem,7vw,6rem);font-weight:900;line-height:1.05;letter-spacing:-.03em;margin-bottom:1.8rem;opacity:0;animation:fU .9s .4s forwards;}
+.hero-title .g{background:linear-gradient(135deg,var(--gold),var(--gold3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hero-title .dim{color:rgba(240,237,231,.15);}
+.hero-sub{max-width:480px;font-size:1rem;font-weight:400;color:var(--muted2);line-height:1.9;opacity:0;animation:fU .9s .6s forwards;}
 .hero-btns{margin-top:2.5rem;display:flex;gap:1rem;flex-wrap:wrap;opacity:0;animation:fU .9s .8s forwards;}
-.btn-g{padding:.78rem 2rem;background:var(--gold);color:var(--black);font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border-radius:2px;transition:background .2s,transform .15s;display:inline-block;}
-.btn-g:hover{background:var(--gold2);transform:translateY(-2px);}
-.btn-o{padding:.78rem 2rem;background:transparent;color:var(--white);font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--border);border-radius:2px;transition:border-color .2s,color .2s;display:inline-block;}
-.btn-o:hover{border-color:var(--cyan);color:var(--cyan);}
-.hero-tags{position:absolute;right:3rem;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:.5rem;opacity:0;animation:fU 1s 1s forwards;}
-.ht{font-family:var(--FM);font-size:.57rem;letter-spacing:.13em;text-transform:uppercase;padding:.3rem .8rem;border-radius:2px;}
-@keyframes fU{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+.btn-g{padding:.82rem 2.2rem;background:var(--gold);color:var(--black);font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border-radius:4px;transition:all .25s;display:inline-flex;align-items:center;gap:.5rem;}
+.btn-g:hover{background:var(--gold2);transform:translateY(-2px);box-shadow:0 8px 30px rgba(223,165,53,0.25);}
+.btn-g svg{width:14px;height:14px;}
+.btn-o{padding:.82rem 2.2rem;background:rgba(255,255,255,.03);color:var(--white);font-size:.7rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;border:1px solid var(--border2);border-radius:4px;transition:all .25s;display:inline-flex;align-items:center;gap:.5rem;}
+.btn-o:hover{border-color:var(--gold);color:var(--gold);background:var(--gold-dim);}
+.hero-tags{position:absolute;right:3rem;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:.55rem;opacity:0;animation:fU 1s 1s forwards;}
+.ht{font-family:var(--FM);font-size:.55rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;padding:.35rem .9rem;border-radius:3px;backdrop-filter:blur(8px);}
+
+/* STATS BAR */
+#stats{position:relative;z-index:1;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--s1);}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);max-width:1200px;margin:0 auto;}
+.stat{padding:2.5rem 3rem;text-align:center;border-right:1px solid var(--border);}
+.stat:last-child{border-right:none;}
+.stat-num{font-size:2.4rem;font-weight:900;letter-spacing:-.02em;background:linear-gradient(135deg,var(--gold),var(--gold3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:.3rem;}
+.stat-label{font-family:var(--FM);font-size:.58rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);}
+
+@keyframes fU{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:translateY(0);}}
 
 /* SHARED */
 section{position:relative;z-index:1;}
-.inner{max-width:1200px;margin:0 auto;padding:5.5rem 3rem;}
-.stag{font-family:var(--FM);font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:.7rem;}
-.sh{font-family:var(--FD);font-size:clamp(2rem,4vw,3.8rem);letter-spacing:.04em;text-transform:uppercase;line-height:1;margin-bottom:1.4rem;}
-.sl{max-width:500px;color:var(--muted2);font-size:.9rem;line-height:1.85;margin-bottom:3rem;}
-.reveal{opacity:0;transform:translateY(20px);transition:opacity .6s,transform .6s;}
+.inner{max-width:1200px;margin:0 auto;padding:6rem 3rem;}
+.stag{font-family:var(--FM);font-size:.58rem;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem;display:flex;align-items:center;gap:.6rem;}
+.stag::before{content:'';width:20px;height:1px;background:var(--gold);}
+.sh{font-size:clamp(1.8rem,3.5vw,3rem);font-weight:800;letter-spacing:-.02em;line-height:1.1;margin-bottom:1.2rem;}
+.sl{max-width:480px;color:var(--muted2);font-size:.9rem;line-height:1.85;margin-bottom:3rem;}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);}
 .reveal.on{opacity:1;transform:translateY(0);}
 
-/* SERVICES GRID */
-#servicios{background:var(--s1);border-top:.5px solid var(--border);}
-.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:var(--border);}
-.sc{background:var(--card);padding:2rem;position:relative;overflow:hidden;transition:background .3s;cursor:default;}
+/* SERVICES */
+#servicios{background:var(--s1);}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);max-width:1200px;margin:0 auto;}
+.sc{background:var(--card);padding:2.2rem;position:relative;overflow:hidden;transition:all .35s;cursor:default;}
 .sc:hover{background:var(--card2);}
-.sc-ico{width:40px;height:40px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:1.15rem;margin-bottom:1rem;}
-.sc h3{font-size:.95rem;font-weight:700;margin-bottom:.4rem;}
-.sc p{font-size:.8rem;color:var(--muted);line-height:1.72;}
-.sc-bar{position:absolute;bottom:0;left:0;right:0;height:2px;transform:scaleX(0);transform-origin:left;transition:transform .35s;}
-.sc:hover .sc-bar{transform:scaleX(1);}
+.sc-ico{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:1.2rem;}
+.sc-ico svg{width:22px;height:22px;}
+.sc h3{font-size:.88rem;font-weight:700;margin-bottom:.5rem;letter-spacing:-.01em;}
+.sc p{font-size:.78rem;color:var(--muted);line-height:1.78;}
+.sc-line{position:absolute;top:0;left:0;width:3px;height:0;transition:height .4s cubic-bezier(.16,1,.3,1);}
+.sc:hover .sc-line{height:100%;}
+.sc-glow{position:absolute;top:-50%;right:-50%;width:200px;height:200px;border-radius:50%;opacity:0;transition:opacity .4s;pointer-events:none;}
+.sc:hover .sc-glow{opacity:1;}
 
 /* PRODUCTS */
 #productos{background:var(--black);}
-.prod-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5px;background:var(--border);}
-.pc{background:var(--card);padding:2.5rem;position:relative;overflow:hidden;transition:background .3s;}
-.pc:hover{background:var(--card2);}
-.pbadge{display:inline-block;font-family:var(--FM);font-size:.55rem;letter-spacing:.15em;text-transform:uppercase;padding:.2rem .6rem;border-radius:2px;margin-bottom:.9rem;}
-.pname{font-family:var(--FD);font-size:3.8rem;line-height:1;margin-bottom:.25rem;}
-.pfull{font-size:.72rem;color:var(--muted);margin-bottom:.9rem;}
-.pdesc{font-size:.82rem;color:rgba(234,232,226,.55);line-height:1.75;max-width:380px;}
-.pghost{position:absolute;right:1.5rem;bottom:.5rem;font-family:var(--FD);font-size:7rem;opacity:.04;pointer-events:none;transition:opacity .3s;}
-.pc:hover .pghost{opacity:.1;}
+.prod-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;max-width:1200px;margin:0 auto;padding:0 3rem;}
+.pc{background:var(--card);padding:2.8rem;position:relative;overflow:hidden;border-radius:8px;border:1px solid var(--border);transition:all .35s;}
+.pc:hover{border-color:var(--border2);transform:translateY(-3px);box-shadow:0 16px 48px rgba(0,0,0,.3);}
+.pbadge{display:inline-flex;align-items:center;gap:.4rem;font-family:var(--FM);font-size:.52rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;padding:.3rem .75rem;border-radius:4px;margin-bottom:1.2rem;}
+.pbadge::before{content:'';width:5px;height:5px;border-radius:50%;background:currentColor;animation:bk 2s ease-in-out infinite;}
+.pname{font-size:3rem;font-weight:900;line-height:1;margin-bottom:.35rem;letter-spacing:-.02em;}
+.pfull{font-size:.72rem;color:var(--muted);margin-bottom:1rem;letter-spacing:.02em;}
+.pdesc{font-size:.82rem;color:rgba(240,237,231,.5);line-height:1.78;max-width:360px;}
+.pghost{position:absolute;right:1.5rem;bottom:.5rem;font-size:7rem;font-weight:900;opacity:.03;pointer-events:none;transition:opacity .35s;}
+.pc:hover .pghost{opacity:.08;}
+
+/* WHY SECTION */
+#porque{background:var(--s2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;max-width:1200px;margin:0 auto;padding:0 3rem;}
+.why-card{text-align:center;padding:2rem 1.5rem;}
+.why-num{font-family:var(--FM);font-size:.55rem;font-weight:500;letter-spacing:.2em;color:var(--gold);margin-bottom:1rem;}
+.why-title{font-size:1rem;font-weight:700;margin-bottom:.6rem;}
+.why-desc{font-size:.8rem;color:var(--muted);line-height:1.78;}
 
 /* CTA */
-#cta{background:var(--gold);padding:5rem 3rem;text-align:center;position:relative;overflow:hidden;}
-#cta::before{content:'LUCANT';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--FD);font-size:18vw;color:rgba(6,8,9,.06);white-space:nowrap;pointer-events:none;}
-.cta-in{position:relative;z-index:1;max-width:620px;margin:0 auto;}
-.cta-tag{font-family:var(--FM);font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;color:rgba(6,8,9,.4);margin-bottom:.7rem;}
-.cta-h{font-family:var(--FD);font-size:clamp(2.2rem,5vw,4.5rem);letter-spacing:.03em;text-transform:uppercase;color:var(--black);line-height:1;margin-bottom:1rem;}
-.cta-p{font-size:.9rem;color:rgba(6,8,9,.58);margin-bottom:2rem;line-height:1.78;}
-.btn-dk{display:inline-block;padding:.88rem 2.4rem;background:var(--black);color:var(--gold);font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;border-radius:2px;transition:background .2s;}
-.btn-dk:hover{background:#0f1419;}
+#cta{position:relative;overflow:hidden;padding:7rem 3rem;text-align:center;}
+.cta-bg{position:absolute;inset:0;background:linear-gradient(135deg,var(--gold) 0%,#c8891e 100%);}
+.cta-pattern{position:absolute;inset:0;opacity:.05;background-image:radial-gradient(circle at 20% 50%,var(--black) 1px,transparent 1px),radial-gradient(circle at 80% 50%,var(--black) 1px,transparent 1px);background-size:40px 40px;}
+.cta-ghost{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:18vw;font-weight:900;color:rgba(5,6,8,.06);white-space:nowrap;pointer-events:none;letter-spacing:-.02em;}
+.cta-in{position:relative;z-index:1;max-width:600px;margin:0 auto;}
+.cta-tag{font-family:var(--FM);font-size:.58rem;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:rgba(5,6,8,.45);margin-bottom:.8rem;}
+.cta-h{font-size:clamp(2rem,4.5vw,3.8rem);font-weight:900;letter-spacing:-.02em;color:var(--black);line-height:1.05;margin-bottom:1.2rem;}
+.cta-p{font-size:.92rem;color:rgba(5,6,8,.55);margin-bottom:2.2rem;line-height:1.8;}
+.btn-dk{display:inline-flex;align-items:center;gap:.5rem;padding:.9rem 2.4rem;background:var(--black);color:var(--gold);font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border-radius:4px;transition:all .25s;}
+.btn-dk:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,0,0,.3);}
+.btn-dk svg{width:14px;height:14px;}
 
 /* FOOTER */
-footer{background:var(--s1);border-top:.5px solid var(--border);padding:3rem;}
-.fg{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:2.5rem;padding-bottom:2rem;border-bottom:.5px solid var(--border);}
-.fb{font-family:var(--FD);font-size:2.1rem;letter-spacing:.08em;margin-bottom:.5rem;}
-.fb em{color:var(--gold);font-style:normal;}
-.ft{font-size:.8rem;color:var(--muted);line-height:1.72;max-width:250px;}
-.fcol h4{font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:.9rem;}
-.fcol-links{display:flex;flex-direction:column;gap:.45rem;}
-.fcol-links a{font-size:.8rem;color:rgba(234,232,226,.6);transition:color .2s;}
+footer{background:var(--s1);border-top:1px solid var(--border);padding:3.5rem 3rem 2.5rem;}
+.fg{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2.5rem;padding-bottom:2.5rem;border-bottom:1px solid var(--border);}
+.flogo{display:flex;align-items:center;gap:.55rem;margin-bottom:.8rem;}
+.flogo img{width:28px;height:28px;}
+.flogo-text{font-weight:800;font-size:1rem;letter-spacing:.12em;text-transform:uppercase;}
+.flogo-text span{color:var(--gold);}
+.ft{font-size:.8rem;color:var(--muted);line-height:1.78;max-width:260px;}
+.fcol h4{font-size:.56rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;}
+.fcol-links{display:flex;flex-direction:column;gap:.5rem;}
+.fcol-links a{font-size:.8rem;color:rgba(240,237,231,.5);transition:color .25s;}
 .fcol-links a:hover{color:var(--gold);}
-.fbot{max-width:1200px;margin:1.6rem auto 0;display:flex;justify-content:space-between;align-items:center;}
-.fcopy{font-family:var(--FM);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
-.floc{display:flex;align-items:center;gap:.4rem;font-family:var(--FM);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
-.fdot{width:5px;height:5px;border-radius:50%;background:var(--gold);animation:bk 2s ease-in-out infinite;}
+.fbot{max-width:1200px;margin:1.8rem auto 0;display:flex;justify-content:space-between;align-items:center;}
+.fcopy{font-family:var(--FM);font-size:.55rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
+.floc{display:flex;align-items:center;gap:.5rem;font-family:var(--FM);font-size:.55rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
+.fdot{width:6px;height:6px;border-radius:50%;background:var(--gold);animation:bk 2s ease-in-out infinite;}
 @keyframes bk{0%,100%{opacity:1;}50%{opacity:.15;}}
+
+/* MOBILE MENU */
+.menu-btn{display:none;background:none;border:none;cursor:pointer;padding:.5rem;}
+.menu-btn svg{width:20px;height:20px;stroke:var(--white);stroke-width:2;}
 
 /* RESPONSIVE */
 @media(max-width:960px){
-  nav{padding:.9rem 1.5rem;}
-  .nav-links,.hero-tags{display:none;}
+  nav{padding:.85rem 1.5rem;}
+  nav.scrolled{padding:.6rem 1.5rem;}
+  .nav-links{display:none;}
+  .nav-links.open{display:flex;position:fixed;top:56px;left:0;right:0;bottom:0;flex-direction:column;align-items:center;justify-content:center;gap:2.5rem;background:rgba(5,6,8,.97);backdrop-filter:blur(20px);}
+  .nav-links.open a{font-size:1rem;}
+  .menu-btn{display:block;}
+  .hero-tags{display:none;}
   #hero,.inner{padding-left:1.5rem;padding-right:1.5rem;}
-  #hero{padding-top:5rem;}
-  .inner{padding-top:3.5rem;padding-bottom:3.5rem;}
+  #hero{padding-top:6rem;}
+  .inner{padding-top:4rem;padding-bottom:4rem;}
+  .stats-grid{grid-template-columns:repeat(2,1fr);}
+  .stat{border-right:none;border-bottom:1px solid var(--border);}
+  .stat:nth-child(odd){border-right:1px solid var(--border);}
   .svc-grid{grid-template-columns:1fr 1fr;}
-  .prod-grid{grid-template-columns:1fr;}
-  .fg{grid-template-columns:1fr 1fr;}
-  .fbot{flex-direction:column;gap:.7rem;text-align:center;}
-  #cta{padding:3.5rem 1.5rem;}
-  footer{padding:2rem 1.5rem;}
+  .prod-grid{grid-template-columns:1fr;padding:0 1.5rem;}
+  .why-grid{grid-template-columns:1fr;padding:0 1.5rem;gap:1rem;}
+  .fg{grid-template-columns:1fr 1fr;padding-bottom:2rem;}
+  .fbot{flex-direction:column;gap:.8rem;text-align:center;}
+  #cta{padding:5rem 1.5rem;}
+  footer{padding:2.5rem 1.5rem 2rem;}
 }
 @media(max-width:580px){
   .svc-grid{grid-template-columns:1fr;}
+  .stats-grid{grid-template-columns:1fr;}
+  .stat{border-right:none;}
   .fg{grid-template-columns:1fr;}
+  .hero-title{font-size:clamp(2.4rem,10vw,3.5rem);}
 }
 </style>
 </head>
@@ -132,37 +192,76 @@ footer{background:var(--s1);border-top:.5px solid var(--border);padding:3rem;}
 <canvas id="bg"></canvas>
 
 <nav>
-  <div class="logo">LU<em>C</em>ANT</div>
-  <div class="nav-links">
+  <a href="#" class="logo">
+    <img src="logo.svg" alt="LUCANT Logo">
+    <div class="logo-text">LU<span>C</span>ANT</div>
+  </a>
+  <div class="nav-links" id="navLinks">
     <a href="#servicios">Servicios</a>
     <a href="#productos">Productos</a>
+    <a href="#porque">Nosotros</a>
     <a href="#cta">Contacto</a>
   </div>
-  <a href="mailto:info@lucant.co" class="nav-cta">Cotizar</a>
+  <div style="display:flex;align-items:center;gap:1rem;">
+    <a href="mailto:info@lucant.co" class="nav-cta">Cotizar</a>
+    <button class="menu-btn" onclick="document.getElementById('navLinks').classList.toggle('open')" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
 </nav>
 
 <section id="hero">
-  <div class="eyebrow">Colombia · Tecnología · Innovación</div>
-  <h1>
-    Sistemas<br>
-    <span class="g">que</span><br>
-    <span class="out">protegen</span><br>
-    <span class="g">&amp; conectan</span>
-  </h1>
-  <p class="hero-sub">Seguridad electrónica, infraestructura de redes, energía solar y software a medida. Soluciones integrales para proyectos que importan.</p>
-  <div class="hero-btns">
-    <a href="#servicios" class="btn-g">Nuestros Servicios</a>
-    <a href="#productos" class="btn-o">Productos Propios</a>
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+  <div class="hero-content">
+    <div class="eyebrow">Colombia &middot; Tecnologia &middot; Innovacion</div>
+    <h1 class="hero-title">
+      Sistemas<br>
+      <span class="g">que protegen</span><br>
+      <span class="dim">&amp;</span> <span class="g">conectan</span>
+    </h1>
+    <p class="hero-sub">Seguridad electrónica, infraestructura de redes, energía solar y software a medida. Soluciones integrales para proyectos que importan.</p>
+    <div class="hero-btns">
+      <a href="#servicios" class="btn-g">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg>
+        Explorar Servicios
+      </a>
+      <a href="#productos" class="btn-o">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 12l2 2 4-4"/></svg>
+        Productos Propios
+      </a>
+    </div>
   </div>
   <div class="hero-tags">
-    <span class="ht" style="background:var(--cyan-dim);color:var(--cyan);border:.5px solid rgba(46,196,232,.3);">CCTV</span>
-    <span class="ht" style="background:var(--red-dim);color:var(--red);border:.5px solid rgba(232,64,64,.3);">Control de Acceso</span>
-    <span class="ht" style="background:var(--purple-dim);color:var(--purple);border:.5px solid rgba(155,111,232,.3);">Incendios</span>
-    <span class="ht" style="background:var(--gold-dim);color:var(--gold);border:.5px solid rgba(223,165,53,.3);">Redes &amp; Data Centers</span>
-    <span class="ht" style="background:var(--gold-dim);color:var(--gold);border:.5px solid rgba(223,165,53,.3);">Automatización</span>
-    <span class="ht" style="background:var(--green-dim);color:var(--green);border:.5px solid rgba(56,200,122,.3);">Energía Solar</span>
-    <span class="ht" style="background:var(--cyan-dim);color:var(--cyan);border:.5px solid rgba(46,196,232,.3);">Software</span>
-    <span class="ht" style="background:var(--gold-dim);color:var(--gold);border:.5px solid rgba(223,165,53,.3);">Proyectos MGA</span>
+    <span class="ht" style="background:var(--cyan-dim);color:var(--cyan);border:1px solid rgba(46,196,232,.15);">CCTV</span>
+    <span class="ht" style="background:var(--red-dim);color:var(--red);border:1px solid rgba(232,64,64,.15);">Control de Acceso</span>
+    <span class="ht" style="background:var(--purple-dim);color:var(--purple);border:1px solid rgba(155,111,232,.15);">Incendios</span>
+    <span class="ht" style="background:var(--gold-dim);color:var(--gold);border:1px solid rgba(223,165,53,.15);">Redes &amp; Data Centers</span>
+    <span class="ht" style="background:var(--gold-dim);color:var(--gold);border:1px solid rgba(223,165,53,.15);">Automatización</span>
+    <span class="ht" style="background:var(--green-dim);color:var(--green);border:1px solid rgba(56,200,122,.15);">Energía Solar</span>
+    <span class="ht" style="background:var(--cyan-dim);color:var(--cyan);border:1px solid rgba(46,196,232,.15);">Software</span>
+    <span class="ht" style="background:var(--gold-dim);color:var(--gold);border:1px solid rgba(223,165,53,.15);">Proyectos MGA</span>
+  </div>
+</section>
+
+<section id="stats">
+  <div class="stats-grid reveal">
+    <div class="stat">
+      <div class="stat-num">9+</div>
+      <div class="stat-label">Líneas de servicio</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">4</div>
+      <div class="stat-label">Productos propios</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">2</div>
+      <div class="stat-label">Departamentos</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">100%</div>
+      <div class="stat-label">Colombiano</div>
+    </div>
   </div>
 </section>
 
@@ -174,58 +273,85 @@ footer{background:var(--s1);border-top:.5px solid var(--border);padding:3rem;}
   </div>
   <div class="svc-grid reveal">
     <div class="sc">
-      <div class="sc-ico" style="background:var(--cyan-dim);">📷</div>
+      <div class="sc-glow" style="background:radial-gradient(circle,rgba(46,196,232,.06),transparent 70%);"></div>
+      <div class="sc-ico" style="background:var(--cyan-dim);">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#2EC4E8" stroke-width="1.8"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg>
+      </div>
       <h3>CCTV &amp; Videovigilancia</h3>
       <p>Diseño e instalación de sistemas de cámaras IP para interior y exterior. Centros de monitoreo con grabación continua y gestión de video profesional.</p>
-      <div class="sc-bar" style="background:var(--cyan);"></div>
+      <div class="sc-line" style="background:var(--cyan);"></div>
     </div>
     <div class="sc">
-      <div class="sc-ico" style="background:var(--red-dim);">🔐</div>
+      <div class="sc-glow" style="background:radial-gradient(circle,rgba(232,64,64,.06),transparent 70%);"></div>
+      <div class="sc-ico" style="background:var(--red-dim);">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#E84040" stroke-width="1.8"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/><circle cx="12" cy="16" r="1"/></svg>
+      </div>
       <h3>Control de Acceso</h3>
       <p>Lectoras, controladoras, cerraduras electromecánicas, torniquetes y barreras vehiculares. Gestión centralizada de permisos y registros de ingreso.</p>
-      <div class="sc-bar" style="background:var(--red);"></div>
+      <div class="sc-line" style="background:var(--red);"></div>
     </div>
     <div class="sc">
-      <div class="sc-ico" style="background:var(--purple-dim);">🔥</div>
+      <div class="sc-glow" style="background:radial-gradient(circle,rgba(155,111,232,.06),transparent 70%);"></div>
+      <div class="sc-ico" style="background:var(--purple-dim);">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#9B6FE8" stroke-width="1.8"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      </div>
       <h3>Detección de Incendios</h3>
-      <p>Paneles inteligentes direccionables, detectores de humo, temperatura y CO₂, pulsadores, sirenas y módulos de control bajo norma UL.</p>
-      <div class="sc-bar" style="background:var(--purple);"></div>
+      <p>Paneles inteligentes direccionables, detectores de humo, temperatura y CO2, pulsadores, sirenas y módulos de control bajo norma UL.</p>
+      <div class="sc-line" style="background:var(--purple);"></div>
     </div>
     <div class="sc">
-      <div class="sc-ico" style="background:var(--gold-dim);">🌐</div>
+      <div class="sc-glow" style="background:radial-gradient(circle,rgba(223,165,53,.06),transparent 70%);"></div>
+      <div class="sc-ico" style="background:var(--gold-dim);">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#DFA535" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+      </div>
       <h3>Redes &amp; Cableado Estructurado</h3>
       <p>Infraestructura de datos certificada: cableado Cat 6A, fibra óptica OM4, gabinetes, switches L3, Wi-Fi empresarial y sistemas de tierra.</p>
-      <div class="sc-bar" style="background:var(--gold);"></div>
+      <div class="sc-line" style="background:var(--gold);"></div>
     </div>
     <div class="sc">
-      <div class="sc-ico" style="background:var(--gold-dim);">🏗️</div>
+      <div class="sc-glow" style="background:radial-gradient(circle,rgba(223,165,53,.06),transparent 70%);"></div>
+      <div class="sc-ico" style="background:var(--gold-dim);">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#DFA535" stroke-width="1.8"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+      </div>
       <h3>Data Centers</h3>
       <p>Diseño e implementación de cuartos de datos. Racks, PDUs, canalización, tierra física y servidores para sistemas de seguridad y almacenamiento.</p>
-      <div class="sc-bar" style="background:var(--gold);"></div>
+      <div class="sc-line" style="background:var(--gold);"></div>
     </div>
     <div class="sc">
-      <div class="sc-ico" style="background:rgba(255,200,80,.1);">⚡</div>
+      <div class="sc-glow" style="background:radial-gradient(circle,rgba(240,188,84,.06),transparent 70%);"></div>
+      <div class="sc-ico" style="background:rgba(240,188,84,.08);">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#F0BC54" stroke-width="1.8"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+      </div>
       <h3>Automatización de Edificios</h3>
       <p>Control HVAC con BACnet, iluminación KNX y medición de energía con Power Monitoring. Gráficos de operación y puesta en marcha incluida.</p>
-      <div class="sc-bar" style="background:var(--gold2);"></div>
+      <div class="sc-line" style="background:var(--gold2);"></div>
     </div>
     <div class="sc">
-      <div class="sc-ico" style="background:var(--green-dim);">☀️</div>
+      <div class="sc-glow" style="background:radial-gradient(circle,rgba(56,200,122,.06),transparent 70%);"></div>
+      <div class="sc-ico" style="background:var(--green-dim);">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#38C87A" stroke-width="1.8"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </div>
       <h3>Energía Solar Fotovoltaica</h3>
       <p>Sistemas on-grid y off-grid para edificaciones y comunidades remotas. Instalación, monitoreo en tiempo real y mantenimiento preventivo.</p>
-      <div class="sc-bar" style="background:var(--green);"></div>
+      <div class="sc-line" style="background:var(--green);"></div>
     </div>
     <div class="sc">
-      <div class="sc-ico" style="background:var(--cyan-dim);">💻</div>
+      <div class="sc-glow" style="background:radial-gradient(circle,rgba(46,196,232,.06),transparent 70%);"></div>
+      <div class="sc-ico" style="background:var(--cyan-dim);">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#2EC4E8" stroke-width="1.8"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/><line x1="14" y1="4" x2="10" y2="20"/></svg>
+      </div>
       <h3>Desarrollo de Software</h3>
       <p>Aplicaciones web a medida, sistemas de gestión institucional, dashboards y herramientas administrativas para el sector público y privado.</p>
-      <div class="sc-bar" style="background:var(--cyan);"></div>
+      <div class="sc-line" style="background:var(--cyan);"></div>
     </div>
     <div class="sc">
-      <div class="sc-ico" style="background:var(--gold-dim);">📋</div>
+      <div class="sc-glow" style="background:radial-gradient(circle,rgba(223,165,53,.06),transparent 70%);"></div>
+      <div class="sc-ico" style="background:var(--gold-dim);">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#DFA535" stroke-width="1.8"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+      </div>
       <h3>Formulación de Proyectos</h3>
       <p>Proyectos de inversión pública bajo MGA y Marco Lógico del DNP, con documentos técnicos, estudios de mercado y radicación ante SUIFP.</p>
-      <div class="sc-bar" style="background:var(--gold);"></div>
+      <div class="sc-line" style="background:var(--gold);"></div>
     </div>
   </div>
 </section>
@@ -238,49 +364,82 @@ footer{background:var(--s1);border-top:.5px solid var(--border);padding:3rem;}
   </div>
   <div class="prod-grid reveal">
     <div class="pc">
-      <span class="pbadge" style="background:var(--gold-dim);color:var(--gold);border:.5px solid rgba(223,165,53,.28);">Software Institucional</span>
+      <span class="pbadge" style="background:var(--gold-dim2);color:var(--gold);border:1px solid rgba(223,165,53,.15);">Software Institucional</span>
       <div class="pname">SARI</div>
       <div class="pfull">Sistema de Administración de Resguardos Indígenas</div>
       <p class="pdesc">Plataforma web para la gestión y seguimiento de resguardos indígenas. Desarrollada para las comunidades Wayuu de La Guajira.</p>
       <div class="pghost">SARI</div>
     </div>
     <div class="pc">
-      <span class="pbadge" style="background:var(--green-dim);color:var(--green);border:.5px solid rgba(56,200,122,.28);">Energía Solar</span>
+      <span class="pbadge" style="background:var(--green-dim);color:var(--green);border:1px solid rgba(56,200,122,.15);">Energía Solar</span>
       <div class="pname" style="color:var(--green);">GALUX</div>
       <div class="pfull">Sistema de Monitoreo Solar Fotovoltaico</div>
       <p class="pdesc">Dashboard de generación, consumo y rendimiento de instalaciones solares en tiempo real. Alertas y reportes automáticos.</p>
       <div class="pghost" style="color:var(--green);">GLUX</div>
     </div>
     <div class="pc">
-      <span class="pbadge" style="background:var(--cyan-dim);color:var(--cyan);border:.5px solid rgba(46,196,232,.28);">Gestión Pública</span>
+      <span class="pbadge" style="background:var(--cyan-dim);color:var(--cyan);border:1px solid rgba(46,196,232,.15);">Gestión Pública</span>
       <div class="pname" style="color:var(--cyan);">SIAL</div>
       <div class="pfull">Sistema de Información y Administración Local</div>
       <p class="pdesc">Herramienta de gestión para entidades territoriales. Centraliza procesos y facilita la toma de decisiones con datos.</p>
       <div class="pghost" style="color:var(--cyan);">SIAL</div>
     </div>
     <div class="pc">
-      <span class="pbadge" style="background:var(--purple-dim);color:var(--purple);border:.5px solid rgba(155,111,232,.28);">Entretenimiento</span>
+      <span class="pbadge" style="background:var(--purple-dim);color:var(--purple);border:1px solid rgba(155,111,232,.15);">Entretenimiento</span>
       <div class="pname" style="color:var(--purple);">GAMES</div>
       <div class="pfull">Desarrollo de Videojuegos</div>
       <p class="pdesc">Experiencias interactivas con identidad cultural latinoamericana. Juegos educativos y entretenimiento indie de producción propia.</p>
-      <div class="pghost" style="color:var(--purple);">▶</div>
+      <div class="pghost" style="color:var(--purple);">&#9654;</div>
+    </div>
+  </div>
+</section>
+
+<section id="porque">
+  <div class="inner">
+    <div class="stag reveal" style="justify-content:center;">Por qué LUCANT</div>
+    <h2 class="sh reveal" style="text-align:center;">Integración real,<br>no promesas</h2>
+  </div>
+  <div class="why-grid reveal">
+    <div class="why-card">
+      <div class="why-num">01</div>
+      <h3 class="why-title">Todo en uno</h3>
+      <p class="why-desc">Seguridad, redes, energía y software bajo un solo equipo. Sin intermediarios, sin fricción entre proveedores.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-num">02</div>
+      <h3 class="why-title">Hecho en Colombia</h3>
+      <p class="why-desc">Entendemos el territorio, las normas locales y los retos de trabajar en regiones como La Guajira y el Atlántico.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-num">03</div>
+      <h3 class="why-title">Software propio</h3>
+      <p class="why-desc">No solo instalamos — construimos plataformas a medida que resuelven problemas reales de gestión y operación.</p>
     </div>
   </div>
 </section>
 
 <section id="cta">
+  <div class="cta-bg"></div>
+  <div class="cta-pattern"></div>
+  <div class="cta-ghost">LUCANT</div>
   <div class="cta-in">
     <div class="cta-tag">¿Tienes un proyecto?</div>
     <h2 class="cta-h">Construyamos algo que dure</h2>
     <p class="cta-p">Desde el diseño hasta la puesta en funcionamiento. Hablemos sobre tu próximo proyecto.</p>
-    <a href="mailto:info@lucant.co" class="btn-dk">Solicitar cotización</a>
+    <a href="mailto:info@lucant.co" class="btn-dk">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      Solicitar cotización
+    </a>
   </div>
 </section>
 
 <footer>
   <div class="fg">
     <div>
-      <div class="fb">LU<em>C</em>ANT</div>
+      <div class="flogo">
+        <img src="logo.svg" alt="LUCANT">
+        <div class="flogo-text">LU<span>C</span>ANT</div>
+      </div>
       <p class="ft">Integración tecnológica avanzada. Seguridad, redes, energía solar y software a medida en Colombia.</p>
     </div>
     <div class="fcol">
@@ -289,25 +448,30 @@ footer{background:var(--s1);border-top:.5px solid var(--border);padding:3rem;}
         <a href="#servicios">CCTV</a>
         <a href="#servicios">Control de Acceso</a>
         <a href="#servicios">Incendios</a>
-        <a href="#servicios">Redes &amp; Data Centers</a>
+        <a href="#servicios">Redes</a>
         <a href="#servicios">Automatización</a>
-        <a href="#servicios">Energía Solar</a>
       </div>
     </div>
     <div class="fcol">
-      <h4>Tecnología &amp; Proyectos</h4>
+      <h4>Productos</h4>
       <div class="fcol-links">
         <a href="#productos">SARI</a>
         <a href="#productos">GALUX</a>
         <a href="#productos">SIAL</a>
         <a href="#productos">Videojuegos</a>
-        <a href="#servicios">Formulación MGA</a>
+      </div>
+    </div>
+    <div class="fcol">
+      <h4>Contacto</h4>
+      <div class="fcol-links">
+        <a href="mailto:info@lucant.co">info@lucant.co</a>
+        <a href="#cta">Cotizar</a>
       </div>
     </div>
   </div>
   <div class="fbot">
-    <div class="fcopy">© 2025 LUCANT — Todos los derechos reservados</div>
-    <div class="floc"><div class="fdot"></div>Colombia · La Guajira &amp; Atlántico</div>
+    <div class="fcopy">&copy; 2025 LUCANT — Todos los derechos reservados</div>
+    <div class="floc"><div class="fdot"></div>Colombia &middot; La Guajira &amp; Atlántico</div>
   </div>
 </footer>
 
@@ -316,12 +480,24 @@ const cv=document.getElementById('bg'),cx=cv.getContext('2d');
 let W,H,pts=[];
 function rsz(){W=cv.width=innerWidth;H=cv.height=innerHeight;}
 rsz();addEventListener('resize',rsz);
-const clrs=['#DFA535','#2EC4E8','#E84040','#9B6FE8','#38C87A'];
-for(let i=0;i<60;i++)pts.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.2,vy:(Math.random()-.5)*.2,r:Math.random()*1.4+.3,c:clrs[Math.floor(Math.random()*clrs.length)]});
-(function draw(){cx.clearRect(0,0,W,H);pts.forEach(p=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0)p.x=W;if(p.x>W)p.x=0;if(p.y<0)p.y=H;if(p.y>H)p.y=0;cx.beginPath();cx.arc(p.x,p.y,p.r,0,Math.PI*2);cx.fillStyle=p.c;cx.fill();});requestAnimationFrame(draw);})();
+const clrs=['rgba(223,165,53,.6)','rgba(46,196,232,.5)','rgba(232,64,64,.4)','rgba(155,111,232,.5)','rgba(56,200,122,.5)'];
+for(let i=0;i<45;i++)pts.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.15,vy:(Math.random()-.5)*.15,r:Math.random()*1.2+.2,c:clrs[Math.floor(Math.random()*clrs.length)]});
+(function draw(){cx.clearRect(0,0,W,H);
+pts.forEach((p,i)=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0)p.x=W;if(p.x>W)p.x=0;if(p.y<0)p.y=H;if(p.y>H)p.y=0;
+cx.beginPath();cx.arc(p.x,p.y,p.r,0,Math.PI*2);cx.fillStyle=p.c;cx.fill();
+pts.forEach((q,j)=>{if(j<=i)return;const dx=p.x-q.x,dy=p.y-q.y,d=Math.sqrt(dx*dx+dy*dy);if(d<120){cx.beginPath();cx.moveTo(p.x,p.y);cx.lineTo(q.x,q.y);cx.strokeStyle='rgba(223,165,53,'+(1-d/120)*.06+')';cx.stroke();}});
+});requestAnimationFrame(draw);})();
 
-const obs=new IntersectionObserver(es=>{es.forEach((e,i)=>{if(e.isIntersecting)setTimeout(()=>e.target.classList.add('on'),i*60);});},{threshold:.08});
+// Nav scroll
+const nav=document.querySelector('nav');
+window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>50);});
+
+// Reveal
+const obs=new IntersectionObserver(es=>{es.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('on'),i*80);}});},{threshold:.06});
 document.querySelectorAll('.reveal').forEach(r=>obs.observe(r));
+
+// Close mobile menu on link click
+document.querySelectorAll('.nav-links a').forEach(a=>{a.addEventListener('click',()=>{document.getElementById('navLinks').classList.remove('open');});});
 </script>
 </body>
 </html>
