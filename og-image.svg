@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#060809"/>
+  <rect x="0" y="0" width="1200" height="630" fill="url(#grad)" opacity="0.15"/>
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#DFA535"/>
+      <stop offset="100%" style="stop-color:#2EC4E8"/>
+    </linearGradient>
+  </defs>
+  <path d="M280 220 L280 410 L420 410" stroke="#DFA535" stroke-width="36" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <circle cx="480" cy="260" r="16" fill="#DFA535" opacity="0.5"/>
+  <circle cx="480" cy="340" r="10" fill="#2EC4E8" opacity="0.4"/>
+  <circle cx="480" cy="410" r="16" fill="#DFA535" opacity="0.5"/>
+  <text x="540" y="350" font-family="system-ui,sans-serif" font-size="96" font-weight="900" fill="#F0EDE7" letter-spacing="12">LU<tspan fill="#DFA535">C</tspan>ANT</text>
+  <text x="540" y="400" font-family="monospace" font-size="18" fill="#DFA535" opacity="0.7" letter-spacing="6">INTEGRACIÓN TECNOLÓGICA</text>
+  <text x="540" y="440" font-family="system-ui,sans-serif" font-size="16" fill="#F0EDE7" opacity="0.4">Seguridad · Redes · Energía Solar · Software — Colombia</text>
+  <line x1="0" y1="625" x2="1200" y2="625" stroke="#DFA535" stroke-width="5"/>
+</svg>
