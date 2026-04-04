@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Redirigiendo a SIAL — LUCANT</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0a0a;color:#fff;font-family:'Inter',system-ui,sans-serif;display:flex;align-items:center;justify-content:center;min-height:100vh;text-align:center;padding:2rem;}
+.card{max-width:480px;width:100%;}
+.logo{font-size:1.2rem;font-weight:900;letter-spacing:.25em;color:rgba(255,255,255,.3);margin-bottom:2rem;}
+.product{font-size:2.5rem;font-weight:900;margin-bottom:.5rem;color:#2EC4E8;}
+.subtitle{font-size:.9rem;color:rgba(255,255,255,.5);margin-bottom:2.5rem;line-height:1.6;}
+.spinner{width:32px;height:32px;border:3px solid rgba(255,255,255,.1);border-top-color:#2EC4E8;border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 1.5rem;}
+@keyframes spin{to{transform:rotate(360deg);}}
+.status{font-size:.8rem;color:rgba(255,255,255,.4);letter-spacing:.05em;}
+.maintenance{display:none;}
+.maintenance h2{font-size:1.5rem;margin-bottom:.8rem;color:#2EC4E8;}
+.maintenance p{font-size:.85rem;color:rgba(255,255,255,.5);line-height:1.7;margin-bottom:1.5rem;}
+.btn{display:inline-block;padding:.7rem 2rem;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:#fff;font-size:.75rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border-radius:4px;transition:all .2s;}
+.btn:hover{background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.3);}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="logo">LUCANT</div>
+  <div class="product">SIAL</div>
+  <div class="subtitle">Sistema de Información y Administración Local</div>
+  <div id="loading">
+    <div class="spinner"></div>
+    <div class="status">Conectando con la plataforma...</div>
+  </div>
+  <div id="maintenance" class="maintenance">
+    <h2>Sitio en mantenimiento</h2>
+    <p>La plataforma SIAL no se encuentra disponible en este momento. Nuestro equipo está trabajando para restablecer el servicio lo antes posible.</p>
+    <a href="https://lucant.co" class="btn">Volver a LUCANT</a>
+  </div>
+</div>
+<script>
+var url = "https://sial.lucant.co";
+var timeout = setTimeout(function() {
+  document.getElementById("loading").style.display = "none";
+  document.getElementById("maintenance").style.display = "block";
+}, 5000);
+var img = new Image();
+img.onload = img.onerror = function() {
+  clearTimeout(timeout);
+  window.location.href = url;
+};
+img.src = url + "/favicon.ico?" + Date.now();
+setTimeout(function() { window.location.href = url; }, 2000);
+</script>
+</body>
+</html>
