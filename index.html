@@ -236,6 +236,49 @@ footer{background:var(--s1);border-top:1px solid var(--border);padding:3.5rem 3r
 .fdot{width:6px;height:6px;border-radius:50%;background:var(--gold);animation:bk 2s ease-in-out infinite;}
 @keyframes bk{0%,100%{opacity:1;}50%{opacity:.15;}}
 
+/* SALUS SECTION */
+#salus{background:var(--s1);border-top:.5px solid var(--border);}
+.salus-hero{display:flex;align-items:center;gap:3rem;margin-bottom:3.5rem;}
+.salus-hero-text{flex:1;}
+.salus-hero-visual{flex:1;min-width:0;}
+.salus-logo{display:flex;align-items:center;gap:.8rem;margin-bottom:1.2rem;}
+.salus-logo svg{flex-shrink:0;}
+.salus-logo h3{font-family:var(--FD);font-size:2.8rem;letter-spacing:.08em;color:#378ADD;margin:0;}
+.salus-logo small{font-size:.6rem;color:var(--muted);letter-spacing:.05em;display:block;}
+.salus-desc{font-size:.9rem;color:var(--muted2);line-height:1.85;margin-bottom:1.5rem;max-width:460px;}
+.salus-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:3rem;}
+.salus-stat{background:var(--card);border:.5px solid var(--border);border-radius:6px;padding:1.2rem;text-align:center;}
+.salus-stat .sn{font-family:var(--FD);font-size:2.2rem;color:#378ADD;line-height:1;}
+.salus-stat .sl2{font-size:.62rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-top:.3rem;}
+.salus-modules{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:var(--border);margin-bottom:3rem;}
+.salus-mod{background:var(--card);padding:1.8rem;position:relative;overflow:hidden;transition:background .3s;}
+.salus-mod:hover{background:var(--card2);}
+.salus-mod-ico{width:40px;height:40px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;margin-bottom:.8rem;background:rgba(55,138,221,.1);color:#378ADD;}
+.salus-mod h4{font-size:.9rem;font-weight:700;margin-bottom:.3rem;color:var(--white);}
+.salus-mod p{font-size:.75rem;color:var(--muted);line-height:1.7;}
+.salus-mod-badge{display:inline-block;font-family:var(--FM);font-size:.48rem;letter-spacing:.12em;text-transform:uppercase;padding:.15rem .45rem;border-radius:2px;margin-bottom:.6rem;}
+.badge-f1{background:rgba(56,200,122,.12);color:var(--green);border:.5px solid rgba(56,200,122,.25);}
+.badge-f2{background:rgba(46,196,232,.1);color:var(--cyan);border:.5px solid rgba(46,196,232,.25);}
+.badge-f3{background:rgba(155,111,232,.1);color:var(--purple);border:.5px solid rgba(155,111,232,.25);}
+.salus-features{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-bottom:2.5rem;}
+.salus-feat{background:var(--card);border:.5px solid var(--border);border-radius:6px;padding:1.5rem;}
+.salus-feat h4{font-size:.85rem;font-weight:700;margin-bottom:.5rem;color:#378ADD;}
+.salus-feat p{font-size:.78rem;color:var(--muted);line-height:1.7;}
+.salus-feat-ico{font-size:1.3rem;margin-bottom:.7rem;}
+.salus-preview{background:rgba(55,138,221,.06);border:1px solid rgba(55,138,221,.15);border-radius:12px;padding:1.4rem;color:var(--white);}
+.salus-preview-header{display:flex;align-items:center;gap:.4rem;margin-bottom:1rem;padding-bottom:.6rem;border-bottom:1px solid rgba(255,255,255,.06);}
+.salus-preview-dot{width:8px;height:8px;border-radius:50%;}
+.salus-preview-header span{font-family:var(--FM);font-size:.6rem;opacity:.5;margin-left:.4rem;}
+.salus-kpi-grid{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;}
+.salus-kpi{background:rgba(255,255,255,.05);border-radius:8px;padding:.8rem;text-align:center;}
+.salus-kpi .val{font-family:var(--FD);font-size:1.8rem;line-height:1;}
+.salus-kpi .lbl{font-family:var(--FM);font-size:.5rem;opacity:.45;text-transform:uppercase;letter-spacing:.08em;margin-top:.2rem;}
+.salus-cta-row{display:flex;gap:1rem;flex-wrap:wrap;}
+.btn-salus{padding:.7rem 1.8rem;background:#378ADD;color:#fff;font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border-radius:3px;transition:background .2s,transform .15s;display:inline-block;}
+.btn-salus:hover{background:#2a6cb8;transform:translateY(-2px);color:#fff;}
+.salus-tech{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:1rem;}
+.salus-tech-tag{font-family:var(--FM);font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;padding:.25rem .6rem;background:rgba(55,138,221,.08);color:#378ADD;border:.5px solid rgba(55,138,221,.2);border-radius:2px;}
+
 /* MOBILE MENU */
 .menu-btn{display:none;background:none;border:none;cursor:pointer;padding:.5rem;}
 .menu-btn svg{width:20px;height:20px;stroke:var(--white);stroke-width:2;}
@@ -257,6 +300,10 @@ footer{background:var(--s1);border-top:1px solid var(--border);padding:3.5rem 3r
   .stat:nth-child(odd){border-right:1px solid var(--border);}
   .svc-grid{grid-template-columns:1fr 1fr;}
   .prod-grid{grid-template-columns:1fr;padding:0 1.5rem;}
+  .salus-hero{flex-direction:column;gap:2rem;}
+  .salus-stats{grid-template-columns:repeat(2,1fr);}
+  .salus-modules{grid-template-columns:1fr 1fr;}
+  .salus-features{grid-template-columns:1fr;}
   .why-grid{grid-template-columns:1fr;padding:0 1.5rem;gap:1rem;}
   .test-grid{grid-template-columns:1fr;padding:0 1.5rem;}
   .proc-grid{grid-template-columns:repeat(2,1fr);padding:0 1.5rem;}
@@ -275,6 +322,8 @@ footer{background:var(--s1);border-top:1px solid var(--border);padding:3.5rem 3r
   .stats-grid{grid-template-columns:1fr;}
   .stat{border-right:none;}
   .fg{grid-template-columns:1fr;}
+  .salus-modules{grid-template-columns:1fr;}
+  .salus-stats{grid-template-columns:repeat(2,1fr);}
   .hero-title{font-size:clamp(2.4rem,10vw,3.5rem);}
 }
 </style>
@@ -291,6 +340,7 @@ footer{background:var(--s1);border-top:1px solid var(--border);padding:3.5rem 3r
   <div class="nav-links" id="navLinks">
     <a href="#servicios">Servicios</a>
     <a href="#productos">Productos</a>
+    <a href="#salus">Salus</a>
     <a href="#porque">Nosotros</a>
     <a href="#cta">Contacto</a>
   </div>
@@ -502,6 +552,14 @@ footer{background:var(--s1);border-top:1px solid var(--border);padding:3.5rem 3r
       <span class="pc-link" style="color:var(--cyan);">Ver plataforma &rarr;</span>
       <div class="pghost" style="color:var(--cyan);">SIAL</div>
     </a>
+    <a href="https://salus.lucant.co" target="_blank" class="pc">
+      <span class="pbadge" style="background:rgba(55,138,221,.1);color:#378ADD;border:1px solid rgba(55,138,221,.15);">Gestión Hospitalaria</span>
+      <div class="pname" style="color:#378ADD;">SALUS</div>
+      <div class="pfull">Sistema de Administración y Logística en Salud</div>
+      <p class="pdesc">Plataforma integral de gestión hospitalaria. Admisión, historia clínica, farmacia, facturación y administración en un solo sistema.</p>
+      <span class="pc-link" style="color:#378ADD;">Ver plataforma &rarr;</span>
+      <div class="pghost" style="color:#378ADD;">+</div>
+    </a>
     <div class="pc">
       <span class="pbadge" style="background:var(--purple-dim);color:var(--purple);border:1px solid rgba(155,111,232,.15);">Entretenimiento</span>
       <div class="pname" style="color:var(--purple);">GAMES</div>
@@ -509,6 +567,183 @@ footer{background:var(--s1);border-top:1px solid var(--border);padding:3.5rem 3r
       <p class="pdesc">Experiencias interactivas con identidad cultural latinoamericana. Juegos educativos y entretenimiento indie de producción propia.</p>
       <span class="pc-link" style="color:var(--purple);">Próximamente</span>
       <div class="pghost" style="color:var(--purple);">&#9654;</div>
+    </div>
+  </div>
+</section>
+
+<section id="salus">
+  <div class="inner">
+    <div class="salus-hero reveal">
+      <div class="salus-hero-text">
+        <div class="stag">Producto Destacado</div>
+        <div class="salus-logo">
+          <svg width="44" height="44" viewBox="0 0 80 80" fill="none">
+            <rect x="4" y="4" width="72" height="72" rx="6" stroke="#378ADD" stroke-width="5" fill="none"/>
+            <rect x="10" y="10" width="28" height="13" rx="2" fill="#378ADD"/>
+            <rect x="10" y="10" width="13" height="32" rx="2" fill="#378ADD"/>
+            <rect x="10" y="30" width="42" height="13" rx="2" fill="#378ADD"/>
+            <rect x="42" y="57" width="28" height="13" rx="2" fill="#378ADD"/>
+            <rect x="57" y="38" width="13" height="32" rx="2" fill="#378ADD"/>
+          </svg>
+          <div>
+            <h3>SALUS</h3>
+            <small>Gestión Hospitalaria Integrada</small>
+          </div>
+        </div>
+        <p class="salus-desc">SALUS integra admisión, historia clínica, farmacia, facturación y administración en una sola plataforma. Diseñado para hospitales, clínicas e IPS de cualquier nivel en Colombia.</p>
+        <div class="salus-cta-row">
+          <a href="https://salus.lucant.co" target="_blank" class="btn-salus">Ir a SALUS &rarr;</a>
+          <a href="mailto:info@lucant.co" class="btn-o" style="font-size:.7rem;">Solicitar demo</a>
+        </div>
+        <div class="salus-tech">
+          <span class="salus-tech-tag">Python 3.11</span>
+          <span class="salus-tech-tag">Flask 3.x</span>
+          <span class="salus-tech-tag">PostgreSQL 16</span>
+          <span class="salus-tech-tag">SQLAlchemy 2.x</span>
+          <span class="salus-tech-tag">Bootstrap 5.3</span>
+        </div>
+      </div>
+      <div class="salus-hero-visual">
+        <div class="salus-preview">
+          <div class="salus-preview-header">
+            <div class="salus-preview-dot" style="background:#E84040;"></div>
+            <div class="salus-preview-dot" style="background:#DFA535;"></div>
+            <div class="salus-preview-dot" style="background:#38C87A;"></div>
+            <span>SALUS &mdash; Dashboard</span>
+          </div>
+          <div class="salus-kpi-grid">
+            <div class="salus-kpi">
+              <div class="val" style="color:#60a5fa;">24</div>
+              <div class="lbl">Admitidos hoy</div>
+            </div>
+            <div class="salus-kpi">
+              <div class="val" style="color:#f87171;">7</div>
+              <div class="lbl">Urgencias activas</div>
+            </div>
+            <div class="salus-kpi">
+              <div class="val" style="color:#fbbf24;">12</div>
+              <div class="lbl">HC sin cerrar</div>
+            </div>
+            <div class="salus-kpi">
+              <div class="val" style="color:#4ade80;">18</div>
+              <div class="lbl">Egresos hoy</div>
+            </div>
+          </div>
+          <div style="margin-top:.8rem;background:rgba(255,255,255,.05);border-radius:6px;padding:.65rem;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.35rem;">
+              <span style="font-family:var(--FM);font-size:.5rem;opacity:.4;text-transform:uppercase;letter-spacing:.08em;">Ocupación de camas</span>
+              <span style="font-family:var(--FD);font-size:.85rem;">18 / 24</span>
+            </div>
+            <div style="background:rgba(255,255,255,.08);border-radius:3px;height:6px;overflow:hidden;">
+              <div style="width:75%;height:100%;background:linear-gradient(90deg,#60a5fa,#38bdf8);border-radius:3px;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="salus-stats reveal">
+      <div class="salus-stat">
+        <div class="sn">14</div>
+        <div class="sl2">Módulos integrados</div>
+      </div>
+      <div class="salus-stat">
+        <div class="sn">5</div>
+        <div class="sl2">Fases de despliegue</div>
+      </div>
+      <div class="salus-stat">
+        <div class="sn">50+</div>
+        <div class="sl2">Diagnósticos CIE-10</div>
+      </div>
+      <div class="salus-stat">
+        <div class="sn">100%</div>
+        <div class="sl2">Operación offline</div>
+      </div>
+    </div>
+
+    <div class="stag reveal">Arquitectura modular</div>
+    <h2 class="sh reveal">14 módulos, un solo sistema</h2>
+    <p class="sl reveal">Cada módulo es independiente y se despliega por fases. El MVP entrega valor real al hospital en 6 semanas.</p>
+  </div>
+
+  <div class="salus-modules reveal">
+    <div class="salus-mod">
+      <span class="salus-mod-badge badge-f1">MVP &mdash; Fase 1</span>
+      <div class="salus-mod-ico">&#128737;&#65039;</div>
+      <h4>Administración del Sistema</h4>
+      <p>Autenticación, 9 roles RBAC, auditoría completa, bloqueo de cuentas y segregación de funciones.</p>
+    </div>
+    <div class="salus-mod">
+      <span class="salus-mod-badge badge-f1">MVP &mdash; Fase 1</span>
+      <div class="salus-mod-ico">&#128203;</div>
+      <h4>Admisión y Registro</h4>
+      <p>Registro demográfico, admisión por servicio, asignación de camas en tiempo real, grupo étnico configurable.</p>
+    </div>
+    <div class="salus-mod">
+      <span class="salus-mod-badge badge-f1">MVP &mdash; Fase 1</span>
+      <div class="salus-mod-ico">&#128196;</div>
+      <h4>Historia Clínica (HIS)</h4>
+      <p>Consulta SOAP, signos vitales, CIE-10, prescripciones, firma electrónica y trazabilidad clínica.</p>
+    </div>
+    <div class="salus-mod">
+      <span class="salus-mod-badge badge-f2">MVP &mdash; Fase 2</span>
+      <div class="salus-mod-ico">&#128138;</div>
+      <h4>Farmacia e Inventarios</h4>
+      <p>Catálogo CUM, control de lotes, dispensación vinculada a prescripción, alertas de stock y vencimiento.</p>
+    </div>
+    <div class="salus-mod">
+      <span class="salus-mod-badge badge-f2">MVP &mdash; Fase 2</span>
+      <div class="salus-mod-ico">&#129534;</div>
+      <h4>Facturación y Cartera</h4>
+      <p>Cuenta médica, tarifas ISS/SOAT, factura electrónica DIAN con CUFE, glosas y cartera por aging.</p>
+    </div>
+    <div class="salus-mod">
+      <span class="salus-mod-badge badge-f3">Expansión &mdash; Fase 3</span>
+      <div class="salus-mod-ico">&#128101;</div>
+      <h4>Nómina y RRHH</h4>
+      <p>Contratos, turnos de enfermería, nómina con prestaciones sociales y archivo PILA.</p>
+    </div>
+    <div class="salus-mod">
+      <span class="salus-mod-badge badge-f3">Expansión &mdash; Fase 3</span>
+      <div class="salus-mod-ico">&#128202;</div>
+      <h4>Contabilidad PUC</h4>
+      <p>Plan Único de Cuentas para IPS públicas, comprobantes con doble aprobación y estados financieros.</p>
+    </div>
+    <div class="salus-mod">
+      <span class="salus-mod-badge badge-f3">Expansión &mdash; Fase 3</span>
+      <div class="salus-mod-ico">&#128230;</div>
+      <h4>Activos Fijos</h4>
+      <p>Registro, depreciación línea recta, hoja de vida, traslados y baja con ajuste contable automático.</p>
+    </div>
+    <div class="salus-mod">
+      <span class="salus-mod-badge badge-f3">Expansión &mdash; Fase 4-5</span>
+      <div class="salus-mod-ico">&#9881;&#65039;</div>
+      <h4>+6 módulos más</h4>
+      <p>Contratos y compras, RIPS/SISPRO, servicios generales, gestión documental, calidad y residuos hospitalarios.</p>
+    </div>
+  </div>
+
+  <div class="inner" style="padding-top:0;">
+    <div class="stag reveal">Funcionalidades clave</div>
+    <h2 class="sh reveal">Diseñado para el contexto real</h2>
+    <p class="sl reveal">Cada decisión de diseño responde a las necesidades operativas del hospital y su contexto.</p>
+
+    <div class="salus-features reveal">
+      <div class="salus-feat">
+        <div class="salus-feat-ico">&#128225;</div>
+        <h4>Operación 100% offline</h4>
+        <p>Opera en la red local del hospital. Sin internet, todo funciona. Sincronización asíncrona cada 15 minutos con la nube como respaldo.</p>
+      </div>
+      <div class="salus-feat">
+        <div class="salus-feat-ico">&#128274;</div>
+        <h4>Reglas de negocio técnicas</h4>
+        <p>14 reglas críticas como bloqueos técnicos. La HC solo abre con admisión activa. Alertas bloqueantes por alergias. Firma electrónica con segundo factor.</p>
+      </div>
+      <div class="salus-feat">
+        <div class="salus-feat-ico">&#127973;</div>
+        <h4>Adaptable a cualquier IPS</h4>
+        <p>Configurable para hospitales nivel I, II y III. Grupos étnicos DANE, CIE-10, EPS y tarifas parametrizables. Cumplimiento normativo colombiano completo.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -662,6 +897,7 @@ footer{background:var(--s1);border-top:1px solid var(--border);padding:3.5rem 3r
       <div class="fcol-links">
         <a href="#productos">SARI</a>
         <a href="#productos">GALUX</a>
+        <a href="#salus">SALUS</a>
         <a href="#productos">SIAL</a>
         <a href="#productos">Videojuegos</a>
       </div>
