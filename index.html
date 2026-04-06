@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LUCANT — Integración Tecnológica</title>
-<meta name="description" content="LUCANT — Integración tecnológica en Colombia. Seguridad electrónica, CCTV, control de acceso, redes, energía solar y desarrollo de software a medida.">
+<title>LUCANT — Software Institucional e Infraestructura Tecnológica en Colombia</title>
+<meta name="description" content="Plataformas de gestión pública (PQRSD, contractual, alumbrado, territorial) e integración de seguridad electrónica, redes y energía solar para entidades y empresas en Colombia.">
 <meta name="keywords" content="LUCANT, seguridad electrónica, CCTV, control de acceso, redes, cableado estructurado, energía solar, software, Colombia, La Guajira, Atlántico, data centers, automatización, detección de incendios">
 <meta name="author" content="LUCANT">
 <meta name="robots" content="index, follow">
@@ -13,16 +13,16 @@
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://lucant.co/">
-<meta property="og:title" content="LUCANT — Integración Tecnológica">
-<meta property="og:description" content="Seguridad electrónica, redes, energía solar y software a medida en Colombia. Soluciones integrales para proyectos que importan.">
+<meta property="og:title" content="LUCANT — Software Institucional e Infraestructura Tecnológica">
+<meta property="og:description" content="Software para alcaldías, hospitales y operadores. Integración técnica para empresas. RADICA, TRAZO, GALUX, ETNOTRACK y más.">
 <meta property="og:image" content="https://lucant.co/og-image.svg">
 <meta property="og:locale" content="es_CO">
 <meta property="og:site_name" content="LUCANT">
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="LUCANT — Integración Tecnológica">
-<meta name="twitter:description" content="Seguridad electrónica, redes, energía solar y software a medida en Colombia.">
+<meta name="twitter:title" content="LUCANT — Software Institucional e Infraestructura Tecnológica">
+<meta name="twitter:description" content="Software para alcaldías, hospitales y operadores. Integración técnica para empresas en Colombia.">
 <meta name="twitter:image" content="https://lucant.co/og-image.svg">
 
 <!-- Schema.org JSON-LD -->
@@ -151,6 +151,7 @@ section{position:relative;z-index:1;}
 .pdesc{font-size:.82rem;color:rgba(240,237,231,.5);line-height:1.78;max-width:360px;}
 .pghost{position:absolute;right:1.5rem;bottom:.5rem;font-size:7rem;font-weight:900;opacity:.03;pointer-events:none;transition:opacity .35s;}
 .pc:hover .pghost{opacity:.08;}
+.pdolor{font-size:.72rem;font-style:italic;color:rgba(240,237,231,.3);line-height:1.7;margin-top:.6rem;max-width:360px;}
 .pc-link{display:inline-block;margin-top:1.2rem;font-size:.7rem;font-weight:600;letter-spacing:.06em;color:var(--gold);transition:letter-spacing .25s;}
 .pc:hover .pc-link{letter-spacing:.12em;}
 a.pc{display:block;cursor:pointer;}
@@ -183,6 +184,9 @@ a.pc{display:block;cursor:pointer;}
 .proc-desc{font-size:.78rem;color:var(--muted);line-height:1.78;}
 .proc-arrow{position:absolute;top:2.5rem;right:-1rem;color:var(--border2);font-size:1.2rem;}
 .proc-card:last-child .proc-arrow{display:none;}
+.proc-tab{font-size:.7rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:.6rem 1.6rem;border-radius:4px;border:1px solid var(--border2);background:transparent;color:var(--muted);cursor:pointer;transition:all .25s;}
+.proc-tab:hover{color:var(--white);border-color:var(--gold);}
+.proc-tab.active{background:var(--gold);color:var(--black);border-color:var(--gold);}
 .proc-cta{text-align:center;margin-top:2.5rem;padding:0 3rem;}
 
 /* INLINE CTA */
@@ -196,6 +200,18 @@ a.pc{display:block;cursor:pointer;}
 .wa-float svg{width:26px;height:26px;fill:#fff;flex-shrink:0;}
 .wa-label{font-size:.7rem;font-weight:700;color:#fff;letter-spacing:.04em;white-space:nowrap;}
 @keyframes waIn{from{opacity:0;transform:scale(0.5) translateY(20px);}to{opacity:1;transform:scale(1) translateY(0);}}
+
+/* PARA QUIEN */
+#paraquien{background:var(--s2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.pq-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;max-width:1200px;margin:0 auto;padding:0 3rem;}
+.pq-card{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:2rem;transition:all .35s;}
+.pq-card:hover{border-color:var(--border2);transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,0,0,.3);}
+.pq-ico{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;}
+.pq-ico svg{width:22px;height:22px;}
+.pq-card h3{font-size:.9rem;font-weight:700;margin-bottom:.5rem;}
+.pq-card p{font-size:.78rem;color:var(--muted);line-height:1.78;margin-bottom:1rem;}
+.pq-cta{font-size:.7rem;font-weight:600;letter-spacing:.06em;color:var(--gold);transition:letter-spacing .25s;}
+.pq-cta:hover{letter-spacing:.12em;}
 
 /* WHY SECTION */
 #porque{background:var(--s2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
@@ -256,6 +272,7 @@ footer{background:var(--s1);border-top:1px solid var(--border);padding:3.5rem 3r
   .stat{border-right:none;border-bottom:1px solid var(--border);}
   .stat:nth-child(odd){border-right:1px solid var(--border);}
   .svc-grid{grid-template-columns:1fr 1fr;}
+  .pq-grid{grid-template-columns:repeat(2,1fr);padding:0 1.5rem;}
   .prod-grid{grid-template-columns:1fr;padding:0 1.5rem;}
   .why-grid{grid-template-columns:1fr;padding:0 1.5rem;gap:1rem;}
   .test-grid{grid-template-columns:1fr;padding:0 1.5rem;}
@@ -270,6 +287,7 @@ footer{background:var(--s1);border-top:1px solid var(--border);padding:3.5rem 3r
   footer{padding:2.5rem 1.5rem 2rem;}
 }
 @media(max-width:580px){
+  .pq-grid{grid-template-columns:1fr;}
   .svc-grid{grid-template-columns:1fr;}
   .proc-grid{grid-template-columns:1fr;}
   .stats-grid{grid-template-columns:1fr;}
@@ -306,21 +324,21 @@ footer{background:var(--s1);border-top:1px solid var(--border);padding:3.5rem 3r
   <div class="hero-glow"></div>
   <div class="hero-glow2"></div>
   <div class="hero-content">
-    <div class="eyebrow">Colombia &middot; Tecnologia &middot; Innovacion</div>
+    <div class="eyebrow">Colombia &middot; Sector Público &middot; Empresa &middot; Territorio</div>
     <h1 class="hero-title">
-      Sistemas<br>
-      <span class="g">que protegen</span><br>
-      <span class="dim">&amp;</span> <span class="g">conectan</span>
+      Software e<br>
+      <span class="g">infraestructura</span><br>
+      <span class="g">tecnológica</span> <span class="dim">para Colombia</span>
     </h1>
-    <p class="hero-sub">Seguridad electrónica, infraestructura de redes, energía solar y software a medida. Soluciones integrales para proyectos que importan.</p>
+    <p class="hero-sub">Plataformas institucionales, integración de seguridad electrónica y energía solar. Un solo equipo para todo el alcance.</p>
     <div class="hero-btns">
-      <a href="#servicios" class="btn-g">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg>
-        Explorar Servicios
-      </a>
-      <a href="#productos" class="btn-o">
+      <a href="#productos" class="btn-g">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 12l2 2 4-4"/></svg>
-        Productos Propios
+        Ver Software Institucional
+      </a>
+      <a href="#servicios" class="btn-o">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg>
+        Ver Servicios Técnicos
       </a>
     </div>
   </div>
@@ -373,6 +391,47 @@ footer{background:var(--s1);border-top:1px solid var(--border);padding:3.5rem 3r
     <span class="brand">Fortinet</span>
     <span class="brand">Huawei</span>
     <span class="brand">Apple</span>
+  </div>
+</section>
+
+<section id="paraquien">
+  <div class="inner">
+    <div class="stag reveal" style="justify-content:center;">Segmentos</div>
+    <h2 class="sh reveal" style="text-align:center;">¿Para quién trabajamos?</h2>
+  </div>
+  <div class="pq-grid reveal">
+    <div class="pq-card">
+      <div class="pq-ico" style="background:var(--gold-dim);">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.8"><path d="M3 21h18M5 21V7l7-4 7 4v14"/><path d="M9 21v-4h6v4"/><path d="M9 10h1M14 10h1M9 14h1M14 14h1"/></svg>
+      </div>
+      <h3>Entidades públicas</h3>
+      <p>Alcaldías, personerías, hospitales, institutos y secretarías. PQRSD, gestión contractual, alumbrado y administración territorial con software listo para operar.</p>
+      <a href="#productos" class="pq-cta">Ver productos institucionales &rarr;</a>
+    </div>
+    <div class="pq-card">
+      <div class="pq-ico" style="background:var(--cyan-dim);">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+      </div>
+      <h3>Empresas con proyectos en territorio</h3>
+      <p>Minería, energía, infraestructura, renovables y consultoras. Trazabilidad de consulta previa, compromisos comunitarios, actas y riesgo social centralizado.</p>
+      <a href="#productos" class="pq-cta">Ver ETNOTRACK &rarr;</a>
+    </div>
+    <div class="pq-card">
+      <div class="pq-ico" style="background:var(--green-dim);">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.8"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/><line x1="12" y1="2" x2="12" y2="8"/><path d="M12 2l-3 3M12 2l3 3"/></svg>
+      </div>
+      <h3>Municipios y operadores de alumbrado</h3>
+      <p>Gestión de activos, mantenimiento, inventario y cumplimiento normativo bajo ISO 55001 para alumbrado público municipal.</p>
+      <a href="#productos" class="pq-cta">Ver GALUX &rarr;</a>
+    </div>
+    <div class="pq-card">
+      <div class="pq-ico" style="background:var(--purple-dim);">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="1.8"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a4 4 0 00-8 0v2"/><path d="M12 12v3"/></svg>
+      </div>
+      <h3>Empresas y proyectos privados</h3>
+      <p>CCTV, control de acceso, redes, data centers, automatización y energía solar. Instalación profesional con soporte continuo.</p>
+      <a href="#servicios" class="pq-cta">Ver servicios técnicos &rarr;</a>
+    </div>
   </div>
 </section>
 
@@ -483,7 +542,8 @@ footer{background:var(--s1);border-top:1px solid var(--border);padding:3.5rem 3r
       <div class="pname">SARI</div>
       <div class="pfull">Sistema de Administración de Resguardos Indígenas</div>
       <p class="pdesc">Plataforma web para la gestión y seguimiento de resguardos indígenas. Desarrollada para las comunidades Wayuu de La Guajira.</p>
-      <span class="pc-link">Ver plataforma &rarr;</span>
+      <p class="pdolor">Centraliza administración, beneficiarios, territorio y seguimiento de comunidades Wayuu en La Guajira.</p>
+      <span class="pc-link">Solicitar demo de SARI &rarr;</span>
       <div class="pghost">SARI</div>
     </a>
     <a href="go/galux.html" target="_blank" class="pc">
@@ -491,7 +551,8 @@ footer{background:var(--s1);border-top:1px solid var(--border);padding:3.5rem 3r
       <div class="pname" style="color:var(--gold);">GALUX</div>
       <div class="pfull">Gestión de Activos de Alumbrado Público — ISO 55001</div>
       <p class="pdesc">Plataforma SaaS para municipios y operadores. Inventario de activos, mantenimiento, cumplimiento normativo colombiano y dashboard de KPIs en tiempo real.</p>
-      <span class="pc-link" style="color:var(--gold);">Ver plataforma &rarr;</span>
+      <p class="pdolor">Deja de gestionar el alumbrado en hojas de cálculo. Control de activos, fallas y KPIs en tiempo real.</p>
+      <span class="pc-link" style="color:var(--gold);">Solicitar demo de GALUX &rarr;</span>
       <div class="pghost" style="color:var(--gold);">GALUX</div>
     </a>
     <a href="go/sial.html" target="_blank" class="pc">
@@ -499,7 +560,8 @@ footer{background:var(--s1);border-top:1px solid var(--border);padding:3.5rem 3r
       <div class="pname" style="color:var(--cyan);">SIAL</div>
       <div class="pfull">Sistema de Información y Administración Local</div>
       <p class="pdesc">Herramienta de gestión para entidades territoriales. Centraliza procesos y facilita la toma de decisiones con datos.</p>
-      <span class="pc-link" style="color:var(--cyan);">Ver plataforma &rarr;</span>
+      <p class="pdolor">Centraliza procesos locales y facilita la toma de decisiones con datos organizados por dependencia.</p>
+      <span class="pc-link" style="color:var(--cyan);">Solicitar demo de SIAL &rarr;</span>
       <div class="pghost" style="color:var(--cyan);">SIAL</div>
     </a>
     <a href="go/salus.html" target="_blank" class="pc">
@@ -507,7 +569,8 @@ footer{background:var(--s1);border-top:1px solid var(--border);padding:3.5rem 3r
       <div class="pname" style="color:#378ADD;">SALUS</div>
       <div class="pfull">Sistema de Administración y Logística en Salud</div>
       <p class="pdesc">Plataforma integral de gestión hospitalaria. Admisión, historia clínica, farmacia, facturación y administración en un solo sistema.</p>
-      <span class="pc-link" style="color:#378ADD;">Ver plataforma &rarr;</span>
+      <p class="pdolor">Admisión, historia clínica, farmacia y facturación en un solo sistema para hospitales y ESE.</p>
+      <span class="pc-link" style="color:#378ADD;">Solicitar demo de SALUS &rarr;</span>
       <div class="pghost" style="color:#378ADD;">+</div>
     </a>
     <a href="go/radica.html" target="_blank" class="pc">
@@ -515,7 +578,8 @@ footer{background:var(--s1);border-top:1px solid var(--border);padding:3.5rem 3r
       <div class="pname" style="color:#38C87A;">RADICA</div>
       <div class="pfull">Gestión de PQRSD</div>
       <p class="pdesc">Plataforma para la gestión de Peticiones, Quejas, Reclamos, Sugerencias y Denuncias. Diseñada para entidades públicas colombianas.</p>
-      <span class="pc-link" style="color:#38C87A;">Ver plataforma &rarr;</span>
+      <p class="pdolor">Evita sanciones por vencimiento de términos. Radicación, reparto, seguimiento y trazabilidad de PQRSD.</p>
+      <span class="pc-link" style="color:#38C87A;">Solicitar demo de RADICA &rarr;</span>
       <div class="pghost" style="color:#38C87A;">RADICA</div>
     </a>
     <a href="go/trazo.html" target="_blank" class="pc">
@@ -523,7 +587,8 @@ footer{background:var(--s1);border-top:1px solid var(--border);padding:3.5rem 3r
       <div class="pname" style="color:#D97706;">TRAZO</div>
       <div class="pfull">Control y Gestión Contractual</div>
       <p class="pdesc">Plataforma para centralizar, organizar y dar visibilidad a la gestión contractual de entidades públicas. Alertas de vencimiento, reportes y cumplimiento normativo.</p>
-      <span class="pc-link" style="color:#D97706;">Ver plataforma &rarr;</span>
+      <p class="pdolor">Controla contratos, actas, anticipos y vencimientos sin depender de Excel ni carpetas dispersas.</p>
+      <span class="pc-link" style="color:#D97706;">Solicitar demo de TRAZO &rarr;</span>
       <div class="pghost" style="color:#D97706;">TRAZO</div>
     </a>
     <a href="go/etnotrack.html" target="_blank" class="pc">
@@ -531,17 +596,10 @@ footer{background:var(--s1);border-top:1px solid var(--border);padding:3.5rem 3r
       <div class="pname" style="color:#0E7AB8;">ETNOTRACK</div>
       <div class="pfull">Gestión de Consulta Previa y Cumplimiento Étnico</div>
       <p class="pdesc">Plataforma SaaS para centralizar procesos de consulta previa y cumplimiento étnico. Documentación, compromisos, actas y trazabilidad para proyectos en territorios con comunidades étnicas.</p>
-      <span class="pc-link" style="color:#0E7AB8;">Ver plataforma &rarr;</span>
+      <p class="pdolor">Centraliza compromisos, actas, visitas y alertas territoriales. Evita pérdida de seguimiento y exposición al riesgo social.</p>
+      <span class="pc-link" style="color:#0E7AB8;">Solicitar demo de ETNOTRACK &rarr;</span>
       <div class="pghost" style="color:#0E7AB8;">ETNOTRACK</div>
     </a>
-    <div class="pc">
-      <span class="pbadge" style="background:var(--purple-dim);color:var(--purple);border:1px solid rgba(155,111,232,.15);">Entretenimiento</span>
-      <div class="pname" style="color:var(--purple);">GAMES</div>
-      <div class="pfull">Desarrollo de Videojuegos</div>
-      <p class="pdesc">Experiencias interactivas con identidad cultural latinoamericana. Juegos educativos y entretenimiento indie de producción propia.</p>
-      <span class="pc-link" style="color:var(--purple);">Próximamente</span>
-      <div class="pghost" style="color:var(--purple);">&#9654;</div>
-    </div>
   </div>
 </section>
 
@@ -574,29 +632,58 @@ footer{background:var(--s1);border-top:1px solid var(--border);padding:3.5rem 3r
     <div class="stag reveal" style="justify-content:center;">Proceso</div>
     <h2 class="sh reveal" style="text-align:center;">Cómo trabajamos</h2>
   </div>
-  <div class="proc-grid reveal">
+  <div class="proc-tabs reveal" style="display:flex;justify-content:center;gap:.5rem;margin-bottom:2rem;padding:0 3rem;">
+    <button class="proc-tab active" onclick="switchProcTab('tech',this)">Servicios técnicos</button>
+    <button class="proc-tab" onclick="switchProcTab('saas',this)">Software SaaS</button>
+  </div>
+  <div class="proc-grid reveal" id="proc-tech">
     <div class="proc-card">
       <div class="proc-num">01</div>
       <h3 class="proc-title">Diagnóstico</h3>
-      <p class="proc-desc">Visitamos tu proyecto, evaluamos necesidades y definimos el alcance técnico junto contigo.</p>
+      <p class="proc-desc">Visitamos el proyecto y evaluamos necesidades técnicas.</p>
       <span class="proc-arrow">&rarr;</span>
     </div>
     <div class="proc-card">
       <div class="proc-num">02</div>
       <h3 class="proc-title">Diseño y cotización</h3>
-      <p class="proc-desc">Elaboramos la propuesta técnica y económica con planos, especificaciones y cronograma.</p>
+      <p class="proc-desc">Propuesta técnica con planos, especificaciones y cronograma.</p>
       <span class="proc-arrow">&rarr;</span>
     </div>
     <div class="proc-card">
       <div class="proc-num">03</div>
       <h3 class="proc-title">Ejecución</h3>
-      <p class="proc-desc">Instalamos, configuramos y ponemos en marcha. Todo supervisado por nuestro equipo técnico.</p>
+      <p class="proc-desc">Instalación, configuración y puesta en marcha por nuestro equipo.</p>
       <span class="proc-arrow">&rarr;</span>
     </div>
     <div class="proc-card">
       <div class="proc-num">04</div>
       <h3 class="proc-title">Soporte</h3>
-      <p class="proc-desc">Garantía, mantenimiento preventivo y soporte técnico continuo. Estamos contigo después de la entrega.</p>
+      <p class="proc-desc">Garantía, mantenimiento preventivo y soporte continuo.</p>
+    </div>
+  </div>
+  <div class="proc-grid" id="proc-saas" style="display:none;">
+    <div class="proc-card">
+      <div class="proc-num">01</div>
+      <h3 class="proc-title">Demo</h3>
+      <p class="proc-desc">Mostramos el producto funcionando con un caso de uso real en 20 minutos.</p>
+      <span class="proc-arrow">&rarr;</span>
+    </div>
+    <div class="proc-card">
+      <div class="proc-num">02</div>
+      <h3 class="proc-title">Piloto</h3>
+      <p class="proc-desc">Configuramos un ambiente de prueba con tu entidad u organización.</p>
+      <span class="proc-arrow">&rarr;</span>
+    </div>
+    <div class="proc-card">
+      <div class="proc-num">03</div>
+      <h3 class="proc-title">Implementación</h3>
+      <p class="proc-desc">Parametrización, carga de datos y capacitación de usuarios.</p>
+      <span class="proc-arrow">&rarr;</span>
+    </div>
+    <div class="proc-card">
+      <div class="proc-num">04</div>
+      <h3 class="proc-title">Soporte continuo</h3>
+      <p class="proc-desc">Acompañamiento, actualizaciones y soporte técnico incluido.</p>
     </div>
   </div>
   <div class="proc-cta reveal">
@@ -615,34 +702,34 @@ footer{background:var(--s1);border-top:1px solid var(--border);padding:3.5rem 3r
   <div class="test-grid reveal">
     <div class="test-card">
       <div class="test-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-      <p class="test-quote">"LUCANT nos instaló todo el sistema de CCTV y control de acceso. Excelente trabajo, cumplieron con los tiempos y la calidad es impecable."</p>
+      <p class="test-quote">"LUCANT nos instaló el sistema completo de CCTV y control de acceso. Cumplieron tiempos, calidad impecable y soporte real después de la entrega."</p>
       <div class="test-author">
         <div class="test-avatar" style="background:var(--cyan-dim);color:var(--cyan);">RC</div>
         <div class="test-info">
           <div class="test-name">Roberto Castro</div>
-          <div class="test-role">Director de Seguridad, Empresa Privada</div>
+          <div class="test-role">Director de Seguridad</div>
         </div>
       </div>
     </div>
     <div class="test-card">
       <div class="test-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-      <p class="test-quote">"El sistema SARI transformó la forma en que gestionamos los resguardos. Una herramienta pensada para nuestras necesidades reales."</p>
+      <p class="test-quote">"SARI transformó la forma en que gestionamos los resguardos. Una herramienta pensada para nuestras necesidades reales en La Guajira."</p>
       <div class="test-author">
         <div class="test-avatar" style="background:var(--gold-dim2);color:var(--gold);">MP</div>
         <div class="test-info">
           <div class="test-name">María Pushaina</div>
-          <div class="test-role">Líder Comunitaria, La Guajira</div>
+          <div class="test-role">Líder Comunitaria, Alta Guajira</div>
         </div>
       </div>
     </div>
     <div class="test-card">
       <div class="test-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-      <p class="test-quote">"Nos diseñaron la red de datos y el data center desde cero. Todo certificado y funcionando perfecto. Muy profesionales."</p>
+      <p class="test-quote">"Diseñaron la red de datos y el data center desde cero. Todo certificado y funcionando perfecto."</p>
       <div class="test-author">
         <div class="test-avatar" style="background:var(--green-dim);color:var(--green);">AL</div>
         <div class="test-info">
           <div class="test-name">Andrés López</div>
-          <div class="test-role">Gerente de TI, Sector Público</div>
+          <div class="test-role">Gerente de TI</div>
         </div>
       </div>
     </div>
@@ -677,7 +764,7 @@ footer{background:var(--s1);border-top:1px solid var(--border);padding:3.5rem 3r
         <img src="logo.svg" alt="LUCANT">
         <div class="flogo-text">LU<span>C</span>ANT</div>
       </div>
-      <p class="ft">Integración tecnológica avanzada. Seguridad, redes, energía solar y software a medida en Colombia.</p>
+      <p class="ft">Software institucional e infraestructura tecnológica para entidades, operadores y empresas en Colombia.</p>
     </div>
     <div class="fcol">
       <h4>Servicios</h4>
@@ -699,7 +786,7 @@ footer{background:var(--s1);border-top:1px solid var(--border);padding:3.5rem 3r
         <a href="#productos">RADICA</a>
         <a href="#productos">TRAZO</a>
         <a href="#productos">ETNOTRACK</a>
-        <a href="#productos">Videojuegos</a>
+        <a href="#" style="color:var(--purple);">LUCANT Games &nearr;</a>
       </div>
     </div>
     <div class="fcol">
@@ -741,6 +828,14 @@ window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scr
 // Reveal
 const obs=new IntersectionObserver(es=>{es.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('on'),i*80);}});},{threshold:.06});
 document.querySelectorAll('.reveal').forEach(r=>obs.observe(r));
+
+// Process tabs
+function switchProcTab(tab,btn){
+  document.getElementById('proc-tech').style.display=tab==='tech'?'grid':'none';
+  document.getElementById('proc-saas').style.display=tab==='saas'?'grid':'none';
+  document.querySelectorAll('.proc-tab').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+}
 
 // Close mobile menu on link click
 document.querySelectorAll('.nav-links a').forEach(a=>{a.addEventListener('click',()=>{document.getElementById('navLinks').classList.remove('open');});});
