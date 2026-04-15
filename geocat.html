@@ -364,7 +364,8 @@ h2 { font-size: 32px; font-weight: 700; letter-spacing: -0.5px; line-height: 1.2
 /* ── Mockup ── */
 .mockup-wrapper {
   position: relative;
-  animation: float 6s ease-in-out infinite;
+  opacity: 0;
+  animation: fadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards, float 6s 0.6s ease-in-out infinite;
 }
 
 .mockup {
@@ -1004,7 +1005,7 @@ h2 { font-size: 32px; font-weight: 700; letter-spacing: -0.5px; line-height: 1.2
         </div>
       </div>
 
-      <div class="mockup-wrapper fade-up" style="animation-delay:0.3s">
+      <div class="mockup-wrapper" style="animation-delay:0.3s">
         <div class="mockup">
           <div class="mockup-bar">
             <span class="mockup-dot red"></span>
