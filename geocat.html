@@ -74,6 +74,8 @@ body {
   color: var(--white);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  word-break: break-word;
+  overflow-wrap: anywhere;
 }
 
 a { color: inherit; text-decoration: none; }
@@ -87,8 +89,8 @@ img { max-width: 100%; display: block; }
 
 /* ── Tipografía ── */
 h1, h2 { font-family: 'Syne', sans-serif; font-weight: 800; }
-h1 { font-size: 56px; letter-spacing: -2px; line-height: 1.08; }
-h2 { font-size: 40px; letter-spacing: -1.5px; line-height: 1.15; }
+h1 { font-size: clamp(36px, 5vw, 56px); letter-spacing: -1px; line-height: 1.12; }
+h2 { font-size: clamp(28px, 3.5vw, 40px); letter-spacing: -0.5px; line-height: 1.2; }
 
 .eyebrow {
   font-size: 11px;
@@ -269,7 +271,7 @@ h2 { font-size: 40px; letter-spacing: -1.5px; line-height: 1.15; }
   z-index: 1;
 }
 
-.hero-text { max-width: 560px; }
+.hero-text { max-width: 560px; width: 100%; }
 
 .pill {
   display: inline-flex;
@@ -313,6 +315,7 @@ h2 { font-size: 40px; letter-spacing: -1.5px; line-height: 1.15; }
 
 .hero-buttons {
   display: flex;
+  flex-wrap: wrap;
   gap: 12px;
   margin-bottom: 48px;
   animation-delay: 0.3s;
@@ -389,7 +392,10 @@ h2 { font-size: 40px; letter-spacing: -1.5px; line-height: 1.15; }
 
 .mockup-body {
   display: flex;
-  height: 380px;
+  height: auto;
+  min-height: 320px;
+  max-height: 400px;
+  aspect-ratio: 16/10;
 }
 
 .mockup-sidebar {
@@ -559,7 +565,6 @@ h2 { font-size: 40px; letter-spacing: -1.5px; line-height: 1.15; }
   gap: 8px;
   font-size: 13px;
   color: rgba(255,255,255,0.7);
-  white-space: nowrap;
 }
 
 .trust-dot {
@@ -918,8 +923,6 @@ h2 { font-size: 40px; letter-spacing: -1.5px; line-height: 1.15; }
 
 /* ── RESPONSIVE ── */
 @media (max-width: 768px) {
-  h1 { font-size: 36px; letter-spacing: -1px; }
-  h2 { font-size: 28px; letter-spacing: -0.5px; }
 
   .nav-links { display: none; }
   .nav-hamburger { display: flex; }
@@ -941,8 +944,8 @@ h2 { font-size: 40px; letter-spacing: -1.5px; line-height: 1.15; }
   .hero-grid { grid-template-columns: 1fr; gap: 40px; }
   .mockup-wrapper { display: none; }
 
-  .hero-stats { grid-template-columns: repeat(3, 1fr); gap: 12px; }
-  .stat { padding-left: 12px; }
+  .hero-stats { grid-template-columns: 1fr; gap: 16px; }
+  .stat { padding-left: 16px; }
   .stat-number { font-size: 24px; }
 
   .problem-grid { grid-template-columns: 1fr; }
@@ -1067,7 +1070,7 @@ h2 { font-size: 40px; letter-spacing: -1.5px; line-height: 1.15; }
             </div>
             <!-- Mapa -->
             <div class="mockup-map">
-              <svg viewBox="0 0 500 380" xmlns="http://www.w3.org/2000/svg">
+              <svg viewBox="0 0 500 380" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
                 <!-- Grid de coordenadas -->
                 <defs>
                   <pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse">
