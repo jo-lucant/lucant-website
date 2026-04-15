@@ -45,10 +45,10 @@
 
 <link rel="icon" type="image/svg+xml" href="logo.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
-/* ── Reset & Variables ── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
@@ -68,27 +68,28 @@ html { scroll-behavior: smooth; }
 
 body {
   font-family: 'Inter', sans-serif;
-  font-weight: 300;
-  line-height: 1.75;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 1.7;
   background: var(--bg);
   color: var(--white);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 a { color: inherit; text-decoration: none; }
-img { max-width: 100%; display: block; }
 
 .container {
-  max-width: 1200px;
+  max-width: 1140px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 28px;
 }
 
-/* ── Tipografía ── */
-h1, h2 { font-family: 'Syne', sans-serif; font-weight: 700; }
-h1 { font-size: clamp(32px, 3.5vw, 48px); letter-spacing: -0.5px; line-height: 1.15; }
-h2 { font-size: clamp(24px, 2.8vw, 36px); letter-spacing: -0.3px; line-height: 1.2; }
+/* ── Typography ── */
+h1, h2, h3 { font-family: 'Syne', sans-serif; }
+h1 { font-size: 42px; font-weight: 800; letter-spacing: -1px; line-height: 1.12; }
+h2 { font-size: 32px; font-weight: 700; letter-spacing: -0.5px; line-height: 1.2; }
 
 .eyebrow {
   font-size: 11px;
@@ -96,12 +97,12 @@ h2 { font-size: clamp(24px, 2.8vw, 36px); letter-spacing: -0.3px; line-height: 1
   text-transform: uppercase;
   color: var(--teal);
   font-weight: 600;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
 }
 
-/* ── Animaciones ── */
+/* ── Animations ── */
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(20px); }
+  from { opacity: 0; transform: translateY(24px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
@@ -110,9 +111,70 @@ h2 { font-size: clamp(24px, 2.8vw, 36px); letter-spacing: -0.3px; line-height: 1
   50%      { opacity: 0.3; }
 }
 
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-8px); }
+}
+
 .fade-up {
   opacity: 0;
-  animation: fadeUp 0.7s ease forwards;
+  animation: fadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Buttons ── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 24px;
+  background: var(--teal);
+  color: #080E1A;
+  font-weight: 600;
+  font-size: 14px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 12px rgba(0,212,180,0.15);
+}
+
+.btn-primary:hover {
+  background: var(--teal2);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(0,212,180,0.25);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 24px;
+  background: rgba(255,255,255,0.03);
+  color: var(--white);
+  font-weight: 500;
+  font-size: 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.1);
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.btn-secondary:hover {
+  background: rgba(255,255,255,0.06);
+  border-color: rgba(255,255,255,0.2);
+  transform: translateY(-2px);
 }
 
 /* ── NAV ── */
@@ -122,26 +184,26 @@ h2 { font-size: clamp(24px, 2.8vw, 36px); letter-spacing: -0.3px; line-height: 1
   left: 0;
   right: 0;
   z-index: 1000;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  background: rgba(8, 14, 26, 0.8);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  background: rgba(8, 14, 26, 0.85);
   border-bottom: 1px solid var(--border);
-  padding: 0 24px;
 }
 
 .nav-inner {
-  max-width: 1200px;
+  max-width: 1140px;
   margin: 0 auto;
+  padding: 0 28px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 64px;
+  height: 60px;
 }
 
 .nav-logo {
   font-family: 'Syne', sans-serif;
   font-weight: 800;
-  font-size: 22px;
+  font-size: 20px;
   display: flex;
   align-items: baseline;
   gap: 8px;
@@ -152,19 +214,19 @@ h2 { font-size: clamp(24px, 2.8vw, 36px); letter-spacing: -0.3px; line-height: 1
 .nav-logo .by-lucant {
   font-family: 'Inter', sans-serif;
   font-weight: 400;
-  font-size: 12px;
+  font-size: 11px;
   color: var(--muted);
 }
 
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 32px;
+  gap: 28px;
   list-style: none;
 }
 
 .nav-links a {
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 400;
   color: var(--muted);
   transition: color 0.2s;
@@ -172,45 +234,7 @@ h2 { font-size: clamp(24px, 2.8vw, 36px); letter-spacing: -0.3px; line-height: 1
 
 .nav-links a:hover { color: var(--white); }
 
-.btn-primary {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 10px 22px;
-  background: var(--teal);
-  color: #080E1A;
-  font-weight: 600;
-  font-size: 14px;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
-  transition: background 0.2s, transform 0.2s;
-}
-
-.btn-primary:hover {
-  background: var(--teal2);
-  transform: translateY(-2px);
-}
-
-.btn-secondary {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 10px 22px;
-  background: transparent;
-  color: var(--white);
-  font-weight: 500;
-  font-size: 14px;
-  border-radius: 8px;
-  border: 1px solid var(--border);
-  cursor: pointer;
-  transition: border-color 0.2s, transform 0.2s;
-}
-
-.btn-secondary:hover {
-  border-color: rgba(255,255,255,0.2);
-  transform: translateY(-2px);
-}
+.nav-links .btn-primary { font-size: 13px; padding: 8px 18px; }
 
 .nav-hamburger {
   display: none;
@@ -224,7 +248,7 @@ h2 { font-size: clamp(24px, 2.8vw, 36px); letter-spacing: -0.3px; line-height: 1
 
 .nav-hamburger span {
   display: block;
-  width: 22px;
+  width: 20px;
   height: 2px;
   background: var(--white);
   border-radius: 2px;
@@ -233,9 +257,12 @@ h2 { font-size: clamp(24px, 2.8vw, 36px); letter-spacing: -0.3px; line-height: 1
 
 /* ── HERO ── */
 .hero {
-  padding: 140px 0 80px;
+  padding: 130px 0 72px;
   position: relative;
   overflow: hidden;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
 }
 
 .hero::before {
@@ -243,8 +270,8 @@ h2 { font-size: clamp(24px, 2.8vw, 36px); letter-spacing: -0.3px; line-height: 1
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(0,212,180,0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,212,180,0.03) 1px, transparent 1px);
+    linear-gradient(rgba(0,212,180,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,212,180,0.025) 1px, transparent 1px);
   background-size: 60px 60px;
   pointer-events: none;
 }
@@ -252,38 +279,37 @@ h2 { font-size: clamp(24px, 2.8vw, 36px); letter-spacing: -0.3px; line-height: 1
 .hero::after {
   content: '';
   position: absolute;
-  top: -100px;
-  right: -200px;
+  top: -150px;
+  right: -250px;
   width: 800px;
   height: 800px;
-  background: radial-gradient(circle, rgba(0,212,180,0.07), transparent 70%);
+  background: radial-gradient(circle, rgba(0,212,180,0.06), transparent 70%);
   pointer-events: none;
 }
 
 .hero-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 48px;
   align-items: center;
   position: relative;
   z-index: 1;
 }
 
-.hero-text { max-width: 560px; width: 100%; }
+.hero-text { max-width: 520px; }
 
 .pill {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 6px 16px;
-  background: rgba(0,212,180,0.08);
-  border: 1px solid rgba(0,212,180,0.2);
+  padding: 6px 14px;
+  background: rgba(0,212,180,0.06);
+  border: 1px solid rgba(0,212,180,0.15);
   border-radius: 100px;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 500;
   color: var(--teal);
-  margin-bottom: 28px;
-  animation-delay: 0s;
+  margin-bottom: 24px;
 }
 
 .pill-dot {
@@ -294,154 +320,139 @@ h2 { font-size: clamp(24px, 2.8vw, 36px); letter-spacing: -0.3px; line-height: 1
   animation: blink 1.8s ease-in-out infinite;
 }
 
-.hero h1 {
-  margin-bottom: 24px;
-  animation-delay: 0.1s;
-}
-
+.hero h1 { margin-bottom: 20px; }
 .hero h1 .teal { color: var(--teal); }
 .hero h1 .amber { color: var(--amber); }
 
 .hero-desc {
   color: var(--muted);
-  font-size: 16px;
-  line-height: 1.8;
-  margin-bottom: 32px;
-  max-width: 480px;
-  animation-delay: 0.2s;
+  font-size: 15px;
+  line-height: 1.75;
+  margin-bottom: 28px;
+  max-width: 460px;
 }
 
 .hero-buttons {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
-  margin-bottom: 48px;
-  animation-delay: 0.3s;
+  gap: 10px;
+  margin-bottom: 44px;
 }
 
 .hero-stats {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0;
-  animation-delay: 0.4s;
+  display: flex;
+  gap: 32px;
 }
 
 .stat {
-  padding-left: 20px;
+  padding-left: 16px;
   border-left: 2px solid var(--teal);
 }
 
 .stat-number {
   font-family: 'Syne', sans-serif;
   font-weight: 700;
-  font-size: 26px;
+  font-size: 22px;
   color: var(--white);
-  line-height: 1.2;
+  line-height: 1.3;
 }
 
 .stat-label {
-  font-size: 13px;
+  font-size: 12px;
   color: var(--muted);
   line-height: 1.4;
+  max-width: 120px;
 }
 
-/* ── Mockup App ── */
+/* ── Mockup ── */
 .mockup-wrapper {
   position: relative;
+  animation: float 6s ease-in-out infinite;
 }
 
 .mockup {
   background: var(--bg2);
-  border: 1px solid var(--border);
+  border: 1px solid rgba(255,255,255,0.08);
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 40px 80px rgba(0,0,0,0.4);
+  box-shadow: 0 32px 64px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.04);
 }
 
 .mockup-bar {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 12px 16px;
+  gap: 6px;
+  padding: 10px 14px;
   background: var(--bg3);
   border-bottom: 1px solid var(--border);
 }
 
-.mockup-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-}
-
+.mockup-dot { width: 8px; height: 8px; border-radius: 50%; }
 .mockup-dot.red { background: #FF5F57; }
 .mockup-dot.yellow { background: #FEBC2E; }
 .mockup-dot.green { background: #28C840; }
 
 .mockup-url {
-  margin-left: 12px;
-  font-size: 11px;
+  margin-left: 10px;
+  font-size: 10px;
   color: var(--muted);
   font-family: 'Inter', monospace;
-  background: rgba(255,255,255,0.05);
-  padding: 4px 12px;
-  border-radius: 6px;
+  background: rgba(255,255,255,0.04);
+  padding: 3px 10px;
+  border-radius: 5px;
   flex: 1;
 }
 
 .mockup-body {
   display: flex;
-  height: auto;
-  min-height: 320px;
-  max-height: 400px;
-  aspect-ratio: 16/10;
+  height: 340px;
 }
 
 .mockup-sidebar {
-  width: 200px;
+  width: 170px;
   background: var(--bg);
   border-right: 1px solid var(--border);
-  padding: 16px;
+  padding: 14px;
   flex-shrink: 0;
+  overflow: hidden;
 }
 
-.sidebar-section {
-  margin-bottom: 20px;
-}
+.sidebar-section { margin-bottom: 18px; }
 
 .sidebar-title {
-  font-size: 10px;
+  font-size: 9px;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 1.5px;
   color: var(--muted);
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 .sidebar-item {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 6px 8px;
-  border-radius: 6px;
-  font-size: 12px;
+  gap: 7px;
+  padding: 5px 7px;
+  border-radius: 5px;
+  font-size: 11px;
   color: var(--muted);
   margin-bottom: 2px;
 }
 
 .sidebar-item.active {
-  background: rgba(0,212,180,0.08);
+  background: rgba(0,212,180,0.07);
   color: var(--white);
 }
 
 .sidebar-check {
-  width: 14px;
-  height: 14px;
+  width: 13px;
+  height: 13px;
   border-radius: 3px;
   border: 1px solid var(--border);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 9px;
+  font-size: 8px;
   flex-shrink: 0;
 }
 
@@ -458,52 +469,49 @@ h2 { font-size: clamp(24px, 2.8vw, 36px); letter-spacing: -0.3px; line-height: 1
   overflow: hidden;
 }
 
-.mockup-map svg {
-  width: 100%;
-  height: 100%;
-}
+.mockup-map svg { width: 100%; height: 100%; }
 
 .mockup-searchbar {
   position: absolute;
-  top: 12px;
-  left: 12px;
+  top: 10px;
+  left: 10px;
   background: var(--bg2);
   border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 6px 12px;
-  font-size: 11px;
+  border-radius: 6px;
+  padding: 5px 10px;
+  font-size: 10px;
   color: var(--muted);
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
 }
 
 .mockup-popup {
   position: absolute;
-  top: 12px;
-  right: 12px;
+  top: 10px;
+  right: 10px;
   background: var(--bg2);
   border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 16px;
-  width: 200px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  border-radius: 8px;
+  padding: 14px;
+  width: 175px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
 }
 
 .popup-title {
-  font-size: 9px;
+  font-size: 8px;
   font-weight: 600;
   letter-spacing: 1.5px;
   text-transform: uppercase;
   color: var(--muted);
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
 .popup-row {
   display: flex;
   justify-content: space-between;
-  font-size: 12px;
-  margin-bottom: 6px;
+  font-size: 11px;
+  margin-bottom: 5px;
 }
 
 .popup-row .label { color: var(--muted); }
@@ -512,13 +520,13 @@ h2 { font-size: clamp(24px, 2.8vw, 36px); letter-spacing: -0.3px; line-height: 1
 
 .popup-btn {
   width: 100%;
-  margin-top: 12px;
-  padding: 7px;
+  margin-top: 10px;
+  padding: 6px;
   background: var(--teal);
   color: #080E1A;
   border: none;
-  border-radius: 6px;
-  font-size: 11px;
+  border-radius: 5px;
+  font-size: 10px;
   font-weight: 600;
   cursor: pointer;
   text-align: center;
@@ -529,19 +537,18 @@ h2 { font-size: clamp(24px, 2.8vw, 36px); letter-spacing: -0.3px; line-height: 1
   background: rgba(13,24,41,0.5);
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
-  padding: 20px 0;
-  overflow: hidden;
+  padding: 18px 0;
 }
 
 .trust-inner {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 20px;
   flex-wrap: wrap;
 }
 
 .trust-label {
-  font-size: 11px;
+  font-size: 10px;
   letter-spacing: 2px;
   text-transform: uppercase;
   color: var(--muted);
@@ -553,109 +560,104 @@ h2 { font-size: clamp(24px, 2.8vw, 36px); letter-spacing: -0.3px; line-height: 1
 .trust-items {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 16px;
   flex-wrap: wrap;
 }
 
 .trust-item {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 13px;
-  color: rgba(255,255,255,0.7);
+  gap: 6px;
+  font-size: 12px;
+  color: rgba(255,255,255,0.6);
 }
 
 .trust-dot {
-  width: 5px;
-  height: 5px;
+  width: 4px;
+  height: 4px;
   background: var(--teal);
   border-radius: 50%;
   flex-shrink: 0;
 }
 
-/* ── SECTION COMMON ── */
-.section {
-  padding: 100px 0;
-}
+/* ── SECTIONS ── */
+.section { padding: 88px 0; }
 
 .section-header {
   text-align: center;
-  max-width: 640px;
-  margin: 0 auto 60px;
+  max-width: 580px;
+  margin: 0 auto 52px;
 }
 
 .section-header p {
   color: var(--muted);
-  font-size: 16px;
-  line-height: 1.8;
-  margin-top: 16px;
+  font-size: 15px;
+  line-height: 1.75;
+  margin-top: 14px;
 }
 
 /* ── PROBLEMA ── */
 .problem-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 20px;
+  gap: 16px;
 }
 
 .problem-card {
   background: var(--bg2);
   border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 32px;
-  transition: transform 0.25s, border-color 0.25s;
+  border-radius: 12px;
+  padding: 28px;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .problem-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(255,255,255,0.12);
+  transform: translateY(-3px);
+  border-color: rgba(255,255,255,0.1);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.2);
 }
 
-.problem-icon {
-  font-size: 28px;
-  margin-bottom: 16px;
-}
+.problem-icon { font-size: 24px; margin-bottom: 14px; }
 
 .problem-card h3 {
   font-family: 'Syne', sans-serif;
   font-weight: 700;
-  font-size: 18px;
-  margin-bottom: 10px;
+  font-size: 16px;
+  margin-bottom: 8px;
   color: var(--white);
 }
 
 .problem-card p {
   color: var(--muted);
-  font-size: 14px;
+  font-size: 13px;
   line-height: 1.7;
 }
 
 .problem-divider {
   text-align: center;
-  margin-top: 48px;
+  margin-top: 40px;
   color: var(--teal);
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 500;
   letter-spacing: 0.5px;
+  opacity: 0.8;
 }
 
 /* ── MODULOS ── */
-.section-modules {
-  background: rgba(13,24,41,0.4);
-}
+.section-modules { background: rgba(13,24,41,0.4); }
 
 .modules-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 24px;
+  gap: 20px;
 }
 
 .module-card {
   background: var(--bg2);
   border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 36px;
-  transition: transform 0.25s, border-color 0.25s;
+  border-radius: 14px;
+  padding: 32px;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
   position: relative;
   overflow: hidden;
 }
@@ -663,160 +665,135 @@ h2 { font-size: clamp(24px, 2.8vw, 36px); letter-spacing: -0.3px; line-height: 1
 .module-card::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
+  top: 0; left: 0; right: 0;
   height: 3px;
 }
 
 .module-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-3px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.2);
 }
 
 .module-card[data-accent="teal"]::before { background: var(--teal); }
-.module-card[data-accent="teal"]:hover { border-color: rgba(0,212,180,0.25); }
-
+.module-card[data-accent="teal"]:hover { border-color: rgba(0,212,180,0.2); }
 .module-card[data-accent="amber"]::before { background: var(--amber); }
-.module-card[data-accent="amber"]:hover { border-color: rgba(245,166,35,0.25); }
-
+.module-card[data-accent="amber"]:hover { border-color: rgba(245,166,35,0.2); }
 .module-card[data-accent="muted"]::before { background: var(--muted); }
-.module-card[data-accent="muted"]:hover { border-color: rgba(122,143,173,0.25); }
-
+.module-card[data-accent="muted"]:hover { border-color: rgba(122,143,173,0.2); }
 .module-card[data-accent="blue"]::before { background: var(--blue); }
-.module-card[data-accent="blue"]:hover { border-color: rgba(43,127,255,0.25); }
+.module-card[data-accent="blue"]:hover { border-color: rgba(43,127,255,0.2); }
 
 .module-tag {
   display: inline-block;
-  font-size: 10px;
+  font-size: 9px;
   font-weight: 600;
   letter-spacing: 2px;
   text-transform: uppercase;
   padding: 4px 10px;
   border-radius: 4px;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
 }
 
-.module-card[data-accent="teal"] .module-tag {
-  color: var(--teal);
-  background: rgba(0,212,180,0.1);
-}
-
-.module-card[data-accent="amber"] .module-tag {
-  color: var(--amber);
-  background: rgba(245,166,35,0.1);
-}
-
-.module-card[data-accent="muted"] .module-tag {
-  color: var(--muted);
-  background: rgba(122,143,173,0.1);
-}
-
-.module-card[data-accent="blue"] .module-tag {
-  color: var(--blue);
-  background: rgba(43,127,255,0.1);
-}
+.module-card[data-accent="teal"] .module-tag { color: var(--teal); background: rgba(0,212,180,0.08); }
+.module-card[data-accent="amber"] .module-tag { color: var(--amber); background: rgba(245,166,35,0.08); }
+.module-card[data-accent="muted"] .module-tag { color: var(--muted); background: rgba(122,143,173,0.08); }
+.module-card[data-accent="blue"] .module-tag { color: var(--blue); background: rgba(43,127,255,0.08); }
 
 .module-card h3 {
-  font-family: 'Syne', sans-serif;
   font-weight: 700;
-  font-size: 20px;
-  margin-bottom: 10px;
+  font-size: 18px;
+  margin-bottom: 8px;
 }
 
 .module-card > p {
   color: var(--muted);
-  font-size: 14px;
-  line-height: 1.75;
-  margin-bottom: 20px;
+  font-size: 13px;
+  line-height: 1.7;
+  margin-bottom: 18px;
 }
 
 .module-list {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
 }
 
 .module-list li {
   display: flex;
   align-items: flex-start;
-  gap: 10px;
-  font-size: 13px;
-  color: rgba(255,255,255,0.8);
+  gap: 8px;
+  font-size: 12.5px;
+  color: rgba(255,255,255,0.75);
   line-height: 1.5;
 }
 
-.module-list .check {
-  flex-shrink: 0;
-  margin-top: 2px;
-  font-size: 14px;
-}
+.module-list .check { flex-shrink: 0; margin-top: 1px; font-size: 13px; }
 
 .module-card[data-accent="teal"] .check { color: var(--teal); }
 .module-card[data-accent="amber"] .check { color: var(--amber); }
 .module-card[data-accent="muted"] .check { color: var(--muted); }
 .module-card[data-accent="blue"] .check { color: var(--blue); }
 
-/* ── PARA QUIEN ── */
+/* ── AUDIENCIA ── */
 .audience-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  gap: 20px;
 }
 
 .audience-card {
   background: var(--bg2);
   border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 36px;
-  transition: transform 0.25s, border-color 0.25s;
+  border-radius: 14px;
+  padding: 32px;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .audience-card:hover {
-  border-color: rgba(0,212,180,0.2);
+  border-color: rgba(0,212,180,0.15);
   transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.2);
 }
 
-.audience-icon {
-  font-size: 32px;
-  margin-bottom: 20px;
-}
+.audience-icon { font-size: 28px; margin-bottom: 16px; }
 
 .audience-card h3 {
   font-family: 'Syne', sans-serif;
   font-weight: 700;
-  font-size: 18px;
-  margin-bottom: 12px;
-  line-height: 1.3;
+  font-size: 16px;
+  margin-bottom: 10px;
+  line-height: 1.35;
 }
 
 .audience-card p {
   color: var(--muted);
-  font-size: 14px;
+  font-size: 13px;
   line-height: 1.7;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 
 .audience-cta {
   display: inline-block;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 500;
   color: var(--teal);
+  transition: opacity 0.2s;
 }
+
+.audience-cta:hover { opacity: 0.8; }
 
 /* ── CTA FINAL ── */
-.cta-section {
-  padding: 100px 0;
-}
+.cta-section { padding: 88px 0; }
 
 .cta-box {
-  max-width: 640px;
+  max-width: 600px;
   margin: 0 auto;
   text-align: center;
   background: var(--bg2);
-  border: 1px solid rgba(0,212,180,0.18);
-  border-radius: 20px;
-  padding: 56px 48px;
+  border: 1px solid rgba(0,212,180,0.15);
+  border-radius: 18px;
+  padding: 48px 40px;
   position: relative;
   overflow: hidden;
 }
@@ -824,39 +801,37 @@ h2 { font-size: clamp(24px, 2.8vw, 36px); letter-spacing: -0.3px; line-height: 1
 .cta-box::before {
   content: '';
   position: absolute;
-  top: -150px;
+  top: -120px;
   left: 50%;
   transform: translateX(-50%);
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(0,212,180,0.06), transparent 70%);
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(0,212,180,0.05), transparent 70%);
   pointer-events: none;
 }
 
-.cta-box h2 {
-  position: relative;
-  margin-bottom: 16px;
-}
+.cta-box h2 { position: relative; margin-bottom: 14px; }
 
 .cta-box > p {
   position: relative;
   color: var(--muted);
-  font-size: 16px;
-  line-height: 1.8;
-  margin-bottom: 32px;
+  font-size: 15px;
+  line-height: 1.75;
+  margin-bottom: 28px;
 }
 
 .cta-buttons {
   display: flex;
   justify-content: center;
-  gap: 12px;
+  flex-wrap: wrap;
+  gap: 10px;
   position: relative;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
 
 .cta-note {
   position: relative;
-  font-size: 13px;
+  font-size: 12px;
   color: var(--muted);
   line-height: 1.6;
 }
@@ -864,7 +839,7 @@ h2 { font-size: clamp(24px, 2.8vw, 36px); letter-spacing: -0.3px; line-height: 1
 /* ── FOOTER ── */
 .footer {
   border-top: 1px solid var(--border);
-  padding: 40px 0;
+  padding: 36px 0;
 }
 
 .footer-inner {
@@ -872,7 +847,7 @@ h2 { font-size: clamp(24px, 2.8vw, 36px); letter-spacing: -0.3px; line-height: 1
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 16px;
 }
 
 .footer-brand {
@@ -884,25 +859,22 @@ h2 { font-size: clamp(24px, 2.8vw, 36px); letter-spacing: -0.3px; line-height: 1
 .footer-brand .logo {
   font-family: 'Syne', sans-serif;
   font-weight: 800;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .footer-brand .logo .geo { color: var(--white); }
 .footer-brand .logo .cat { color: var(--teal); }
 
-.footer-brand .sub {
-  font-size: 12px;
-  color: var(--muted);
-}
+.footer-brand .sub { font-size: 11px; color: var(--muted); }
 
 .footer-links {
   display: flex;
-  gap: 24px;
+  gap: 20px;
   list-style: none;
 }
 
 .footer-links a {
-  font-size: 13px;
+  font-size: 12px;
   color: var(--muted);
   transition: color 0.2s;
 }
@@ -912,15 +884,17 @@ h2 { font-size: clamp(24px, 2.8vw, 36px); letter-spacing: -0.3px; line-height: 1
 .footer-copy {
   width: 100%;
   text-align: center;
-  font-size: 12px;
+  font-size: 11px;
   color: var(--muted);
-  margin-top: 20px;
-  padding-top: 20px;
+  margin-top: 16px;
+  padding-top: 16px;
   border-top: 1px solid var(--border);
 }
 
 /* ── RESPONSIVE ── */
 @media (max-width: 768px) {
+  h1 { font-size: 30px; letter-spacing: -0.5px; }
+  h2 { font-size: 24px; }
 
   .nav-links { display: none; }
   .nav-hamburger { display: flex; }
@@ -929,31 +903,30 @@ h2 { font-size: clamp(24px, 2.8vw, 36px); letter-spacing: -0.3px; line-height: 1
     display: flex;
     flex-direction: column;
     position: absolute;
-    top: 64px;
-    left: 0;
-    right: 0;
-    background: rgba(8,14,26,0.95);
-    backdrop-filter: blur(12px);
-    padding: 24px;
+    top: 60px;
+    left: 0; right: 0;
+    background: rgba(8,14,26,0.97);
+    backdrop-filter: blur(16px);
+    padding: 20px 28px;
     border-bottom: 1px solid var(--border);
+    gap: 16px;
   }
 
-  .hero { padding: 100px 0 60px; }
-  .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+  .hero { padding: 90px 0 50px; min-height: auto; }
+  .hero-grid { grid-template-columns: 1fr; gap: 32px; }
   .mockup-wrapper { display: none; }
 
-  .hero-stats { grid-template-columns: 1fr; gap: 16px; }
-  .stat { padding-left: 16px; }
-  .stat-number { font-size: 24px; }
+  .hero-stats { flex-direction: column; gap: 14px; }
+  .stat-number { font-size: 20px; }
 
+  .section { padding: 64px 0; }
   .problem-grid { grid-template-columns: 1fr; }
   .modules-grid { grid-template-columns: 1fr; }
   .audience-grid { grid-template-columns: 1fr; }
 
-  .trust-inner { flex-direction: column; align-items: flex-start; gap: 12px; }
-  .trust-items { flex-wrap: wrap; gap: 12px; }
+  .trust-inner { flex-direction: column; align-items: flex-start; gap: 10px; }
 
-  .cta-box { padding: 40px 24px; }
+  .cta-box { padding: 36px 24px; }
   .cta-buttons { flex-direction: column; align-items: center; }
 
   .footer-inner { flex-direction: column; align-items: center; text-align: center; }
@@ -961,9 +934,14 @@ h2 { font-size: clamp(24px, 2.8vw, 36px); letter-spacing: -0.3px; line-height: 1
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
-  .hero-grid { gap: 32px; }
-  .mockup-body { height: 300px; }
-  .mockup-sidebar { width: 160px; padding: 12px; }
+  h1 { font-size: 36px; }
+
+  .hero-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
+  .mockup-body { height: 280px; }
+  .mockup-sidebar { width: 140px; padding: 10px; }
+  .mockup-popup { width: 150px; padding: 10px; }
+  .mockup-popup .popup-row { font-size: 10px; }
+
   .audience-grid { grid-template-columns: 1fr 1fr; }
   .audience-card:last-child { grid-column: span 2; max-width: 50%; margin: 0 auto; }
 }
@@ -994,7 +972,6 @@ h2 { font-size: clamp(24px, 2.8vw, 36px); letter-spacing: -0.3px; line-height: 1
 <section class="hero">
   <div class="container">
     <div class="hero-grid">
-      <!-- Columna izquierda -->
       <div class="hero-text">
         <div class="pill fade-up" style="animation-delay:0s">
           <span class="pill-dot"></span>
@@ -1004,7 +981,7 @@ h2 { font-size: clamp(24px, 2.8vw, 36px); letter-spacing: -0.3px; line-height: 1
           Tu catastro<br>actualizado,<br><span class="teal">visible</span> y <span class="amber">rentable.</span>
         </h1>
         <p class="hero-desc fade-up" style="animation-delay:0.2s">
-          GEOCAT es el geoportal catastral SaaS para municipios colombianos. Visor predial en línea, certificados digitales con QR, liquidación de impuesto predial y API para notarías — todo conforme a LADM_COL SINIC V1.0.
+          GEOCAT es el geoportal catastral SaaS para municipios colombianos. Visor predial en línea, certificados digitales con QR, liquidación de impuesto predial y API para notarías — todo conforme a LADM_COL SINIC&nbsp;V1.0.
         </p>
         <div class="hero-buttons fade-up" style="animation-delay:0.3s">
           <a href="mailto:gerencia@lucant.co?subject=Demo%20GEOCAT" class="btn-primary">Solicitar demo gratuita &rarr;</a>
@@ -1016,7 +993,7 @@ h2 { font-size: clamp(24px, 2.8vw, 36px); letter-spacing: -0.3px; line-height: 1
             <div class="stat-label">Gestores habilitados en Colombia</div>
           </div>
           <div class="stat">
-            <div class="stat-number">4 sem.</div>
+            <div class="stat-number">4 sem</div>
             <div class="stat-label">De firma a producción</div>
           </div>
           <div class="stat">
@@ -1026,7 +1003,6 @@ h2 { font-size: clamp(24px, 2.8vw, 36px); letter-spacing: -0.3px; line-height: 1
         </div>
       </div>
 
-      <!-- Columna derecha — Mockup -->
       <div class="mockup-wrapper fade-up" style="animation-delay:0.3s">
         <div class="mockup">
           <div class="mockup-bar">
@@ -1036,91 +1012,49 @@ h2 { font-size: clamp(24px, 2.8vw, 36px); letter-spacing: -0.3px; line-height: 1
             <span class="mockup-url">santamarta.geocat.lucant.co</span>
           </div>
           <div class="mockup-body">
-            <!-- Sidebar -->
             <div class="mockup-sidebar">
               <div class="sidebar-section">
                 <div class="sidebar-title">Capas</div>
-                <div class="sidebar-item active">
-                  <span class="sidebar-check on">&#10003;</span> Terrenos
-                </div>
-                <div class="sidebar-item active">
-                  <span class="sidebar-check on">&#10003;</span> Construcciones
-                </div>
-                <div class="sidebar-item">
-                  <span class="sidebar-check"></span> POT uso suelo
-                </div>
-                <div class="sidebar-item">
-                  <span class="sidebar-check"></span> Red hídrica
-                </div>
+                <div class="sidebar-item active"><span class="sidebar-check on">&#10003;</span> Terrenos</div>
+                <div class="sidebar-item active"><span class="sidebar-check on">&#10003;</span> Construcciones</div>
+                <div class="sidebar-item"><span class="sidebar-check"></span> POT uso suelo</div>
+                <div class="sidebar-item"><span class="sidebar-check"></span> Red hídrica</div>
               </div>
               <div class="sidebar-section">
                 <div class="sidebar-title">Servicios</div>
-                <div class="sidebar-item">
-                  <span class="sidebar-check"></span> Ficha catastral
-                </div>
-                <div class="sidebar-item">
-                  <span class="sidebar-check"></span> Certificado QR
-                </div>
-                <div class="sidebar-item active">
-                  <span class="sidebar-check on">&#10003;</span> Predial / Paz y salvo
-                </div>
+                <div class="sidebar-item"><span class="sidebar-check"></span> Ficha catastral</div>
+                <div class="sidebar-item"><span class="sidebar-check"></span> Certificado QR</div>
+                <div class="sidebar-item active"><span class="sidebar-check on">&#10003;</span> Predial / Paz y salvo</div>
               </div>
             </div>
-            <!-- Mapa -->
             <div class="mockup-map">
               <svg viewBox="0 0 500 380" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-                <!-- Grid de coordenadas -->
                 <defs>
                   <pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse">
-                    <path d="M 50 0 L 0 0 0 50" fill="none" stroke="rgba(0,212,180,0.06)" stroke-width="0.5"/>
+                    <path d="M 50 0 L 0 0 0 50" fill="none" stroke="rgba(0,212,180,0.05)" stroke-width="0.5"/>
                   </pattern>
                 </defs>
                 <rect width="500" height="380" fill="url(#grid)"/>
-
-                <!-- Coordenadas de fondo -->
-                <text x="10" y="370" fill="rgba(0,212,180,0.15)" font-size="9" font-family="Inter, monospace">11.2408° N, 74.1990° W — EPSG:9377</text>
-
-                <!-- Polígonos prediales -->
-                <polygon points="80,120 160,100 180,170 130,200 70,180" fill="rgba(0,212,180,0.12)" stroke="rgba(0,212,180,0.35)" stroke-width="1"/>
-                <polygon points="160,100 250,80 270,140 180,170" fill="rgba(0,212,180,0.12)" stroke="rgba(0,212,180,0.35)" stroke-width="1"/>
-                <polygon points="180,170 270,140 290,220 220,250 130,200" fill="rgba(0,212,180,0.12)" stroke="rgba(0,212,180,0.35)" stroke-width="1"/>
-
-                <!-- Predio seleccionado con pulso -->
-                <polygon points="290,140 380,110 410,180 370,230 290,220" fill="rgba(0,212,180,0.28)" stroke="var(--teal)" stroke-width="1.5">
-                  <animate attributeName="fill-opacity" values="0.28;0.45;0.28" dur="2.5s" repeatCount="indefinite"/>
+                <text x="10" y="370" fill="rgba(0,212,180,0.12)" font-size="9" font-family="Inter, monospace">11.2408° N, 74.1990° W — EPSG:9377</text>
+                <polygon points="80,120 160,100 180,170 130,200 70,180" fill="rgba(0,212,180,0.1)" stroke="rgba(0,212,180,0.3)" stroke-width="1"/>
+                <polygon points="160,100 250,80 270,140 180,170" fill="rgba(0,212,180,0.1)" stroke="rgba(0,212,180,0.3)" stroke-width="1"/>
+                <polygon points="180,170 270,140 290,220 220,250 130,200" fill="rgba(0,212,180,0.1)" stroke="rgba(0,212,180,0.3)" stroke-width="1"/>
+                <polygon points="290,140 380,110 410,180 370,230 290,220" fill="rgba(0,212,180,0.25)" stroke="var(--teal)" stroke-width="1.5">
+                  <animate attributeName="fill-opacity" values="0.25;0.42;0.25" dur="2.5s" repeatCount="indefinite"/>
                 </polygon>
-
-                <polygon points="130,200 220,250 200,310 110,280" fill="rgba(0,212,180,0.12)" stroke="rgba(0,212,180,0.35)" stroke-width="1"/>
-                <polygon points="220,250 290,220 310,300 200,310" fill="rgba(0,212,180,0.12)" stroke="rgba(0,212,180,0.35)" stroke-width="1"/>
-                <polygon points="370,230 440,200 460,280 400,310 310,300 290,220" fill="rgba(0,212,180,0.12)" stroke="rgba(0,212,180,0.35)" stroke-width="1"/>
-
-                <!-- Calles -->
-                <line x1="70" y1="180" x2="440" y2="200" stroke="rgba(255,255,255,0.05)" stroke-width="8"/>
-                <line x1="250" y1="50" x2="310" y2="330" stroke="rgba(255,255,255,0.05)" stroke-width="6"/>
+                <polygon points="130,200 220,250 200,310 110,280" fill="rgba(0,212,180,0.1)" stroke="rgba(0,212,180,0.3)" stroke-width="1"/>
+                <polygon points="220,250 290,220 310,300 200,310" fill="rgba(0,212,180,0.1)" stroke="rgba(0,212,180,0.3)" stroke-width="1"/>
+                <polygon points="370,230 440,200 460,280 400,310 310,300 290,220" fill="rgba(0,212,180,0.1)" stroke="rgba(0,212,180,0.3)" stroke-width="1"/>
+                <line x1="70" y1="180" x2="440" y2="200" stroke="rgba(255,255,255,0.04)" stroke-width="7"/>
+                <line x1="250" y1="50" x2="310" y2="330" stroke="rgba(255,255,255,0.04)" stroke-width="5"/>
               </svg>
-
-              <div class="mockup-searchbar">
-                <span>&#128269;</span> 476010001000...
-              </div>
-
+              <div class="mockup-searchbar"><span>&#128269;</span> 476010001000...</div>
               <div class="mockup-popup">
                 <div class="popup-title">Predio seleccionado</div>
-                <div class="popup-row">
-                  <span class="label">NPN</span>
-                  <span class="value">47601...0018</span>
-                </div>
-                <div class="popup-row">
-                  <span class="label">Área</span>
-                  <span class="value">3.124 m²</span>
-                </div>
-                <div class="popup-row">
-                  <span class="label">Avalúo</span>
-                  <span class="value">$210M COP</span>
-                </div>
-                <div class="popup-row">
-                  <span class="label">Predial</span>
-                  <span class="value teal">$1.4M / año</span>
-                </div>
+                <div class="popup-row"><span class="label">NPN</span><span class="value">47601...0018</span></div>
+                <div class="popup-row"><span class="label">Área</span><span class="value">3.124 m²</span></div>
+                <div class="popup-row"><span class="label">Avalúo</span><span class="value">$210M COP</span></div>
+                <div class="popup-row"><span class="label">Predial</span><span class="value teal">$1.4M / año</span></div>
                 <div class="popup-btn">Generar paz y salvo &rarr;</div>
               </div>
             </div>
@@ -1154,47 +1088,46 @@ h2 { font-size: clamp(24px, 2.8vw, 36px); letter-spacing: -0.3px; line-height: 1
 <!-- ════ PROBLEMA ════ -->
 <section class="section" id="problema">
   <div class="container">
-    <div class="section-header">
+    <div class="section-header reveal">
       <div class="eyebrow">El problema que resolvemos</div>
       <h2>Tienes el catastro actualizado. ¿Y ahora?</h2>
       <p>Miles de millones invertidos en formación y actualización catastral, y los ciudadanos siguen haciendo fila en ventanilla para consultar su predio. GEOCAT cierra esa brecha.</p>
     </div>
     <div class="problem-grid">
-      <div class="problem-card">
+      <div class="problem-card reveal">
         <div class="problem-icon">&#127970;</div>
         <h3>Información catastral atrapada en oficina</h3>
         <p>El ciudadano debe presentarse en persona para consultar su predio, obtener una ficha catastral o verificar su avalúo. Sin horario extendido, sin opción digital.</p>
       </div>
-      <div class="problem-card">
+      <div class="problem-card reveal">
         <div class="problem-icon">&#128202;</div>
         <h3>Predial liquidado a mano, recaudo bajo</h3>
         <p>La liquidación manual del impuesto predial genera errores, demoras y bajo recaudo. Sin pago en línea, muchos contribuyentes simplemente no pagan.</p>
       </div>
-      <div class="problem-card">
+      <div class="problem-card reveal">
         <div class="problem-icon">&#128196;</div>
         <h3>Certificados que toman días</h3>
         <p>Fichas catastrales, planos y certificados de estratificación se generan manualmente. El ciudadano espera días para un documento que debería tomar segundos.</p>
       </div>
-      <div class="problem-card">
+      <div class="problem-card reveal">
         <div class="problem-icon">&#127974;</div>
         <h3>Notarías y bancos sin acceso en línea</h3>
         <p>Para escriturar o tramitar un crédito hipotecario, notarías y bancos deben llamar o ir personalmente al catastro. No existe una API de consulta institucional.</p>
       </div>
     </div>
-    <div class="problem-divider">&darr; GEOCAT resuelve todo esto desde un solo sistema &darr;</div>
+    <div class="problem-divider reveal">&darr; GEOCAT resuelve todo esto desde un solo sistema &darr;</div>
   </div>
 </section>
 
 <!-- ════ MODULOS ════ -->
 <section class="section section-modules" id="modulos">
   <div class="container">
-    <div class="section-header">
+    <div class="section-header reveal">
       <div class="eyebrow">Qué incluye GEOCAT</div>
       <h2>Cuatro módulos. Un municipio digital.</h2>
     </div>
     <div class="modules-grid">
-      <!-- Módulo 1: Visor Catastral -->
-      <div class="module-card" data-accent="teal">
+      <div class="module-card reveal" data-accent="teal">
         <span class="module-tag">Visor catastral</span>
         <h3>Consulta predial en línea, 24/7</h3>
         <p>El ciudadano consulta su predio desde el celular. Sin filas, sin horarios. El gestor catastral cumple su obligación de difusión ante el IGAC desde el primer mes.</p>
@@ -1206,9 +1139,7 @@ h2 { font-size: clamp(24px, 2.8vw, 36px); letter-spacing: -0.3px; line-height: 1
           <li><span class="check">&#10003;</span> Identidad visual del gestor catastral</li>
         </ul>
       </div>
-
-      <!-- Módulo 2: Ingresos Municipales -->
-      <div class="module-card" data-accent="amber">
+      <div class="module-card reveal" data-accent="amber">
         <span class="module-tag">Ingresos municipales</span>
         <h3>Predial, certificados y pagos digitales</h3>
         <p>Convierte el catastro en una fuente de recaudo directo. Liquidación automática del impuesto predial, paz y salvos digitales y pagos PSE sin intermediarios.</p>
@@ -1220,9 +1151,7 @@ h2 { font-size: clamp(24px, 2.8vw, 36px); letter-spacing: -0.3px; line-height: 1
           <li><span class="check">&#10003;</span> Pagos en línea vía Wompi / PSE</li>
         </ul>
       </div>
-
-      <!-- Módulo 3: Trámites Catastrales -->
-      <div class="module-card" data-accent="muted">
+      <div class="module-card reveal" data-accent="muted">
         <span class="module-tag">Trámites catastrales</span>
         <h3>Mutaciones y procesos digitalizados</h3>
         <p>El equipo catastral gestiona todas las mutaciones y trámites desde la plataforma, con trazabilidad completa y notificaciones automáticas al ciudadano.</p>
@@ -1234,9 +1163,7 @@ h2 { font-size: clamp(24px, 2.8vw, 36px); letter-spacing: -0.3px; line-height: 1
           <li><span class="check">&#10003;</span> Logs de auditoría por trámite y usuario</li>
         </ul>
       </div>
-
-      <!-- Módulo 4: API B2B -->
-      <div class="module-card" data-accent="blue">
+      <div class="module-card reveal" data-accent="blue">
         <span class="module-tag">API B2B</span>
         <h3>Integración institucional en tiempo real</h3>
         <p>Notarías, bancos e instituciones financieras consultan predios, verifican avalúos y validan certificados de forma automática vía API REST con documentación completa.</p>
@@ -1252,27 +1179,27 @@ h2 { font-size: clamp(24px, 2.8vw, 36px); letter-spacing: -0.3px; line-height: 1
   </div>
 </section>
 
-<!-- ════ PARA QUIÉN ════ -->
+<!-- ════ AUDIENCIA ════ -->
 <section class="section" id="audiencia">
   <div class="container">
-    <div class="section-header">
+    <div class="section-header reveal">
       <div class="eyebrow">¿Para quién es GEOCAT?</div>
       <h2>Hecho para el catastro colombiano, de raíz.</h2>
     </div>
     <div class="audience-grid">
-      <div class="audience-card">
+      <div class="audience-card reveal">
         <div class="audience-icon">&#127963;</div>
         <h3>Municipios con gestor catastral habilitado</h3>
         <p>Municipios habilitados por el IGAC que necesitan publicar su información predial, emitir certificados digitales y fortalecer el recaudo del predial.</p>
         <span class="audience-cta">&rarr; Demo en 48 horas</span>
       </div>
-      <div class="audience-card">
+      <div class="audience-card reveal">
         <div class="audience-icon">&#128506;</div>
         <h3>Gobernaciones y esquemas asociativos</h3>
         <p>Gestores departamentales que administran el catastro de varios municipios. Una sola instancia GEOCAT puede cubrir todo el territorio bajo gestión.</p>
         <span class="audience-cta">&rarr; Multimunicipio disponible</span>
       </div>
-      <div class="audience-card">
+      <div class="audience-card reveal">
         <div class="audience-icon">&#9881;</div>
         <h3>Operadores catastrales contratados</h3>
         <p>Empresas privadas contratadas por gestores catastrales para ejecutar procesos de formación, actualización y conservación catastral que necesitan plataforma de difusión.</p>
@@ -1285,7 +1212,7 @@ h2 { font-size: clamp(24px, 2.8vw, 36px); letter-spacing: -0.3px; line-height: 1
 <!-- ════ CTA FINAL ════ -->
 <section class="cta-section">
   <div class="container">
-    <div class="cta-box">
+    <div class="cta-box reveal">
       <h2>¿Tienes la base catastral actualizada?</h2>
       <p>Pon esa inversión a trabajar para el municipio y para los ciudadanos. GEOCAT está listo. Tu municipio puede estar en producción en 4 semanas.</p>
       <div class="cta-buttons">
@@ -1317,17 +1244,30 @@ h2 { font-size: clamp(24px, 2.8vw, 36px); letter-spacing: -0.3px; line-height: 1
 </footer>
 
 <script>
-// Hamburger menu toggle
+// Hamburger
 const hamburger = document.getElementById('hamburger');
 const navLinks = document.getElementById('navLinks');
-hamburger.addEventListener('click', () => {
-  navLinks.classList.toggle('open');
-});
+hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
+navLinks.querySelectorAll('a').forEach(l => l.addEventListener('click', () => navLinks.classList.remove('open')));
 
-// Close menu on link click (mobile)
-navLinks.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', () => navLinks.classList.remove('open'));
-});
+// Scroll reveal
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 80);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+reveals.forEach(el => observer.observe(el));
+
+// Nav shadow on scroll
+const nav = document.querySelector('.nav');
+window.addEventListener('scroll', () => {
+  nav.style.boxShadow = window.scrollY > 20 ? '0 4px 24px rgba(0,0,0,0.3)' : 'none';
+}, { passive: true });
 </script>
 </body>
 </html>
