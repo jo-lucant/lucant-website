@@ -1,0 +1,1332 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GEOCAT — Geoportal Catastral SaaS para Municipios Colombianos | LUCANT</title>
+<meta name="description" content="GEOCAT es el geoportal catastral SaaS para municipios colombianos. Visor predial en línea, certificados digitales con QR, liquidación de impuesto predial y API para notarías. Conforme a LADM_COL SINIC V1.0.">
+<meta name="keywords" content="GEOCAT, geoportal catastral, catastro Colombia, visor predial, certificado catastral QR, impuesto predial, LADM_COL, IGAC, LUCANT, gestor catastral, municipio digital">
+<meta name="author" content="LUCANT">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://lucant.co/geocat">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://lucant.co/geocat">
+<meta property="og:title" content="GEOCAT — Geoportal Catastral SaaS para Municipios Colombianos">
+<meta property="og:description" content="Visor predial en línea, certificados digitales con QR, liquidación de impuesto predial y API para notarías. Conforme a LADM_COL SINIC V1.0.">
+<meta property="og:locale" content="es_CO">
+<meta property="og:site_name" content="LUCANT">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="GEOCAT — Geoportal Catastral SaaS para Municipios">
+<meta name="twitter:description" content="Visor predial en línea, certificados digitales con QR, liquidación de predial y API para notarías.">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "GEOCAT",
+  "applicationCategory": "GovernmentApplication",
+  "operatingSystem": "Web",
+  "description": "Geoportal catastral SaaS para municipios colombianos. Visor predial, certificados digitales, liquidación de impuesto predial y API B2B.",
+  "author": {
+    "@type": "Organization",
+    "name": "LUCANT",
+    "url": "https://lucant.co"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "COP",
+    "description": "Demo gratuita disponible"
+  }
+}
+</script>
+
+<link rel="icon" type="image/svg+xml" href="logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* ── Reset & Variables ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #080E1A;
+  --bg2: #0D1829;
+  --bg3: #111F35;
+  --teal: #00D4B4;
+  --teal2: #00F5D0;
+  --amber: #F5A623;
+  --blue: #2B7FFF;
+  --white: #FFFFFF;
+  --muted: #7A8FAD;
+  --border: rgba(255, 255, 255, 0.07);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  line-height: 1.75;
+  background: var(--bg);
+  color: var(--white);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ── Tipografía ── */
+h1, h2 { font-family: 'Syne', sans-serif; font-weight: 800; }
+h1 { font-size: 56px; letter-spacing: -2px; line-height: 1.08; }
+h2 { font-size: 40px; letter-spacing: -1.5px; line-height: 1.15; }
+
+.eyebrow {
+  font-size: 11px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--teal);
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+/* ── Animaciones ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.3; }
+}
+
+.fade-up {
+  opacity: 0;
+  animation: fadeUp 0.7s ease forwards;
+}
+
+/* ── NAV ── */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: rgba(8, 14, 26, 0.8);
+  border-bottom: 1px solid var(--border);
+  padding: 0 24px;
+}
+
+.nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+
+.nav-logo {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 22px;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.nav-logo .geo { color: var(--white); }
+.nav-logo .cat { color: var(--teal); }
+.nav-logo .by-lucant {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--muted);
+  transition: color 0.2s;
+}
+
+.nav-links a:hover { color: var(--white); }
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 22px;
+  background: var(--teal);
+  color: #080E1A;
+  font-weight: 600;
+  font-size: 14px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.btn-primary:hover {
+  background: var(--teal2);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 22px;
+  background: transparent;
+  color: var(--white);
+  font-weight: 500;
+  font-size: 14px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.btn-secondary:hover {
+  border-color: rgba(255,255,255,0.2);
+  transform: translateY(-2px);
+}
+
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.nav-hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--white);
+  border-radius: 2px;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+/* ── HERO ── */
+.hero {
+  padding: 140px 0 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0,212,180,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,212,180,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  top: -100px;
+  right: -200px;
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, rgba(0,212,180,0.07), transparent 70%);
+  pointer-events: none;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-text { max-width: 560px; }
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  background: rgba(0,212,180,0.08);
+  border: 1px solid rgba(0,212,180,0.2);
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--teal);
+  margin-bottom: 28px;
+  animation-delay: 0s;
+}
+
+.pill-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--teal);
+  border-radius: 50%;
+  animation: blink 1.8s ease-in-out infinite;
+}
+
+.hero h1 {
+  margin-bottom: 24px;
+  animation-delay: 0.1s;
+}
+
+.hero h1 .teal { color: var(--teal); }
+.hero h1 .amber { color: var(--amber); }
+
+.hero-desc {
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.8;
+  margin-bottom: 32px;
+  max-width: 480px;
+  animation-delay: 0.2s;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 48px;
+  animation-delay: 0.3s;
+}
+
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  animation-delay: 0.4s;
+}
+
+.stat {
+  padding-left: 20px;
+  border-left: 2px solid var(--teal);
+}
+
+.stat-number {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 32px;
+  color: var(--white);
+  line-height: 1.2;
+}
+
+.stat-label {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+/* ── Mockup App ── */
+.mockup-wrapper {
+  position: relative;
+}
+
+.mockup {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 40px 80px rgba(0,0,0,0.4);
+}
+
+.mockup-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  background: var(--bg3);
+  border-bottom: 1px solid var(--border);
+}
+
+.mockup-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.mockup-dot.red { background: #FF5F57; }
+.mockup-dot.yellow { background: #FEBC2E; }
+.mockup-dot.green { background: #28C840; }
+
+.mockup-url {
+  margin-left: 12px;
+  font-size: 11px;
+  color: var(--muted);
+  font-family: 'Inter', monospace;
+  background: rgba(255,255,255,0.05);
+  padding: 4px 12px;
+  border-radius: 6px;
+  flex: 1;
+}
+
+.mockup-body {
+  display: flex;
+  height: 380px;
+}
+
+.mockup-sidebar {
+  width: 200px;
+  background: var(--bg);
+  border-right: 1px solid var(--border);
+  padding: 16px;
+  flex-shrink: 0;
+}
+
+.sidebar-section {
+  margin-bottom: 20px;
+}
+
+.sidebar-title {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 2px;
+}
+
+.sidebar-item.active {
+  background: rgba(0,212,180,0.08);
+  color: var(--white);
+}
+
+.sidebar-check {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 9px;
+  flex-shrink: 0;
+}
+
+.sidebar-check.on {
+  background: var(--teal);
+  border-color: var(--teal);
+  color: #080E1A;
+}
+
+.mockup-map {
+  flex: 1;
+  position: relative;
+  background: var(--bg);
+  overflow: hidden;
+}
+
+.mockup-map svg {
+  width: 100%;
+  height: 100%;
+}
+
+.mockup-searchbar {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: 11px;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.mockup-popup {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px;
+  width: 200px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+}
+
+.popup-title {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+
+.popup-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  margin-bottom: 6px;
+}
+
+.popup-row .label { color: var(--muted); }
+.popup-row .value { color: var(--white); font-weight: 500; }
+.popup-row .value.teal { color: var(--teal); }
+
+.popup-btn {
+  width: 100%;
+  margin-top: 12px;
+  padding: 7px;
+  background: var(--teal);
+  color: #080E1A;
+  border: none;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+}
+
+/* ── TRUST BAR ── */
+.trust-bar {
+  background: rgba(13,24,41,0.5);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 20px 0;
+  overflow: hidden;
+}
+
+.trust-inner {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.trust-label {
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 600;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.trust-items {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: rgba(255,255,255,0.7);
+  white-space: nowrap;
+}
+
+.trust-dot {
+  width: 5px;
+  height: 5px;
+  background: var(--teal);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ── SECTION COMMON ── */
+.section {
+  padding: 100px 0;
+}
+
+.section-header {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 60px;
+}
+
+.section-header p {
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.8;
+  margin-top: 16px;
+}
+
+/* ── PROBLEMA ── */
+.problem-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.problem-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 32px;
+  transition: transform 0.25s, border-color 0.25s;
+}
+
+.problem-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255,255,255,0.12);
+}
+
+.problem-icon {
+  font-size: 28px;
+  margin-bottom: 16px;
+}
+
+.problem-card h3 {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: var(--white);
+}
+
+.problem-card p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.problem-divider {
+  text-align: center;
+  margin-top: 48px;
+  color: var(--teal);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+/* ── MODULOS ── */
+.section-modules {
+  background: rgba(13,24,41,0.4);
+}
+
+.modules-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.module-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 36px;
+  transition: transform 0.25s, border-color 0.25s;
+  position: relative;
+  overflow: hidden;
+}
+
+.module-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+}
+
+.module-card:hover {
+  transform: translateY(-4px);
+}
+
+.module-card[data-accent="teal"]::before { background: var(--teal); }
+.module-card[data-accent="teal"]:hover { border-color: rgba(0,212,180,0.25); }
+
+.module-card[data-accent="amber"]::before { background: var(--amber); }
+.module-card[data-accent="amber"]:hover { border-color: rgba(245,166,35,0.25); }
+
+.module-card[data-accent="muted"]::before { background: var(--muted); }
+.module-card[data-accent="muted"]:hover { border-color: rgba(122,143,173,0.25); }
+
+.module-card[data-accent="blue"]::before { background: var(--blue); }
+.module-card[data-accent="blue"]:hover { border-color: rgba(43,127,255,0.25); }
+
+.module-tag {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 4px;
+  margin-bottom: 16px;
+}
+
+.module-card[data-accent="teal"] .module-tag {
+  color: var(--teal);
+  background: rgba(0,212,180,0.1);
+}
+
+.module-card[data-accent="amber"] .module-tag {
+  color: var(--amber);
+  background: rgba(245,166,35,0.1);
+}
+
+.module-card[data-accent="muted"] .module-tag {
+  color: var(--muted);
+  background: rgba(122,143,173,0.1);
+}
+
+.module-card[data-accent="blue"] .module-tag {
+  color: var(--blue);
+  background: rgba(43,127,255,0.1);
+}
+
+.module-card h3 {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.module-card > p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.75;
+  margin-bottom: 20px;
+}
+
+.module-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.module-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13px;
+  color: rgba(255,255,255,0.8);
+  line-height: 1.5;
+}
+
+.module-list .check {
+  flex-shrink: 0;
+  margin-top: 2px;
+  font-size: 14px;
+}
+
+.module-card[data-accent="teal"] .check { color: var(--teal); }
+.module-card[data-accent="amber"] .check { color: var(--amber); }
+.module-card[data-accent="muted"] .check { color: var(--muted); }
+.module-card[data-accent="blue"] .check { color: var(--blue); }
+
+/* ── PARA QUIEN ── */
+.audience-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.audience-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 36px;
+  transition: transform 0.25s, border-color 0.25s;
+}
+
+.audience-card:hover {
+  border-color: rgba(0,212,180,0.2);
+  transform: translateY(-3px);
+}
+
+.audience-icon {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+.audience-card h3 {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+
+.audience-card p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.audience-cta {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--teal);
+}
+
+/* ── CTA FINAL ── */
+.cta-section {
+  padding: 100px 0;
+}
+
+.cta-box {
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+  background: var(--bg2);
+  border: 1px solid rgba(0,212,180,0.18);
+  border-radius: 20px;
+  padding: 56px 48px;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-box::before {
+  content: '';
+  position: absolute;
+  top: -150px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(0,212,180,0.06), transparent 70%);
+  pointer-events: none;
+}
+
+.cta-box h2 {
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.cta-box > p {
+  position: relative;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.8;
+  margin-bottom: 32px;
+}
+
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  position: relative;
+  margin-bottom: 24px;
+}
+
+.cta-note {
+  position: relative;
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* ── FOOTER ── */
+.footer {
+  border-top: 1px solid var(--border);
+  padding: 40px 0;
+}
+
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.footer-brand .logo {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 18px;
+}
+
+.footer-brand .logo .geo { color: var(--white); }
+.footer-brand .logo .cat { color: var(--teal); }
+
+.footer-brand .sub {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.footer-links {
+  display: flex;
+  gap: 24px;
+  list-style: none;
+}
+
+.footer-links a {
+  font-size: 13px;
+  color: var(--muted);
+  transition: color 0.2s;
+}
+
+.footer-links a:hover { color: var(--white); }
+
+.footer-copy {
+  width: 100%;
+  text-align: center;
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  h1 { font-size: 36px; letter-spacing: -1px; }
+  h2 { font-size: 28px; letter-spacing: -0.5px; }
+
+  .nav-links { display: none; }
+  .nav-hamburger { display: flex; }
+
+  .nav-links.open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 64px;
+    left: 0;
+    right: 0;
+    background: rgba(8,14,26,0.95);
+    backdrop-filter: blur(12px);
+    padding: 24px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .hero { padding: 100px 0 60px; }
+  .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+  .mockup-wrapper { display: none; }
+
+  .hero-stats { grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .stat { padding-left: 12px; }
+  .stat-number { font-size: 24px; }
+
+  .problem-grid { grid-template-columns: 1fr; }
+  .modules-grid { grid-template-columns: 1fr; }
+  .audience-grid { grid-template-columns: 1fr; }
+
+  .trust-inner { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .trust-items { flex-wrap: wrap; gap: 12px; }
+
+  .cta-box { padding: 40px 24px; }
+  .cta-buttons { flex-direction: column; align-items: center; }
+
+  .footer-inner { flex-direction: column; align-items: center; text-align: center; }
+  .footer-links { flex-wrap: wrap; justify-content: center; }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .hero-grid { gap: 32px; }
+  .mockup-body { height: 300px; }
+  .mockup-sidebar { width: 160px; padding: 12px; }
+  .audience-grid { grid-template-columns: 1fr 1fr; }
+  .audience-card:last-child { grid-column: span 2; max-width: 50%; margin: 0 auto; }
+}
+</style>
+</head>
+<body>
+
+<!-- ════ NAV ════ -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="geocat.html" class="nav-logo">
+      <span><span class="geo">GEO</span><span class="cat">CAT</span></span>
+      <span class="by-lucant">by LUCANT</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#modulos">Plataforma</a></li>
+      <li><a href="#modulos">Módulos</a></li>
+      <li><a href="#audiencia">Gestores catastrales</a></li>
+      <li><a href="mailto:gerencia@lucant.co?subject=Demo%20GEOCAT" class="btn-primary">Solicitar demo</a></li>
+    </ul>
+    <button class="nav-hamburger" id="hamburger" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ════ HERO ════ -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <!-- Columna izquierda -->
+      <div class="hero-text">
+        <div class="pill fade-up" style="animation-delay:0s">
+          <span class="pill-dot"></span>
+          Disponible para gestores habilitados IGAC
+        </div>
+        <h1 class="fade-up" style="animation-delay:0.1s">
+          Tu catastro<br>actualizado,<br><span class="teal">visible</span> y <span class="amber">rentable.</span>
+        </h1>
+        <p class="hero-desc fade-up" style="animation-delay:0.2s">
+          GEOCAT es el geoportal catastral SaaS para municipios colombianos. Visor predial en línea, certificados digitales con QR, liquidación de impuesto predial y API para notarías — todo conforme a LADM_COL SINIC V1.0.
+        </p>
+        <div class="hero-buttons fade-up" style="animation-delay:0.3s">
+          <a href="mailto:gerencia@lucant.co?subject=Demo%20GEOCAT" class="btn-primary">Solicitar demo gratuita &rarr;</a>
+          <a href="#modulos" class="btn-secondary">Ver cómo funciona</a>
+        </div>
+        <div class="hero-stats fade-up" style="animation-delay:0.4s">
+          <div class="stat">
+            <div class="stat-number">34+</div>
+            <div class="stat-label">Gestores habilitados en Colombia</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">4 sem.</div>
+            <div class="stat-label">De firma a producción</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">0</div>
+            <div class="stat-label">Instalación en tu equipo</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Columna derecha — Mockup -->
+      <div class="mockup-wrapper fade-up" style="animation-delay:0.3s">
+        <div class="mockup">
+          <div class="mockup-bar">
+            <span class="mockup-dot red"></span>
+            <span class="mockup-dot yellow"></span>
+            <span class="mockup-dot green"></span>
+            <span class="mockup-url">santamarta.geocat.lucant.co</span>
+          </div>
+          <div class="mockup-body">
+            <!-- Sidebar -->
+            <div class="mockup-sidebar">
+              <div class="sidebar-section">
+                <div class="sidebar-title">Capas</div>
+                <div class="sidebar-item active">
+                  <span class="sidebar-check on">&#10003;</span> Terrenos
+                </div>
+                <div class="sidebar-item active">
+                  <span class="sidebar-check on">&#10003;</span> Construcciones
+                </div>
+                <div class="sidebar-item">
+                  <span class="sidebar-check"></span> POT uso suelo
+                </div>
+                <div class="sidebar-item">
+                  <span class="sidebar-check"></span> Red hídrica
+                </div>
+              </div>
+              <div class="sidebar-section">
+                <div class="sidebar-title">Servicios</div>
+                <div class="sidebar-item">
+                  <span class="sidebar-check"></span> Ficha catastral
+                </div>
+                <div class="sidebar-item">
+                  <span class="sidebar-check"></span> Certificado QR
+                </div>
+                <div class="sidebar-item active">
+                  <span class="sidebar-check on">&#10003;</span> Predial / Paz y salvo
+                </div>
+              </div>
+            </div>
+            <!-- Mapa -->
+            <div class="mockup-map">
+              <svg viewBox="0 0 500 380" xmlns="http://www.w3.org/2000/svg">
+                <!-- Grid de coordenadas -->
+                <defs>
+                  <pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse">
+                    <path d="M 50 0 L 0 0 0 50" fill="none" stroke="rgba(0,212,180,0.06)" stroke-width="0.5"/>
+                  </pattern>
+                </defs>
+                <rect width="500" height="380" fill="url(#grid)"/>
+
+                <!-- Coordenadas de fondo -->
+                <text x="10" y="370" fill="rgba(0,212,180,0.15)" font-size="9" font-family="Inter, monospace">11.2408° N, 74.1990° W — EPSG:9377</text>
+
+                <!-- Polígonos prediales -->
+                <polygon points="80,120 160,100 180,170 130,200 70,180" fill="rgba(0,212,180,0.12)" stroke="rgba(0,212,180,0.35)" stroke-width="1"/>
+                <polygon points="160,100 250,80 270,140 180,170" fill="rgba(0,212,180,0.12)" stroke="rgba(0,212,180,0.35)" stroke-width="1"/>
+                <polygon points="180,170 270,140 290,220 220,250 130,200" fill="rgba(0,212,180,0.12)" stroke="rgba(0,212,180,0.35)" stroke-width="1"/>
+
+                <!-- Predio seleccionado con pulso -->
+                <polygon points="290,140 380,110 410,180 370,230 290,220" fill="rgba(0,212,180,0.28)" stroke="var(--teal)" stroke-width="1.5">
+                  <animate attributeName="fill-opacity" values="0.28;0.45;0.28" dur="2.5s" repeatCount="indefinite"/>
+                </polygon>
+
+                <polygon points="130,200 220,250 200,310 110,280" fill="rgba(0,212,180,0.12)" stroke="rgba(0,212,180,0.35)" stroke-width="1"/>
+                <polygon points="220,250 290,220 310,300 200,310" fill="rgba(0,212,180,0.12)" stroke="rgba(0,212,180,0.35)" stroke-width="1"/>
+                <polygon points="370,230 440,200 460,280 400,310 310,300 290,220" fill="rgba(0,212,180,0.12)" stroke="rgba(0,212,180,0.35)" stroke-width="1"/>
+
+                <!-- Calles -->
+                <line x1="70" y1="180" x2="440" y2="200" stroke="rgba(255,255,255,0.05)" stroke-width="8"/>
+                <line x1="250" y1="50" x2="310" y2="330" stroke="rgba(255,255,255,0.05)" stroke-width="6"/>
+              </svg>
+
+              <div class="mockup-searchbar">
+                <span>&#128269;</span> 476010001000...
+              </div>
+
+              <div class="mockup-popup">
+                <div class="popup-title">Predio seleccionado</div>
+                <div class="popup-row">
+                  <span class="label">NPN</span>
+                  <span class="value">47601...0018</span>
+                </div>
+                <div class="popup-row">
+                  <span class="label">Área</span>
+                  <span class="value">3.124 m²</span>
+                </div>
+                <div class="popup-row">
+                  <span class="label">Avalúo</span>
+                  <span class="value">$210M COP</span>
+                </div>
+                <div class="popup-row">
+                  <span class="label">Predial</span>
+                  <span class="value teal">$1.4M / año</span>
+                </div>
+                <div class="popup-btn">Generar paz y salvo &rarr;</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ TRUST BAR ════ -->
+<section class="trust-bar">
+  <div class="container">
+    <div class="trust-inner">
+      <span class="trust-label">Compatible con</span>
+      <div class="trust-items">
+        <span class="trust-item"><span class="trust-dot"></span> LADM_COL SINIC V1.0</span>
+        <span class="trust-item"><span class="trust-dot"></span> Resolución IGAC 1040/2023</span>
+        <span class="trust-item"><span class="trust-dot"></span> EPSG:9377 MAGNA-SIRGAS</span>
+        <span class="trust-item"><span class="trust-dot"></span> XTF INTERLIS</span>
+        <span class="trust-item"><span class="trust-dot"></span> WFS IGAC</span>
+        <span class="trust-item"><span class="trust-dot"></span> Colombia en Mapas</span>
+        <span class="trust-item"><span class="trust-dot"></span> Wompi</span>
+        <span class="trust-item"><span class="trust-dot"></span> PSE</span>
+        <span class="trust-item"><span class="trust-dot"></span> Ley 1581</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ PROBLEMA ════ -->
+<section class="section" id="problema">
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow">El problema que resolvemos</div>
+      <h2>Tienes el catastro actualizado. ¿Y ahora?</h2>
+      <p>Miles de millones invertidos en formación y actualización catastral, y los ciudadanos siguen haciendo fila en ventanilla para consultar su predio. GEOCAT cierra esa brecha.</p>
+    </div>
+    <div class="problem-grid">
+      <div class="problem-card">
+        <div class="problem-icon">&#127970;</div>
+        <h3>Información catastral atrapada en oficina</h3>
+        <p>El ciudadano debe presentarse en persona para consultar su predio, obtener una ficha catastral o verificar su avalúo. Sin horario extendido, sin opción digital.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon">&#128202;</div>
+        <h3>Predial liquidado a mano, recaudo bajo</h3>
+        <p>La liquidación manual del impuesto predial genera errores, demoras y bajo recaudo. Sin pago en línea, muchos contribuyentes simplemente no pagan.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon">&#128196;</div>
+        <h3>Certificados que toman días</h3>
+        <p>Fichas catastrales, planos y certificados de estratificación se generan manualmente. El ciudadano espera días para un documento que debería tomar segundos.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon">&#127974;</div>
+        <h3>Notarías y bancos sin acceso en línea</h3>
+        <p>Para escriturar o tramitar un crédito hipotecario, notarías y bancos deben llamar o ir personalmente al catastro. No existe una API de consulta institucional.</p>
+      </div>
+    </div>
+    <div class="problem-divider">&darr; GEOCAT resuelve todo esto desde un solo sistema &darr;</div>
+  </div>
+</section>
+
+<!-- ════ MODULOS ════ -->
+<section class="section section-modules" id="modulos">
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow">Qué incluye GEOCAT</div>
+      <h2>Cuatro módulos. Un municipio digital.</h2>
+    </div>
+    <div class="modules-grid">
+      <!-- Módulo 1: Visor Catastral -->
+      <div class="module-card" data-accent="teal">
+        <span class="module-tag">Visor catastral</span>
+        <h3>Consulta predial en línea, 24/7</h3>
+        <p>El ciudadano consulta su predio desde el celular. Sin filas, sin horarios. El gestor catastral cumple su obligación de difusión ante el IGAC desde el primer mes.</p>
+        <ul class="module-list">
+          <li><span class="check">&#10003;</span> Búsqueda por NPN de 30 dígitos en tiempo real</li>
+          <li><span class="check">&#10003;</span> Visor cartográfico con polígonos prediales</li>
+          <li><span class="check">&#10003;</span> Análisis de intersecciones con capas POT y riesgo</li>
+          <li><span class="check">&#10003;</span> Subdominio propio: municipio.geocat.lucant.co</li>
+          <li><span class="check">&#10003;</span> Identidad visual del gestor catastral</li>
+        </ul>
+      </div>
+
+      <!-- Módulo 2: Ingresos Municipales -->
+      <div class="module-card" data-accent="amber">
+        <span class="module-tag">Ingresos municipales</span>
+        <h3>Predial, certificados y pagos digitales</h3>
+        <p>Convierte el catastro en una fuente de recaudo directo. Liquidación automática del impuesto predial, paz y salvos digitales y pagos PSE sin intermediarios.</p>
+        <ul class="module-list">
+          <li><span class="check">&#10003;</span> Liquidación automática impuesto predial</li>
+          <li><span class="check">&#10003;</span> Ficha catastral y plano predial en PDF</li>
+          <li><span class="check">&#10003;</span> Certificado catastral con código QR verificable</li>
+          <li><span class="check">&#10003;</span> Paz y salvo digital con QR</li>
+          <li><span class="check">&#10003;</span> Pagos en línea vía Wompi / PSE</li>
+        </ul>
+      </div>
+
+      <!-- Módulo 3: Trámites Catastrales -->
+      <div class="module-card" data-accent="muted">
+        <span class="module-tag">Trámites catastrales</span>
+        <h3>Mutaciones y procesos digitalizados</h3>
+        <p>El equipo catastral gestiona todas las mutaciones y trámites desde la plataforma, con trazabilidad completa y notificaciones automáticas al ciudadano.</p>
+        <ul class="module-list">
+          <li><span class="check">&#10003;</span> Mutaciones 1a a 5a clase (cambios, englobes, etc.)</li>
+          <li><span class="check">&#10003;</span> Rectificaciones y complementaciones</li>
+          <li><span class="check">&#10003;</span> Radicación y seguimiento en línea</li>
+          <li><span class="check">&#10003;</span> Notificaciones por correo electrónico</li>
+          <li><span class="check">&#10003;</span> Logs de auditoría por trámite y usuario</li>
+        </ul>
+      </div>
+
+      <!-- Módulo 4: API B2B -->
+      <div class="module-card" data-accent="blue">
+        <span class="module-tag">API B2B</span>
+        <h3>Integración institucional en tiempo real</h3>
+        <p>Notarías, bancos e instituciones financieras consultan predios, verifican avalúos y validan certificados de forma automática vía API REST con documentación completa.</p>
+        <ul class="module-list">
+          <li><span class="check">&#10003;</span> API REST GeoJSON con documentación Swagger</li>
+          <li><span class="check">&#10003;</span> Consulta de avalúo y estado predial</li>
+          <li><span class="check">&#10003;</span> Verificación de certificados por QR / token</li>
+          <li><span class="check">&#10003;</span> Autenticación por API Key institucional</li>
+          <li><span class="check">&#10003;</span> Protección de datos personales — Ley 1581</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ PARA QUIÉN ════ -->
+<section class="section" id="audiencia">
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow">¿Para quién es GEOCAT?</div>
+      <h2>Hecho para el catastro colombiano, de raíz.</h2>
+    </div>
+    <div class="audience-grid">
+      <div class="audience-card">
+        <div class="audience-icon">&#127963;</div>
+        <h3>Municipios con gestor catastral habilitado</h3>
+        <p>Municipios habilitados por el IGAC que necesitan publicar su información predial, emitir certificados digitales y fortalecer el recaudo del predial.</p>
+        <span class="audience-cta">&rarr; Demo en 48 horas</span>
+      </div>
+      <div class="audience-card">
+        <div class="audience-icon">&#128506;</div>
+        <h3>Gobernaciones y esquemas asociativos</h3>
+        <p>Gestores departamentales que administran el catastro de varios municipios. Una sola instancia GEOCAT puede cubrir todo el territorio bajo gestión.</p>
+        <span class="audience-cta">&rarr; Multimunicipio disponible</span>
+      </div>
+      <div class="audience-card">
+        <div class="audience-icon">&#9881;</div>
+        <h3>Operadores catastrales contratados</h3>
+        <p>Empresas privadas contratadas por gestores catastrales para ejecutar procesos de formación, actualización y conservación catastral que necesitan plataforma de difusión.</p>
+        <span class="audience-cta">&rarr; Marca blanca disponible</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ CTA FINAL ════ -->
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-box">
+      <h2>¿Tienes la base catastral actualizada?</h2>
+      <p>Pon esa inversión a trabajar para el municipio y para los ciudadanos. GEOCAT está listo. Tu municipio puede estar en producción en 4 semanas.</p>
+      <div class="cta-buttons">
+        <a href="mailto:gerencia@lucant.co?subject=Demo%20GEOCAT" class="btn-primary">Agendar demo gratuita &rarr;</a>
+        <a href="https://wa.me/573208331140" class="btn-secondary" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+      </div>
+      <p class="cta-note">O al correo gerencia@lucant.co &middot; Barranquilla, Colombia &middot; Respuesta en menos de 24 horas</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════ FOOTER ════ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="logo"><span class="geo">GEO</span><span class="cat">CAT</span></span>
+        <span class="sub">by LUCANT &middot; <a href="index.html" style="color:var(--muted)">lucant.co</a></span>
+      </div>
+      <ul class="footer-links">
+        <li><a href="#">Privacidad</a></li>
+        <li><a href="#">Ley 1581</a></li>
+        <li><a href="#">API Docs</a></li>
+        <li><a href="mailto:gerencia@lucant.co">Contacto</a></li>
+      </ul>
+    </div>
+    <div class="footer-copy">LUCANT SAS &middot; GEOCAT v1.0 &copy; 2026</div>
+  </div>
+</footer>
+
+<script>
+// Hamburger menu toggle
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+hamburger.addEventListener('click', () => {
+  navLinks.classList.toggle('open');
+});
+
+// Close menu on link click (mobile)
+navLinks.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => navLinks.classList.remove('open'));
+});
+</script>
+</body>
+</html>
