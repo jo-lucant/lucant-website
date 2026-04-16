@@ -1,0 +1,1748 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PIAP — Plataforma Integral de Operación y Administración Contractual | LUCANT</title>
+<meta name="description" content="PIAP es la plataforma SaaS que centraliza contratos, operación, liquidación, nómina, proveedores, órdenes, facturas, egresos, cuentas de cobro, soportes y control del contrato en un solo lugar. Menos reprocesos. Menos errores. Más control.">
+<meta name="keywords" content="PIAP, operación contractual, administración contractual, liquidación operativa, nómina, cuentas de cobro, soportes administrativos, trazabilidad contractual, SaaS contratos, LUCANT, PAE Colombia">
+<meta name="author" content="LUCANT">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://lucant.co/piap.html">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://lucant.co/piap.html">
+<meta property="og:title" content="PIAP — Plataforma Integral de Operación y Administración Contractual">
+<meta property="og:description" content="Centraliza contratos, operación, liquidación, soportes, egresos y control en una sola plataforma. Menos reprocesos. Menos errores. Más control.">
+<meta property="og:image" content="https://lucant.co/og-image.svg">
+<meta property="og:locale" content="es_CO">
+<meta property="og:site_name" content="LUCANT">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="PIAP — Operación y Administración Contractual">
+<meta name="twitter:description" content="Plataforma integral para operar, soportar y controlar la ejecución contractual. SaaS por LUCANT.">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "PIAP",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web",
+  "description": "Plataforma SaaS integral de operación y administración contractual: contratos, sedes, operadores, periodos, liquidación, nómina, proveedores, órdenes, facturas, egresos, cuentas de cobro, soportes, contabilidad del contrato y control integral.",
+  "author": {
+    "@type": "Organization",
+    "name": "LUCANT",
+    "url": "https://lucant.co"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "COP",
+    "description": "Demo ejecutiva disponible"
+  }
+}
+</script>
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230f1f3d'/%3E%3Ctext x='16' y='23' text-anchor='middle' fill='%23D4A017' font-size='18' font-weight='700' font-family='sans-serif'%3EP%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* PIAP — Identidad institucional */
+  --bg: #081A36;
+  --bg2: #0C2244;
+  --bg3: #102A52;
+  --bg4: #14315E;
+  --navy: #12192B;
+  --navy2: #1A2440;
+
+  --blue-900: #0C2244;
+  --blue-700: #1A3A6B;
+  --blue-500: #2D5A9E;
+  --blue-400: #3E6DB3;
+  --blue-200: #92ADCC;
+
+  --gold: #D4A017;
+  --gold-light: #FAD567;
+  --gold-deep: #C4960F;
+  --gold-glow: rgba(212,160,23,0.22);
+
+  --green: #2BC066;
+  --amber: #F5A623;
+  --rose: #E5484D;
+
+  --white: #F5F2EB;
+  --text-main: #E8EDF5;
+  --muted: #8798B5;
+  --muted2: #B4BFD3;
+  --border: rgba(250,213,103,0.06);
+  --border2: rgba(250,213,103,0.14);
+  --line: rgba(255,255,255,0.07);
+  --line2: rgba(255,255,255,0.13);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 1.7;
+  background: var(--bg);
+  color: var(--text-main);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a { color: inherit; text-decoration: none; }
+
+.container {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+/* ── Typography ── */
+h1, h2, h3, h4 { font-family: 'DM Sans', sans-serif; font-weight: 700; letter-spacing: -0.02em; }
+h1 { font-size: clamp(2.4rem, 4.3vw, 3.5rem); font-weight: 800; letter-spacing: -0.028em; line-height: 1.06; }
+h2 { font-size: clamp(1.8rem, 2.9vw, 2.5rem); font-weight: 700; letter-spacing: -0.022em; line-height: 1.18; }
+h3 { font-size: 1.05rem; font-weight: 700; letter-spacing: -0.01em; }
+h4 { font-size: 0.92rem; font-weight: 700; letter-spacing: -0.005em; }
+
+.eyebrow {
+  font-family: 'Space Mono', monospace;
+  font-size: 10.5px;
+  letter-spacing: 2.6px;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 700;
+  margin-bottom: 14px;
+  display: inline-block;
+}
+
+/* ── Animations ── */
+@keyframes fadeUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
+@keyframes floatY { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+@keyframes progress { from { width: 0; } to { width: 87%; } }
+
+.fade-up { opacity: 0; animation: fadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ── Buttons ── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 24px;
+  background: var(--gold);
+  color: var(--blue-900);
+  font-weight: 700;
+  font-size: 13.5px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 14px rgba(212,160,23,0.22), inset 0 0 0 1px rgba(255,255,255,0.08);
+  letter-spacing: 0.01em;
+}
+.btn-primary:hover {
+  background: var(--gold-light);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(212,160,23,0.38);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 24px;
+  background: rgba(255,255,255,0.04);
+  color: var(--white);
+  font-weight: 600;
+  font-size: 13.5px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.12);
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+.btn-secondary:hover {
+  background: rgba(212,160,23,0.06);
+  border-color: rgba(212,160,23,0.35);
+  color: var(--gold-light);
+  transform: translateY(-2px);
+}
+
+/* ── Logo ── */
+.piap-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.piap-logo-mark {
+  width: 34px; height: 34px;
+  border-radius: 7px;
+  background: #0f1f3d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 800;
+  font-size: 19px;
+  color: var(--gold);
+  letter-spacing: -0.02em;
+  box-shadow: 0 0 0 1px rgba(212,160,23,0.2), 0 4px 14px rgba(12,34,68,0.6);
+  flex-shrink: 0;
+  line-height: 1;
+}
+.piap-logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+.piap-logo-name {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 800;
+  font-size: 18px;
+  color: var(--white);
+  letter-spacing: 0.04em;
+}
+.piap-logo-sub {
+  font-family: 'Space Mono', monospace;
+  font-weight: 400;
+  font-size: 9.5px;
+  color: var(--muted);
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  margin-top: 1px;
+}
+
+/* ── NAV ── */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  background: rgba(8, 26, 54, 0.82);
+  border-bottom: 1px solid var(--line);
+  transition: box-shadow 0.3s;
+}
+.nav-inner {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 68px;
+}
+.nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+.nav-links a {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--muted2);
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--white); }
+.nav-links .btn-primary { font-size: 12.5px; padding: 9px 18px; }
+
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+.nav-hamburger span {
+  display: block;
+  width: 22px; height: 2px;
+  background: var(--white);
+  border-radius: 2px;
+}
+
+/* ── HERO ── */
+.hero {
+  padding: 140px 0 72px;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(212,160,23,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(212,160,23,0.03) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse at center, #000 35%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse at center, #000 35%, transparent 80%);
+  pointer-events: none;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  top: -160px; right: -220px;
+  width: 760px; height: 760px;
+  background: radial-gradient(circle, rgba(212,160,23,0.1), transparent 68%);
+  pointer-events: none;
+}
+.hero-glow2 {
+  position: absolute;
+  bottom: -220px; left: -180px;
+  width: 640px; height: 640px;
+  background: radial-gradient(circle, rgba(62,109,179,0.16), transparent 70%);
+  pointer-events: none;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 56px;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-text { max-width: 540px; }
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background: rgba(212,160,23,0.08);
+  border: 1px solid rgba(212,160,23,0.25);
+  border-radius: 100px;
+  font-family: 'Space Mono', monospace;
+  font-size: 10.5px;
+  font-weight: 400;
+  color: var(--gold-light);
+  margin-bottom: 22px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+.pill-dot {
+  width: 6px; height: 6px;
+  background: var(--gold);
+  border-radius: 50%;
+  animation: blink 1.8s ease-in-out infinite;
+  box-shadow: 0 0 8px rgba(212,160,23,0.7);
+}
+
+.hero h1 { margin-bottom: 20px; color: var(--white); }
+.hero h1 .grad {
+  background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 60%, var(--blue-400) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero h1 .dim { color: rgba(255,255,255,0.28); font-weight: 700; }
+
+.hero-desc {
+  color: var(--muted2);
+  font-size: 15px;
+  line-height: 1.78;
+  margin-bottom: 28px;
+  max-width: 480px;
+}
+.hero-desc strong { color: var(--white); font-weight: 600; }
+
+.hero-buttons { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 44px; }
+
+.hero-stats { display: flex; gap: 28px; flex-wrap: wrap; }
+.hero-stat {
+  padding-left: 14px;
+  border-left: 2px solid var(--gold);
+}
+.hero-stat-value {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--white);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+.hero-stat-label {
+  font-size: 11.5px;
+  color: var(--muted);
+  line-height: 1.4;
+  max-width: 140px;
+}
+
+/* ── MOCKUP ── */
+.mockup-wrapper {
+  position: relative;
+  opacity: 0;
+  animation: fadeUp 0.7s 0.2s cubic-bezier(0.22, 1, 0.36, 1) forwards, floatY 7s 0.9s ease-in-out infinite;
+}
+.mockup {
+  background: var(--bg3);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 40px 80px rgba(0,0,0,0.55), 0 0 0 1px rgba(212,160,23,0.08);
+}
+.mockup-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 11px 14px;
+  background: var(--navy2);
+  border-bottom: 1px solid var(--line);
+}
+.mockup-dot { width: 9px; height: 9px; border-radius: 50%; }
+.mockup-dot.red { background: #FF5F57; }
+.mockup-dot.yellow { background: #FEBC2E; }
+.mockup-dot.green { background: #28C840; }
+.mockup-url {
+  margin-left: 10px;
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  color: var(--muted);
+  background: rgba(255,255,255,0.04);
+  padding: 3px 10px;
+  border-radius: 5px;
+  flex: 1;
+  letter-spacing: 0.3px;
+}
+
+.mockup-body { display: flex; min-height: 430px; }
+
+.mockup-sidebar {
+  width: 198px;
+  background: var(--navy);
+  border-right: 1px solid var(--line);
+  padding: 16px 12px;
+  flex-shrink: 0;
+}
+.sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 8px 14px 8px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.sidebar-brand-mark {
+  width: 22px; height: 22px;
+  border-radius: 5px;
+  background: #0f1f3d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 13px;
+  color: var(--gold);
+  box-shadow: 0 0 0 1px rgba(212,160,23,0.3);
+  flex-shrink: 0;
+  line-height: 1;
+}
+.sidebar-brand-text {
+  font-weight: 800;
+  font-size: 13px;
+  color: var(--white);
+  letter-spacing: 0.08em;
+}
+
+.sidebar-section { margin-bottom: 14px; }
+.sidebar-title {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 1.8px;
+  color: rgba(154,171,196,0.55);
+  margin-bottom: 8px;
+  padding: 0 6px;
+}
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 8px;
+  border-radius: 6px;
+  font-size: 11.5px;
+  color: #9AABC4;
+  margin-bottom: 2px;
+}
+.sidebar-item.active {
+  background: rgba(212,160,23,0.12);
+  color: var(--white);
+  border-left: 2px solid var(--gold);
+  padding-left: 6px;
+}
+.sidebar-item.active .sidebar-icon { color: var(--gold); }
+.sidebar-icon {
+  width: 13px;
+  height: 13px;
+  color: rgba(154,171,196,0.7);
+  flex-shrink: 0;
+}
+
+.mockup-main {
+  flex: 1;
+  padding: 16px 18px;
+  background: var(--bg2);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  overflow: hidden;
+}
+.mm-row { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.mm-period-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 1.8px;
+  color: var(--muted);
+  margin-bottom: 3px;
+}
+.mm-period-value {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--white);
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  letter-spacing: -0.01em;
+}
+.mm-status {
+  font-family: 'Space Mono', monospace;
+  font-size: 8.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  padding: 3px 7px;
+  border-radius: 4px;
+  background: rgba(245,166,35,0.15);
+  color: var(--amber);
+  border: 1px solid rgba(245,166,35,0.35);
+}
+.mm-consistency { text-align: right; }
+.mm-consistency .val {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--green);
+  letter-spacing: -0.01em;
+}
+
+.mm-progress {
+  background: rgba(0,0,0,0.2);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 11px 13px;
+}
+.mm-progress-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 10px;
+  margin-bottom: 7px;
+}
+.mm-progress-head span:first-child { color: var(--muted); }
+.mm-progress-head span:last-child { color: var(--white); font-weight: 700; font-family: 'Space Mono', monospace; font-size: 10px; }
+.mm-progress-bar {
+  height: 5px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.mm-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light));
+  border-radius: 3px;
+  animation: progress 1.4s 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.mm-kpis {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+.mm-kpi {
+  background: rgba(0,0,0,0.2);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+.mm-kpi-lbl {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 1.4px;
+  color: var(--muted);
+  margin-bottom: 3px;
+}
+.mm-kpi-val {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--white);
+  letter-spacing: -0.02em;
+}
+.mm-kpi-val.amber { color: var(--amber); }
+.mm-kpi-val.gold { color: var(--gold-light); }
+
+.mm-table {
+  background: rgba(0,0,0,0.2);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.mm-table-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 9px 12px;
+  border-bottom: 1px solid var(--line);
+  font-size: 10px;
+  color: var(--muted2);
+}
+.mm-table-head strong { color: var(--white); font-weight: 700; }
+.mm-table-head .tag {
+  font-family: 'Space Mono', monospace;
+  font-size: 8.5px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: var(--muted);
+}
+.mm-row-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  border-top: 1px solid rgba(255,255,255,0.03);
+  font-size: 11px;
+}
+.mm-row-item:first-of-type { border-top: none; }
+.mm-row-item .contract { color: var(--white); font-weight: 600; }
+.mm-row-item .area {
+  font-family: 'Space Mono', monospace;
+  font-size: 8.5px;
+  color: var(--muted);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.mm-col-left { display: flex; flex-direction: column; gap: 2px; }
+.mm-badge {
+  font-family: 'Space Mono', monospace;
+  font-size: 8.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  padding: 2.5px 7px;
+  border-radius: 4px;
+}
+.mm-badge.ok { background: rgba(43,192,102,0.12); color: var(--green); border: 1px solid rgba(43,192,102,0.32); }
+.mm-badge.warn { background: rgba(245,166,35,0.12); color: var(--amber); border: 1px solid rgba(245,166,35,0.32); }
+.mm-badge.review { background: rgba(62,109,179,0.14); color: var(--blue-400); border: 1px solid rgba(62,109,179,0.35); }
+
+.mm-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(0,0,0,0.2);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 10.5px;
+  color: var(--muted2);
+}
+.mm-foot-left { display: flex; align-items: center; gap: 8px; }
+.mm-check {
+  width: 18px; height: 18px;
+  border-radius: 5px;
+  background: rgba(43,192,102,0.15);
+  color: var(--green);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  flex-shrink: 0;
+}
+.mm-foot-time { font-family: 'Space Mono', monospace; font-size: 9.5px; color: var(--muted); }
+
+/* ── TRUST BAR ── */
+.trust-bar {
+  background: rgba(12, 34, 68, 0.7);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 22px 0;
+}
+.trust-inner {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.trust-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 2.2px;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 700;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.trust-items { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12px;
+  color: rgba(255,255,255,0.65);
+}
+.trust-dot { width: 4px; height: 4px; background: var(--gold); border-radius: 50%; flex-shrink: 0; }
+
+/* ── SECTIONS ── */
+.section { padding: 94px 0; position: relative; }
+.section-alt { background: linear-gradient(180deg, var(--bg) 0%, var(--bg2) 50%, var(--bg) 100%); }
+
+.section-header { text-align: center; max-width: 660px; margin: 0 auto 58px; }
+.section-header h2 { margin-bottom: 14px; color: var(--white); }
+.section-header p {
+  color: var(--muted2);
+  font-size: 15px;
+  line-height: 1.78;
+}
+
+/* ── PROBLEMA ── */
+.problem-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+}
+.problem-card {
+  background: var(--bg3);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 22px;
+  transition: all 0.35s;
+}
+.problem-card:hover {
+  border-color: rgba(229,72,77,0.28);
+  transform: translateY(-3px);
+  background: var(--bg4);
+}
+.problem-ico {
+  width: 40px; height: 40px;
+  border-radius: 10px;
+  background: rgba(229,72,77,0.1);
+  color: var(--rose);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+.problem-ico svg { width: 20px; height: 20px; }
+.problem-card h3 { font-size: 0.96rem; margin-bottom: 8px; color: var(--white); }
+.problem-card p { font-size: 13px; color: var(--muted2); line-height: 1.65; }
+
+/* ── SOLUCION ── */
+.solution-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.05fr;
+  gap: 56px;
+  align-items: center;
+}
+.solution-text h2 { margin-bottom: 20px; color: var(--white); }
+.solution-text p {
+  color: var(--muted2);
+  font-size: 15px;
+  line-height: 1.85;
+  margin-bottom: 14px;
+}
+.pillar-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+.pillar-card {
+  background: linear-gradient(135deg, var(--bg3), var(--bg2));
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 22px;
+  transition: all 0.35s;
+}
+.pillar-card:hover {
+  border-color: rgba(212,160,23,0.28);
+  transform: translateY(-3px);
+  background: linear-gradient(135deg, var(--bg4), var(--bg3));
+}
+.pillar-ico {
+  width: 38px; height: 38px;
+  border-radius: 10px;
+  background: rgba(212,160,23,0.12);
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 14px;
+  border: 1px solid rgba(212,160,23,0.22);
+}
+.pillar-ico svg { width: 19px; height: 19px; }
+.pillar-card h4 { font-size: 0.94rem; margin-bottom: 6px; color: var(--white); }
+.pillar-card p { font-size: 12.5px; color: var(--muted2); line-height: 1.6; }
+
+/* ── MODULOS ── */
+.modules-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+.module-card {
+  position: relative;
+  background: var(--bg3);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 26px;
+  transition: all 0.35s;
+  overflow: hidden;
+}
+.module-card::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 140px; height: 140px;
+  background: radial-gradient(circle, rgba(212,160,23,0.14), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+.module-card:hover { border-color: rgba(212,160,23,0.28); transform: translateY(-3px); background: var(--bg4); }
+.module-card:hover::before { opacity: 1; }
+.module-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+.module-ico {
+  width: 44px; height: 44px;
+  border-radius: 11px;
+  background: rgba(212,160,23,0.1);
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(212,160,23,0.22);
+}
+.module-ico svg { width: 22px; height: 22px; }
+.module-num {
+  font-family: 'Space Mono', monospace;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: rgba(250,213,103,0.22);
+  letter-spacing: 1.5px;
+}
+.module-card h3 { font-size: 1.02rem; margin-bottom: 10px; color: var(--white); }
+.module-card p { font-size: 13px; color: var(--muted2); line-height: 1.7; }
+
+/* ── BENEFICIOS ── */
+.benefits-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.25fr;
+  gap: 56px;
+  align-items: start;
+}
+.benefits-left h2 { margin-bottom: 20px; color: var(--white); }
+.benefits-left p {
+  color: var(--muted2);
+  font-size: 15px;
+  line-height: 1.85;
+  margin-bottom: 26px;
+}
+.benefits-callout {
+  background: linear-gradient(135deg, var(--bg3), var(--bg4));
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 22px;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+.benefits-callout-ico {
+  width: 40px; height: 40px; flex-shrink: 0;
+  border-radius: 10px;
+  background: rgba(212,160,23,0.15);
+  color: var(--gold);
+  display: flex; align-items: center; justify-content: center;
+  border: 1px solid rgba(212,160,23,0.25);
+}
+.benefits-callout-ico svg { width: 20px; height: 20px; }
+.benefits-callout h4 { font-size: 0.9rem; margin-bottom: 6px; color: var(--white); }
+.benefits-callout p { font-size: 12.5px; color: var(--muted2); line-height: 1.65; margin: 0; }
+
+.benefits-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  list-style: none;
+}
+.benefit-item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  background: var(--bg3);
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  padding: 16px 18px;
+  transition: all 0.3s;
+}
+.benefit-item:hover { border-color: var(--line2); background: var(--bg4); }
+.benefit-check {
+  width: 22px; height: 22px; flex-shrink: 0;
+  border-radius: 6px;
+  background: rgba(43,192,102,0.15);
+  color: var(--green);
+  display: flex; align-items: center; justify-content: center;
+  margin-top: 1px;
+}
+.benefit-check svg { width: 13px; height: 13px; }
+.benefit-item span { font-size: 13.5px; color: var(--white); line-height: 1.55; font-weight: 400; }
+
+/* ── FLUJO ── */
+.flow-wrapper { position: relative; }
+.flow-line {
+  position: absolute;
+  top: 46px; left: 5%; right: 5%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(212,160,23,0.35), rgba(212,160,23,0.35), transparent);
+  pointer-events: none;
+}
+.flow-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  position: relative;
+}
+.flow-card {
+  background: linear-gradient(180deg, var(--bg3), var(--bg2));
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 26px 24px;
+  transition: all 0.35s;
+}
+.flow-card:hover { border-color: rgba(212,160,23,0.35); transform: translateY(-4px); }
+.flow-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 22px;
+}
+.flow-num {
+  width: 44px; height: 44px;
+  border-radius: 10px;
+  background: var(--bg2);
+  border: 1px solid rgba(212,160,23,0.35);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--gold);
+  position: relative;
+  z-index: 2;
+  letter-spacing: -0.02em;
+}
+.flow-step-tag {
+  font-family: 'Space Mono', monospace;
+  font-size: 9.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.8px;
+  color: var(--muted);
+}
+.flow-card h3 { margin-bottom: 10px; font-size: 1.02rem; color: var(--white); }
+.flow-card p { font-size: 13px; color: var(--muted2); line-height: 1.7; }
+
+/* ── PUBLICO ── */
+.audience-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.audience-card {
+  background: linear-gradient(180deg, var(--bg3), var(--bg2));
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 32px 28px;
+  transition: all 0.35s;
+}
+.audience-card:hover { border-color: rgba(212,160,23,0.35); transform: translateY(-3px); }
+.audience-ico {
+  width: 50px; height: 50px;
+  border-radius: 12px;
+  background: rgba(212,160,23,0.12);
+  color: var(--gold);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 20px;
+  border: 1px solid rgba(212,160,23,0.25);
+}
+.audience-ico svg { width: 24px; height: 24px; }
+.audience-card h3 { font-size: 1.1rem; margin-bottom: 10px; color: var(--white); }
+.audience-card p { font-size: 13.5px; color: var(--muted2); line-height: 1.7; }
+
+/* ── CTA FINAL ── */
+.cta-section { padding: 94px 0 104px; position: relative; }
+.cta-box {
+  position: relative;
+  background: linear-gradient(135deg, var(--bg3) 0%, var(--bg2) 55%, rgba(212,160,23,0.1) 100%);
+  border: 1px solid rgba(212,160,23,0.22);
+  border-radius: 22px;
+  padding: 76px 48px;
+  text-align: center;
+  overflow: hidden;
+}
+.cta-box::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse at center, #000 30%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse at center, #000 30%, transparent 75%);
+  pointer-events: none;
+}
+.cta-box::after {
+  content: '';
+  position: absolute;
+  top: -120px; right: -120px;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(212,160,23,0.22), transparent 70%);
+  pointer-events: none;
+}
+.cta-glow2 {
+  position: absolute;
+  bottom: -160px; left: -120px;
+  width: 420px; height: 420px;
+  background: radial-gradient(circle, rgba(62,109,179,0.22), transparent 70%);
+  pointer-events: none;
+}
+.cta-box > * { position: relative; z-index: 1; }
+.cta-box h2 {
+  font-size: clamp(1.9rem, 3.6vw, 2.9rem);
+  margin-bottom: 20px;
+  max-width: 760px;
+  margin-left: auto;
+  margin-right: auto;
+  color: var(--white);
+}
+.cta-box p {
+  color: var(--muted2);
+  font-size: 16px;
+  max-width: 600px;
+  margin: 0 auto 32px;
+  line-height: 1.8;
+}
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 22px;
+}
+.cta-note {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 18px !important;
+  letter-spacing: 0.3px;
+}
+
+/* ── FOOTER ── */
+.footer {
+  background: var(--bg2);
+  border-top: 1px solid var(--line);
+  padding: 40px 0 28px;
+}
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 22px;
+  border-bottom: 1px solid var(--line);
+  flex-wrap: wrap;
+  gap: 18px;
+}
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.footer-sub {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 0.5px;
+}
+.footer-sub a { color: var(--muted2); }
+.footer-sub a:hover { color: var(--gold); }
+
+.footer-links {
+  display: flex;
+  gap: 24px;
+  list-style: none;
+  flex-wrap: wrap;
+}
+.footer-links a {
+  font-size: 12.5px;
+  color: var(--muted);
+  transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--gold); }
+
+.footer-copy {
+  margin-top: 18px;
+  font-family: 'Space Mono', monospace;
+  font-size: 10.5px;
+  color: var(--muted);
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .problem-grid { grid-template-columns: repeat(3, 1fr); }
+  .modules-grid { grid-template-columns: repeat(2, 1fr); }
+  .flow-grid { grid-template-columns: repeat(2, 1fr); }
+  .flow-line { display: none; }
+}
+@media (max-width: 860px) {
+  .nav-links { display: none; }
+  .nav-links.open {
+    display: flex;
+    position: fixed;
+    top: 68px; left: 0; right: 0; bottom: 0;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    background: rgba(8, 26, 54, 0.97);
+    backdrop-filter: blur(20px);
+  }
+  .nav-links.open a { font-size: 1rem; }
+  .nav-links.open .btn-primary { font-size: 14px; padding: 12px 24px; }
+  .nav-hamburger { display: flex; }
+
+  .hero { padding: 120px 0 60px; }
+  .hero-grid { grid-template-columns: 1fr; gap: 48px; }
+  .mockup-sidebar { display: none; }
+
+  .solution-grid { grid-template-columns: 1fr; gap: 40px; }
+  .benefits-grid { grid-template-columns: 1fr; gap: 40px; }
+  .benefits-list { grid-template-columns: 1fr; }
+
+  .problem-grid { grid-template-columns: repeat(2, 1fr); }
+  .modules-grid { grid-template-columns: 1fr; }
+  .audience-grid { grid-template-columns: 1fr; }
+
+  .cta-box { padding: 56px 28px; }
+  .piap-logo-sub { display: none; }
+}
+@media (max-width: 520px) {
+  .problem-grid { grid-template-columns: 1fr; }
+  .pillar-grid { grid-template-columns: 1fr; }
+  .flow-grid { grid-template-columns: 1fr; }
+  .footer-inner { flex-direction: column; align-items: flex-start; }
+}
+</style>
+</head>
+<body>
+
+<!-- ════ NAV ════ -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#" class="piap-logo">
+      <span class="piap-logo-mark">P</span>
+      <span class="piap-logo-text">
+        <span class="piap-logo-name">PIAP</span>
+        <span class="piap-logo-sub">by LUCANT</span>
+      </span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#problema">Problema</a></li>
+      <li><a href="#modulos">Módulos</a></li>
+      <li><a href="#flujo">Flujo</a></li>
+      <li><a href="#beneficios">Beneficios</a></li>
+      <li><a href="mailto:gerencia@lucant.co?subject=Demo%20PIAP" class="btn-primary">Solicitar demo</a></li>
+    </ul>
+    <button class="nav-hamburger" id="hamburger" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ════ HERO ════ -->
+<section class="hero">
+  <div class="hero-glow2"></div>
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-text fade-up">
+        <div class="pill">
+          <span class="pill-dot"></span>
+          Plataforma SaaS · Operación y Administración Contractual
+        </div>
+        <h1>
+          Opere contratos complejos con
+          <span class="grad">control, trazabilidad y orden real</span>
+          <span class="dim">de principio a fin.</span>
+        </h1>
+        <p class="hero-desc">
+          PIAP es la plataforma integral que centraliza contratos, operación, liquidación, nómina, proveedores, órdenes, facturas, egresos, cuentas de cobro, soportes y contabilidad del contrato en un solo lugar.
+          <strong>Menos reprocesos. Menos errores. Más control.</strong>
+        </p>
+        <div class="hero-buttons">
+          <a href="mailto:gerencia@lucant.co?subject=Presentación%20ejecutiva%20PIAP" class="btn-primary">
+            Solicitar presentación &rarr;
+          </a>
+          <a href="#modulos" class="btn-secondary">Conocer PIAP</a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <div class="hero-stat-value">Operación</div>
+            <div class="hero-stat-label">Liquidación y nómina estandarizadas</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-value">Administración</div>
+            <div class="hero-stat-label">Soportes, órdenes y egresos unificados</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-value">Control</div>
+            <div class="hero-stat-label">Trazabilidad integral del contrato</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── MOCKUP ── -->
+      <div class="mockup-wrapper">
+        <div class="mockup">
+          <div class="mockup-bar">
+            <div class="mockup-dot red"></div>
+            <div class="mockup-dot yellow"></div>
+            <div class="mockup-dot green"></div>
+            <div class="mockup-url">piap.lucant.co &middot; panel operativo</div>
+          </div>
+          <div class="mockup-body">
+            <div class="mockup-sidebar">
+              <div class="sidebar-brand">
+                <span class="sidebar-brand-mark">P</span>
+                <span class="sidebar-brand-text">PIAP</span>
+              </div>
+              <div class="sidebar-section">
+                <div class="sidebar-title">Operación</div>
+                <div class="sidebar-item active">
+                  <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4.5" width="18" height="17" rx="2.5"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></svg>
+                  Periodos
+                </div>
+                <div class="sidebar-item">
+                  <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="8" cy="7" rx="5" ry="2.5"/><path d="M3 7v5c0 1.4 2.2 2.5 5 2.5s5-1.1 5-2.5V7"/><path d="M3 12v5c0 1.4 2.2 2.5 5 2.5s5-1.1 5-2.5v-5"/></svg>
+                  Liquidación
+                </div>
+                <div class="sidebar-item">
+                  <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4"/></svg>
+                  Contratos
+                </div>
+              </div>
+              <div class="sidebar-section">
+                <div class="sidebar-title">Administración</div>
+                <div class="sidebar-item">
+                  <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h11v10H3z"/><path d="M14 9h4l3 3v4h-7z"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg>
+                  Proveedores
+                </div>
+                <div class="sidebar-item">
+                  <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2h12v20l-3-2-3 2-3-2-3 2z"/></svg>
+                  Cuentas de cobro
+                </div>
+                <div class="sidebar-item">
+                  <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 3h14v18l-3-2-2 2-2-2-2 2-2-2-3 2z"/></svg>
+                  Facturas y egresos
+                </div>
+              </div>
+              <div class="sidebar-section">
+                <div class="sidebar-title">Control</div>
+                <div class="sidebar-item">
+                  <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 15v-4M12 15V8M17 15v-2"/></svg>
+                  Reportes
+                </div>
+                <div class="sidebar-item">
+                  <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.5l8 3v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10v-6z"/></svg>
+                  Auditoría
+                </div>
+              </div>
+            </div>
+
+            <div class="mockup-main">
+              <div class="mm-row">
+                <div>
+                  <div class="mm-period-label">Periodo activo</div>
+                  <div class="mm-period-value">
+                    Marzo 2026
+                    <span class="mm-status">Cierre en curso</span>
+                  </div>
+                </div>
+                <div class="mm-consistency">
+                  <div class="mm-period-label">Consistencia</div>
+                  <div class="val">96,4%</div>
+                </div>
+              </div>
+
+              <div class="mm-progress">
+                <div class="mm-progress-head">
+                  <span>Avance de validaciones automáticas</span>
+                  <span>128 / 132</span>
+                </div>
+                <div class="mm-progress-bar">
+                  <div class="mm-progress-fill"></div>
+                </div>
+              </div>
+
+              <div class="mm-kpis">
+                <div class="mm-kpi">
+                  <div class="mm-kpi-lbl">Operadores</div>
+                  <div class="mm-kpi-val">42</div>
+                </div>
+                <div class="mm-kpi">
+                  <div class="mm-kpi-lbl">Sedes activas</div>
+                  <div class="mm-kpi-val gold">138</div>
+                </div>
+                <div class="mm-kpi">
+                  <div class="mm-kpi-lbl">Alertas abiertas</div>
+                  <div class="mm-kpi-val amber">3</div>
+                </div>
+              </div>
+
+              <div class="mm-table">
+                <div class="mm-table-head">
+                  <strong>Estado de cierre por contrato</strong>
+                  <span class="tag">Vista ejecutiva</span>
+                </div>
+                <div class="mm-row-item">
+                  <div class="mm-col-left">
+                    <span class="contract">CT-240 · Educación</span>
+                    <span class="area">Antioquia</span>
+                  </div>
+                  <span class="mm-badge ok">Validado</span>
+                </div>
+                <div class="mm-row-item">
+                  <div class="mm-col-left">
+                    <span class="contract">CT-311 · Alimentación</span>
+                    <span class="area">Chocó</span>
+                  </div>
+                  <span class="mm-badge warn">3 alertas</span>
+                </div>
+                <div class="mm-row-item">
+                  <div class="mm-col-left">
+                    <span class="contract">CT-402 · Nómina</span>
+                    <span class="area">Cundinamarca</span>
+                  </div>
+                  <span class="mm-badge ok">Validado</span>
+                </div>
+                <div class="mm-row-item">
+                  <div class="mm-col-left">
+                    <span class="contract">CT-118 · Proveedores</span>
+                    <span class="area">Valle</span>
+                  </div>
+                  <span class="mm-badge review">Revisión</span>
+                </div>
+              </div>
+
+              <div class="mm-foot">
+                <div class="mm-foot-left">
+                  <span class="mm-check">&#10003;</span>
+                  Cuentas de cobro cruzadas con ejecución real
+                </div>
+                <span class="mm-foot-time">hace 2 min</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ TRUST BAR ════ -->
+<section class="trust-bar">
+  <div class="container">
+    <div class="trust-inner">
+      <div class="trust-label">Resuelve en una sola plataforma</div>
+      <div class="trust-items">
+        <span class="trust-item"><span class="trust-dot"></span>Contratos y sedes</span>
+        <span class="trust-item"><span class="trust-dot"></span>Liquidación y nómina</span>
+        <span class="trust-item"><span class="trust-dot"></span>Proveedores y terceros</span>
+        <span class="trust-item"><span class="trust-dot"></span>Órdenes, facturas y egresos</span>
+        <span class="trust-item"><span class="trust-dot"></span>Cuentas de cobro</span>
+        <span class="trust-item"><span class="trust-dot"></span>Contabilidad del contrato</span>
+        <span class="trust-item"><span class="trust-dot"></span>Control y auditoría</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ PROBLEMA ════ -->
+<section class="section" id="problema">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="eyebrow">El problema</div>
+      <h2>Cuando la operación crece, Excel y las carpetas dejan de ser suficientes.</h2>
+      <p>Operar varios contratos con múltiples sedes, operadores, proveedores y periodos sobre hojas de cálculo y archivos dispersos deja de ser eficiencia y se convierte en riesgo: información desalineada, cierres frágiles y decisiones tomadas sin evidencia real.</p>
+    </div>
+    <div class="problem-grid">
+      <div class="problem-card reveal">
+        <div class="problem-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><ellipse cx="12" cy="5" rx="8" ry="2.5"/><path d="M4 5v6c0 1.4 3.6 2.5 8 2.5s8-1.1 8-2.5V5"/><path d="M4 11v6c0 1.4 3.6 2.5 8 2.5s8-1.1 8-2.5v-6"/></svg></div>
+        <h3>Información dispersa</h3>
+        <p>Datos operativos, administrativos y financieros repartidos entre Excel, correos y carpetas que nadie reconstruye igual dos veces.</p>
+      </div>
+      <div class="problem-card reveal">
+        <div class="problem-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3L2 20h20z"/><path d="M12 10v4M12 17v.5"/></svg></div>
+        <h3>Errores en el cierre</h3>
+        <p>Liquidaciones con inconsistencias, periodos mal secuenciados y cifras que se corrigen a mano contra reloj.</p>
+      </div>
+      <div class="problem-card reveal">
+        <div class="problem-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="5" cy="6" r="2.2"/><circle cx="19" cy="6" r="2.2"/><circle cx="12" cy="18" r="2.2"/><path d="M6.5 7.5L10.5 16.5M17.5 7.5L13.5 16.5M7 6h10"/></svg></div>
+        <h3>Falta de trazabilidad</h3>
+        <p>No es posible reconstruir con claridad qué pasó por contrato, sede, persona o proveedor en un periodo determinado.</p>
+      </div>
+      <div class="problem-card reveal">
+        <div class="problem-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="6" y="4" width="12" height="17" rx="2"/><path d="M9 4h6v3H9z"/><path d="M9 11h6M9 15h4"/></svg></div>
+        <h3>Soportes sin control</h3>
+        <p>Cuentas de cobro, facturas y soportes administrativos fragmentados, sin un expediente único ni validación formal.</p>
+      </div>
+      <div class="problem-card reveal">
+        <div class="problem-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></div>
+        <h3>Baja visibilidad financiera</h3>
+        <p>Órdenes, egresos y pagos sin cruce claro contra la ejecución real del contrato ni contra la operación del periodo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ SOLUCION ════ -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="solution-grid">
+      <div class="solution-text reveal">
+        <div class="eyebrow">La solución</div>
+        <h2>Una sola plataforma para operación, soporte administrativo y control contractual.</h2>
+        <p>PIAP conecta en un único entorno la ejecución operativa con su soporte administrativo y con el control financiero y contractual del contrato. La información deja de vivir en Excel y carpetas y pasa a un modelo estructurado, trazable y auditable.</p>
+        <p>No es una herramienta aislada: es la columna vertebral sobre la que se opera, se cierra y se controla cada contrato, periodo y responsable.</p>
+      </div>
+      <div class="pillar-grid">
+        <div class="pillar-card reveal">
+          <div class="pillar-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4"/><path d="M9 12h7M9 16h7"/></svg></div>
+          <h4>Operación estructurada</h4>
+          <p>Contratos, sedes, operadores y parámetros contractuales como base formal de la ejecución.</p>
+        </div>
+        <div class="pillar-card reveal">
+          <div class="pillar-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="6" y="4" width="12" height="17" rx="2"/><path d="M9 4h6v3H9z"/><path d="M9 11h6M9 15h4"/></svg></div>
+          <h4>Soporte administrativo</h4>
+          <p>Cuentas de cobro, soportes, órdenes, facturas y egresos unificados bajo un expediente único.</p>
+        </div>
+        <div class="pillar-card reveal">
+          <div class="pillar-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2.5l8 3v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10v-6z"/><path d="M9 12l2 2 4-4"/></svg></div>
+          <h4>Control y auditoría</h4>
+          <p>Validaciones, alertas y cruces automáticos antes del cierre, con bitácora completa de decisiones.</p>
+        </div>
+        <div class="pillar-card reveal">
+          <div class="pillar-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="5" cy="6" r="2.2"/><circle cx="19" cy="6" r="2.2"/><circle cx="12" cy="18" r="2.2"/><path d="M6.5 7.5L10.5 16.5M17.5 7.5L13.5 16.5M7 6h10"/></svg></div>
+          <h4>Trazabilidad integral</h4>
+          <p>Cada movimiento ligado a su contrato, periodo, sede, proveedor y responsable. Visibilidad punta a punta.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ MODULOS ════ -->
+<section class="section" id="modulos">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="eyebrow">Módulos y capacidades</div>
+      <h2>Todo el ciclo contractual, resuelto en una sola plataforma.</h2>
+      <p>Módulos integrados que cubren operación, administración, control financiero y trazabilidad documental del contrato.</p>
+    </div>
+    <div class="modules-grid">
+      <article class="module-card reveal">
+        <div class="module-top">
+          <div class="module-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="4.5" width="18" height="17" rx="2.5"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></svg></div>
+          <span class="module-num">01</span>
+        </div>
+        <h3>Gestión de periodos</h3>
+        <p>Apertura, control y cierre de periodos operativos con validaciones automáticas y secuencia trazable. Un periodo claro, consistente y auditable en cada ejecución.</p>
+      </article>
+      <article class="module-card reveal">
+        <div class="module-top">
+          <div class="module-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><ellipse cx="8" cy="7" rx="5" ry="2.5"/><path d="M3 7v5c0 1.4 2.2 2.5 5 2.5s5-1.1 5-2.5V7"/><path d="M3 12v5c0 1.4 2.2 2.5 5 2.5s5-1.1 5-2.5v-5"/><ellipse cx="16" cy="14" rx="5" ry="2.5"/><path d="M11 14v5c0 1.4 2.2 2.5 5 2.5s5-1.1 5-2.5v-5"/></svg></div>
+          <span class="module-num">02</span>
+        </div>
+        <h3>Liquidación operativa y nómina</h3>
+        <p>Liquidación estandarizada por sede, operador y periodo. Cálculos consistentes, reglas aplicadas y soporte formal listo para revisión administrativa.</p>
+      </article>
+      <article class="module-card reveal">
+        <div class="module-top">
+          <div class="module-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4"/><path d="M9 12h7M9 16h7M9 8h3"/></svg></div>
+          <span class="module-num">03</span>
+        </div>
+        <h3>Contratos y estructura operativa</h3>
+        <p>Modelado completo del contrato: instituciones, sedes, operadores y parámetros contractuales como base única de toda la operación.</p>
+      </article>
+      <article class="module-card reveal">
+        <div class="module-top">
+          <div class="module-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 6h11v10H3z"/><path d="M14 9h4l3 3v4h-7z"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg></div>
+          <span class="module-num">04</span>
+        </div>
+        <h3>Proveedores y terceros</h3>
+        <p>Maestro unificado de proveedores y terceros con documentos, condiciones, cuentas y trazabilidad de toda la relación contractual y operativa.</p>
+      </article>
+      <article class="module-card reveal">
+        <div class="module-top">
+          <div class="module-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M6 2h12v20l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6M9 16h4"/></svg></div>
+          <span class="module-num">05</span>
+        </div>
+        <h3>Cuentas de cobro y soportes</h3>
+        <p>Generación y consolidación de cuentas de cobro con sus soportes administrativos, cruzadas con la ejecución real del periodo.</p>
+      </article>
+      <article class="module-card reveal">
+        <div class="module-top">
+          <div class="module-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 3h14v18l-3-2-2 2-2-2-2 2-2-2-3 2z"/><path d="M9 8h6M9 12h6M9 16h3"/></svg></div>
+          <span class="module-num">06</span>
+        </div>
+        <h3>Órdenes, facturas y egresos</h3>
+        <p>Ciclo completo de compras y pagos: orden, factura, causación y egreso, con cruces automáticos contra proveedores, contratos y soportes.</p>
+      </article>
+      <article class="module-card reveal">
+        <div class="module-top">
+          <div class="module-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 3v18h18"/><path d="M7 15v-4M12 15V8M17 15v-2"/></svg></div>
+          <span class="module-num">07</span>
+        </div>
+        <h3>Exportes y reportes</h3>
+        <p>Reportes ejecutivos y técnicos listos para supervisión, auditoría y cierre administrativo. Información estructurada, sin reconstruir en Excel.</p>
+      </article>
+      <article class="module-card reveal">
+        <div class="module-top">
+          <div class="module-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 2.5l8 3v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10v-6z"/><path d="M9 12l2 2 4-4"/></svg></div>
+          <span class="module-num">08</span>
+        </div>
+        <h3>Control y auditoría</h3>
+        <p>Validaciones, alertas, bloqueos y revisiones cruzadas que elevan el estándar de control antes de cerrar periodo, pagar o reportar.</p>
+      </article>
+      <article class="module-card reveal">
+        <div class="module-top">
+          <div class="module-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 4h10a4 4 0 0 1 4 4v13H8a4 4 0 0 1-4-4z"/><path d="M4 17a4 4 0 0 1 4-4h10"/></svg></div>
+          <span class="module-num">09</span>
+        </div>
+        <h3>Contabilidad del contrato</h3>
+        <p>Registro contable del contrato con su ejecución real: ingresos, egresos, causaciones y saldos, alineados con la operación.</p>
+      </article>
+      <article class="module-card reveal">
+        <div class="module-top">
+          <div class="module-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="5" cy="6" r="2.2"/><circle cx="19" cy="6" r="2.2"/><circle cx="12" cy="18" r="2.2"/><path d="M6.5 7.5L10.5 16.5M17.5 7.5L13.5 16.5M7 6h10"/></svg></div>
+          <span class="module-num">10</span>
+        </div>
+        <h3>Trazabilidad integral</h3>
+        <p>Cada documento, movimiento y liquidación queda ligado a su contrato, sede, periodo, proveedor y responsable. Visibilidad de punta a punta.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ════ BENEFICIOS ════ -->
+<section class="section section-alt" id="beneficios">
+  <div class="container">
+    <div class="benefits-grid">
+      <div class="benefits-left reveal">
+        <div class="eyebrow">Beneficios</div>
+        <h2>Menos reprocesos.<br>Menos errores.<br>Más control.</h2>
+        <p>PIAP no agrega una herramienta más: reemplaza el desorden operativo y administrativo por un modelo sólido, controlado y escalable.</p>
+        <div class="benefits-callout">
+          <div class="benefits-callout-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M5.6 18.4l2.8-2.8M15.6 8.4l2.8-2.8"/></svg>
+          </div>
+          <div>
+            <h4>Diseñado para operación real</h4>
+            <p>Pensado desde la práctica de operar contratos con varias sedes, operadores, proveedores, periodos y responsables simultáneos.</p>
+          </div>
+        </div>
+      </div>
+      <ul class="benefits-list">
+        <li class="benefit-item reveal"><span class="benefit-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 12.5l5 5 11-11"/></svg></span><span>Reducción real de la dependencia de Excel y hojas paralelas.</span></li>
+        <li class="benefit-item reveal"><span class="benefit-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 12.5l5 5 11-11"/></svg></span><span>Cierres mensuales más rápidos, ordenados y repetibles.</span></li>
+        <li class="benefit-item reveal"><span class="benefit-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 12.5l5 5 11-11"/></svg></span><span>Trazabilidad por contrato, sede, persona, proveedor y documento.</span></li>
+        <li class="benefit-item reveal"><span class="benefit-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 12.5l5 5 11-11"/></svg></span><span>Menor error en liquidación, nómina y pagos.</span></li>
+        <li class="benefit-item reveal"><span class="benefit-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 12.5l5 5 11-11"/></svg></span><span>Control unificado de proveedores, órdenes, facturas, egresos y cuentas de cobro.</span></li>
+        <li class="benefit-item reveal"><span class="benefit-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 12.5l5 5 11-11"/></svg></span><span>Visibilidad financiera de la ejecución contractual, no solo del gasto.</span></li>
+        <li class="benefit-item reveal"><span class="benefit-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 12.5l5 5 11-11"/></svg></span><span>Información lista para revisión, supervisión y auditoría en cualquier momento.</span></li>
+        <li class="benefit-item reveal"><span class="benefit-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 12.5l5 5 11-11"/></svg></span><span>Escalable para varios operadores, contratos y municipios.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ════ FLUJO ════ -->
+<section class="section" id="flujo">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="eyebrow">Flujo operativo</div>
+      <h2>Cuatro pasos, un mismo estándar de control.</h2>
+      <p>PIAP estructura la ejecución contractual en un flujo claro, repetible y auditable de principio a fin.</p>
+    </div>
+    <div class="flow-wrapper">
+      <div class="flow-line"></div>
+      <div class="flow-grid">
+        <div class="flow-card reveal">
+          <div class="flow-head">
+            <div class="flow-num">01</div>
+            <span class="flow-step-tag">Paso</span>
+          </div>
+          <h3>Estructura el contrato</h3>
+          <p>Define contratos, instituciones, sedes, operadores y parámetros contractuales como estructura formal de la operación.</p>
+        </div>
+        <div class="flow-card reveal">
+          <div class="flow-head">
+            <div class="flow-num">02</div>
+            <span class="flow-step-tag">Paso</span>
+          </div>
+          <h3>Registra la ejecución</h3>
+          <p>Opera el periodo con liquidación operativa y nómina sobre la estructura contractual, con validaciones automáticas y reglas consistentes.</p>
+        </div>
+        <div class="flow-card reveal">
+          <div class="flow-head">
+            <div class="flow-num">03</div>
+            <span class="flow-step-tag">Paso</span>
+          </div>
+          <h3>Gestiona el soporte administrativo</h3>
+          <p>Proveedores, órdenes, facturas, egresos, cuentas de cobro y soportes consolidados con trazabilidad documental completa.</p>
+        </div>
+        <div class="flow-card reveal">
+          <div class="flow-head">
+            <div class="flow-num">04</div>
+            <span class="flow-step-tag">Paso</span>
+          </div>
+          <h3>Consolida y reporta</h3>
+          <p>Contabilidad del contrato, exportes y reportes ejecutivos listos para supervisión, dirección y auditoría.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ PUBLICO ════ -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="eyebrow">Público objetivo</div>
+      <h2>Un lenguaje común para operación, administración y dirección.</h2>
+      <p>PIAP alinea a los tres roles que sostienen la ejecución contractual, sobre una misma información, con el nivel de detalle que cada uno necesita.</p>
+    </div>
+    <div class="audience-grid">
+      <div class="audience-card reveal">
+        <div class="audience-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="9" r="2.5"/><path d="M15 20c0-2.8 2-5 4.5-5"/></svg></div>
+        <h3>Operadores</h3>
+        <p>Ejecutan la operación con reglas claras, liquidación estandarizada y soporte administrativo bajo control, sin depender de archivos sueltos.</p>
+      </div>
+      <div class="audience-card reveal">
+        <div class="audience-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="6" y="4" width="12" height="17" rx="2"/><path d="M9 4h6v3H9z"/><path d="M9 11h6M9 15h4"/></svg></div>
+        <h3>Coordinación administrativa</h3>
+        <p>Cierra periodos con soportes, cuentas de cobro, facturas y egresos consolidados, con trazabilidad lista para revisión interna y externa.</p>
+      </div>
+      <div class="audience-card reveal">
+        <div class="audience-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 3v18h18"/><path d="M7 15v-4M12 15V8M17 15v-2"/></svg></div>
+        <h3>Supervisión y dirección</h3>
+        <p>Visibilidad financiera y contractual de la ejecución real: menos reprocesos, mejor control y decisiones basadas en información confiable.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ CTA FINAL ════ -->
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-box reveal">
+      <div class="cta-glow2"></div>
+      <h2>Opere su contrato con el estándar que su operación ya necesita.</h2>
+      <p>Agende una presentación ejecutiva de PIAP y vea, sobre un caso real, cómo centraliza la operación, el soporte administrativo y el control contractual en un solo lugar.</p>
+      <div class="cta-buttons">
+        <a href="mailto:gerencia@lucant.co?subject=Presentación%20ejecutiva%20PIAP" class="btn-primary">Solicitar presentación &rarr;</a>
+        <a href="https://wa.me/573208331140?text=Hola%20LUCANT%2C%20quiero%20conocer%20PIAP" class="btn-secondary" target="_blank" rel="noopener">Hablar con un asesor</a>
+      </div>
+      <p class="cta-note">gerencia@lucant.co &middot; Barranquilla, Colombia &middot; Respuesta en menos de 24 horas</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════ FOOTER ════ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="#" class="piap-logo">
+          <span class="piap-logo-mark">P</span>
+          <span class="piap-logo-text">
+            <span class="piap-logo-name">PIAP</span>
+            <span class="piap-logo-sub">by LUCANT</span>
+          </span>
+        </a>
+        <span class="footer-sub">&middot; <a href="index.html">lucant.co</a></span>
+      </div>
+      <ul class="footer-links">
+        <li><a href="index.html">Volver a LUCANT</a></li>
+        <li><a href="mailto:gerencia@lucant.co">Contacto</a></li>
+        <li><a href="#problema">Problema</a></li>
+        <li><a href="#modulos">Módulos</a></li>
+      </ul>
+    </div>
+    <div class="footer-copy">LUCANT SAS &middot; PIAP v1.0 &copy; 2026 &middot; Plataforma Integral de Operación y Administración Contractual</div>
+  </div>
+</footer>
+
+<script>
+// Hamburger
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
+navLinks.querySelectorAll('a').forEach(l => l.addEventListener('click', () => navLinks.classList.remove('open')));
+
+// Scroll reveal
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 60);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+reveals.forEach(el => observer.observe(el));
+
+// Nav shadow on scroll
+const nav = document.querySelector('.nav');
+window.addEventListener('scroll', () => {
+  nav.style.boxShadow = window.scrollY > 20 ? '0 4px 24px rgba(0,0,0,0.35)' : 'none';
+}, { passive: true });
+</script>
+</body>
+</html>
