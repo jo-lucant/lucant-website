@@ -138,9 +138,9 @@ section{padding:5.5rem 3rem;border-bottom:1px solid var(--border)}
 .plat-cat-label{font-family:var(--H);font-size:.62rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(232,228,218,.3);padding:.6rem 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin-bottom:0;display:flex;align-items:center;justify-content:space-between}
 .plat-cat-label span{font-size:.58rem;color:rgba(232,228,218,.18)}
 .prod-table{border:1px solid var(--border);border-top:none;border-radius:0 0 3px 3px;overflow:hidden;margin-bottom:0}
-.prod-th{display:grid;grid-template-columns:96px 1fr 160px 72px;padding:.65rem 1.5rem;background:rgba(232,228,218,.03);border-bottom:1px solid var(--border)}
+.prod-th{display:grid;grid-template-columns:96px 1fr 140px 110px 72px;padding:.65rem 1.5rem;background:rgba(232,228,218,.03);border-bottom:1px solid var(--border)}
 .prod-th span{font-family:var(--H);font-size:.56rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(232,228,218,.18)}
-.prod-row{display:grid;grid-template-columns:96px 1fr 160px 72px;padding:1.15rem 1.5rem;border-bottom:1px solid var(--border);align-items:start;transition:background .15s;position:relative}
+.prod-row{display:grid;grid-template-columns:96px 1fr 140px 110px 72px;padding:1.15rem 1.5rem;border-bottom:1px solid var(--border);align-items:start;transition:background .15s;position:relative}
 .prod-row:last-child{border-bottom:none}
 .prod-row::before{content:'';position:absolute;left:0;top:0;bottom:0;width:0;background:var(--amber);transition:width .18s}
 .prod-row:hover{background:rgba(232,162,32,.04)}
@@ -152,6 +152,10 @@ section{padding:5.5rem 3rem;border-bottom:1px solid var(--border)}
 .pr-cat{font-family:var(--H);font-size:.62rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(232,228,218,.28);padding-top:4px}
 .pr-link{font-family:var(--H);font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);padding-top:4px;transition:opacity .15s}
 .pr-link:hover{opacity:.7}
+.pr-status{font-family:var(--H);font-size:.6rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.2rem .55rem;border-radius:2px;padding-top:4px;width:fit-content;height:fit-content}
+.pr-status.live{color:#34d399;background:rgba(52,211,153,.08);border:1px solid rgba(52,211,153,.2)}
+.pr-status.demo{color:var(--amber);background:rgba(232,162,32,.08);border:1px solid rgba(232,162,32,.2)}
+.pr-status.request{color:rgba(232,228,218,.4);background:rgba(232,228,218,.04);border:1px solid rgba(232,228,218,.08)}
 .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:3px;overflow:hidden;margin-top:3rem}
 .svc-card{background:var(--bg);padding:2rem;transition:background .18s;position:relative;overflow:hidden}
 .svc-card::after{content:'';position:absolute;left:0;top:0;bottom:0;width:0;background:var(--amber);transition:width .2s}
@@ -252,7 +256,7 @@ footer ul a:hover{color:var(--amber)}
   .stat{border-bottom:1px solid var(--border)}
   .plat-intro{grid-template-columns:1fr}
   .prod-th,.prod-row{grid-template-columns:84px 1fr 80px}
-  .pr-cat{display:none}
+  .pr-cat,.pr-status{display:none}
   .fs-inner{grid-template-columns:1fr}
   .fs-vis{display:none}
   .why-grid{grid-template-columns:1fr}
@@ -369,8 +373,8 @@ footer ul a:hover{color:var(--amber)}
         <div class="npia-feat">Trazabilidad de auditoría a través de cada transición del flujo</div>
       </div>
       <div class="npia-btns">
-        <a class="btn-a" href="https://npia.lucant.co" target="_blank">Acceder a NPIA →</a>
-        <a class="btn-o" href="mailto:info@lucant.co">Solicitar Demo</a>
+        <a class="btn-a" href="mailto:info@lucant.co">Solicitar Demo NPIA →</a>
+        <a class="btn-o" href="https://npia.lucant.co" target="_blank" style="font-size:.75rem;padding:.65rem 1.1rem;opacity:.5">Acceso Clientes ↗</a>
       </div>
     </div>
     <div class="npia-right">
@@ -408,39 +412,39 @@ footer ul a:hover{color:var(--amber)}
     <div class="plat-cat r">
       <div class="plat-cat-label">Operaciones y Seguridad — Industrial <span>02 plataformas</span></div>
       <div class="prod-table">
-        <div class="prod-th"><span>Plataforma</span><span>Qué hace — y por qué importa</span><span>Categoría</span><span>Enlace</span></div>
-        <div class="prod-row"><div class="pr-code">NPIA</div><div><div class="pr-name">New Product Inquiry Analyzer</div><div class="pr-pitch">Su proceso de aprobación de productos es tan bueno como su eslabón más débil. NPIA hace cumplir cada uno — revisión de atributos, captura de SDS, trazabilidad de auditoría — como un flujo único que no se puede abreviar. Para terminales de líquidos a granel.</div></div><div class="pr-cat">Industrial · Terminales</div><a class="pr-link" href="https://npia.lucant.co" target="_blank">Acceder ↗</a></div>
-        <div class="prod-row"><div class="pr-code">MoCTrack</div><div><div class="pr-name">Management of Change Tracker</div><div class="pr-pitch">Un cambio que omite el LOTO es una responsabilidad esperando materializarse. MoCTrack lo hace imposible — MOC → JSA → PTW → LOTO → Ejecución → RVAP → Cierre, cada compuerta cumplida, cada firma requerida, cada transición registrada.</div></div><div class="pr-cat">Industrial · Seguridad</div><a class="pr-link" href="mailto:info@lucant.co">Demo ↗</a></div>
+        <div class="prod-th"><span>Plataforma</span><span>Qué hace — y por qué importa</span><span>Categoría</span><span>Estado</span><span>Enlace</span></div>
+        <div class="prod-row"><div class="pr-code">NPIA</div><div><div class="pr-name">New Product Inquiry Analyzer</div><div class="pr-pitch">Su proceso de aprobación de productos es tan bueno como su eslabón más débil. NPIA hace cumplir cada uno — revisión de atributos, captura de SDS, trazabilidad de auditoría — como un flujo único que no se puede abreviar. Para terminales de líquidos a granel.</div></div><div class="pr-cat">Industrial · Terminales</div><div class="pr-status live">Activo</div><a class="pr-link" href="mailto:info@lucant.co">Demo ↗</a></div>
+        <div class="prod-row"><div class="pr-code">MoCTrack</div><div><div class="pr-name">Management of Change Tracker</div><div class="pr-pitch">Un cambio que omite el LOTO es una responsabilidad esperando materializarse. MoCTrack lo hace imposible — MOC → JSA → PTW → LOTO → Ejecución → RVAP → Cierre, cada compuerta cumplida, cada firma requerida, cada transición registrada.</div></div><div class="pr-cat">Industrial · Seguridad</div><div class="pr-status demo">Demo Privada</div><a class="pr-link" href="mailto:info@lucant.co">Demo ↗</a></div>
       </div>
     </div>
 
     <div class="plat-cat r">
       <div class="plat-cat-label">Gestión de Activos <span>01 plataforma</span></div>
       <div class="prod-table">
-        <div class="prod-th"><span>Plataforma</span><span>Qué hace — y por qué importa</span><span>Categoría</span><span>Enlace</span></div>
-        <div class="prod-row"><div class="pr-code">GALUX</div><div><div class="pr-name">Plataforma de Gestión de Activos — ISO 55001</div><div class="pr-pitch">Lo que no se mide no se puede optimizar. GALUX da a los operadores visibilidad en tiempo real de su portafolio completo de activos — fallas, ciclos de mantenimiento, estado de cumplimiento e indicadores — bajo ISO 55001. Construido para alumbrado público. Listo para cualquier organización intensiva en activos.</div></div><div class="pr-cat">Gestión de Activos</div><a class="pr-link" href="https://lucant.co/go/galux.html" target="_blank">Demo ↗</a></div>
+        <div class="prod-th"><span>Plataforma</span><span>Qué hace — y por qué importa</span><span>Categoría</span><span>Estado</span><span>Enlace</span></div>
+        <div class="prod-row"><div class="pr-code">GALUX</div><div><div class="pr-name">Plataforma de Gestión de Activos — ISO 55001</div><div class="pr-pitch">Lo que no se mide no se puede optimizar. GALUX da a los operadores visibilidad en tiempo real de su portafolio completo de activos — fallas, ciclos de mantenimiento, estado de cumplimiento e indicadores — bajo ISO 55001. Construido para alumbrado público. Listo para cualquier organización intensiva en activos.</div></div><div class="pr-cat">Gestión de Activos</div><div class="pr-status demo">Demo Privada</div><a class="pr-link" href="mailto:info@lucant.co">Demo ↗</a></div>
       </div>
     </div>
 
     <div class="plat-cat r">
       <div class="plat-cat-label">Territorio y Cumplimiento <span>03 plataformas</span></div>
       <div class="prod-table">
-        <div class="prod-th"><span>Plataforma</span><span>Qué hace — y por qué importa</span><span>Categoría</span><span>Enlace</span></div>
-        <div class="prod-row"><div class="pr-code">ETNOTRACK</div><div><div class="pr-name">Consulta Previa y Cumplimiento Étnico</div><div class="pr-pitch">Incumplir un compromiso en consulta previa no solo crea riesgo legal — paraliza su proyecto. ETNOTRACK centraliza cada acta, compromiso y visita de campo para que nada se pierda entre etapas o miembros del equipo.</div></div><div class="pr-cat">Territorio · Cumplimiento</div><a class="pr-link" href="https://lucant.co/go/etnotrack.html" target="_blank">Demo ↗</a></div>
-        <div class="prod-row"><div class="pr-code">TRAZO</div><div><div class="pr-name">Control y Gestión Contractual</div><div class="pr-pitch">Los contratos públicos vencen mientras nadie los vigila. TRAZO rastrea cada plazo, acta y anticipo — y alerta antes de que sea tarde. Su entidad se mantiene en cumplimiento sin supervisión manual.</div></div><div class="pr-cat">Contratos · Público</div><a class="pr-link" href="https://lucant.co/go/trazo.html" target="_blank">Demo ↗</a></div>
-        <div class="prod-row"><div class="pr-code">GEOCAT</div><div><div class="pr-name">Geoportal Catastral SaaS</div><div class="pr-pitch">Los ciudadanos no deberían ir a una oficina por un certificado catastral. GEOCAT pone el registro predial de su municipio en línea — certificados con QR, liquidación de predial, pagos PSE. Conforme con LADM_COL SINIC V1.0.</div></div><div class="pr-cat">Catastral · Municipal</div><a class="pr-link" href="https://lucant.co/geocat.html" target="_blank">Abrir ↗</a></div>
+        <div class="prod-th"><span>Plataforma</span><span>Qué hace — y por qué importa</span><span>Categoría</span><span>Estado</span><span>Enlace</span></div>
+        <div class="prod-row"><div class="pr-code">ETNOTRACK</div><div><div class="pr-name">Consulta Previa y Cumplimiento Étnico</div><div class="pr-pitch">Incumplir un compromiso en consulta previa no solo crea riesgo legal — paraliza su proyecto. ETNOTRACK centraliza cada acta, compromiso y visita de campo para que nada se pierda entre etapas o miembros del equipo.</div></div><div class="pr-cat">Territorio · Cumplimiento</div><div class="pr-status demo">Demo Privada</div><a class="pr-link" href="mailto:info@lucant.co">Demo ↗</a></div>
+        <div class="prod-row"><div class="pr-code">TRAZO</div><div><div class="pr-name">Control y Gestión Contractual</div><div class="pr-pitch">Los contratos públicos vencen mientras nadie los vigila. TRAZO rastrea cada plazo, acta y anticipo — y alerta antes de que sea tarde. Su entidad se mantiene en cumplimiento sin supervisión manual.</div></div><div class="pr-cat">Contratos · Público</div><div class="pr-status demo">Demo Privada</div><a class="pr-link" href="mailto:info@lucant.co">Demo ↗</a></div>
+        <div class="prod-row"><div class="pr-code">GEOCAT</div><div><div class="pr-name">Geoportal Catastral SaaS</div><div class="pr-pitch">Los ciudadanos no deberían ir a una oficina por un certificado catastral. GEOCAT pone el registro predial de su municipio en línea — certificados con QR, liquidación de predial, pagos PSE. Conforme con LADM_COL SINIC V1.0.</div></div><div class="pr-cat">Catastral · Municipal</div><div class="pr-status live">Activo</div><a class="pr-link" href="https://lucant.co/geocat.html" target="_blank">Abrir ↗</a></div>
       </div>
     </div>
 
     <div class="plat-cat r">
       <div class="plat-cat-label">Administración Pública <span>05 plataformas</span></div>
       <div class="prod-table">
-        <div class="prod-th"><span>Plataforma</span><span>Qué hace — y por qué importa</span><span>Categoría</span><span>Enlace</span></div>
-        <div class="prod-row"><div class="pr-code">PIAP</div><div><div class="pr-name">Plataforma Integrada de Administración PAE</div><div class="pr-pitch">Los operadores del PAE que trabajan en Excel están a una auditoría de una crisis. PIAP reemplaza las hojas de cálculo con un sistema estructurado y trazable para el ciclo completo del contrato — operaciones, liquidación, nómina, proveedores, facturas.</div></div><div class="pr-cat">Alimentación Escolar</div><a class="pr-link" href="https://lucant.co/piap.html" target="_blank">Abrir ↗</a></div>
-        <div class="prod-row"><div class="pr-code">RADICA</div><div><div class="pr-name">Plataforma de Gestión PQRSD</div><div class="pr-pitch">Una PQRSD que vence sin respuesta es una sanción esperando materializarse. RADICA automatiza la radicación, asignación, seguimiento y reporte para que su entidad nunca incumpla un término legal.</div></div><div class="pr-cat">PQRSD · Público</div><a class="pr-link" href="https://lucant.co/go/radica.html" target="_blank">Demo ↗</a></div>
-        <div class="prod-row"><div class="pr-code">SALUS</div><div><div class="pr-name">Sistema de Administración y Logística en Salud</div><div class="pr-pitch">La gestión hospitalaria no debería requerir cinco sistemas distintos. SALUS unifica admisión, historia clínica, farmacia y facturación en una sola plataforma para hospitales y ESE.</div></div><div class="pr-cat">Salud · ESE</div><a class="pr-link" href="https://lucant.co/go/salus.html" target="_blank">Demo ↗</a></div>
-        <div class="prod-row"><div class="pr-code">SIAL</div><div><div class="pr-name">Sistema de Información y Administración Local</div><div class="pr-pitch">Las entidades territoriales toman decisiones todos los días sin los datos que las respalden. SIAL centraliza procesos y da estructura a las operaciones del gobierno local, organizado por dependencia.</div></div><div class="pr-cat">Territorial · Gov</div><a class="pr-link" href="https://lucant.co/go/sial.html" target="_blank">Demo ↗</a></div>
-        <div class="prod-row"><div class="pr-code">SARI</div><div><div class="pr-name">Sistema de Administración de Resguardos Indígenas</div><div class="pr-pitch">La administración de resguardos tiene responsabilidades que el software genérico ignora. SARI centraliza beneficiarios, territorio y seguimiento comunitario para las comunidades Wayuu — construido con las comunidades que sirve.</div></div><div class="pr-cat">Indígena · Wayuu</div><a class="pr-link" href="https://lucant.co/go/sari.html" target="_blank">Demo ↗</a></div>
+        <div class="prod-th"><span>Plataforma</span><span>Qué hace — y por qué importa</span><span>Categoría</span><span>Estado</span><span>Enlace</span></div>
+        <div class="prod-row"><div class="pr-code">PIAP</div><div><div class="pr-name">Plataforma Integrada de Administración PAE</div><div class="pr-pitch">Los operadores del PAE que trabajan en Excel están a una auditoría de una crisis. PIAP reemplaza las hojas de cálculo con un sistema estructurado y trazable para el ciclo completo del contrato — operaciones, liquidación, nómina, proveedores, facturas.</div></div><div class="pr-cat">Alimentación Escolar</div><div class="pr-status live">Activo</div><a class="pr-link" href="https://lucant.co/piap.html" target="_blank">Abrir ↗</a></div>
+        <div class="prod-row"><div class="pr-code">RADICA</div><div><div class="pr-name">Plataforma de Gestión PQRSD</div><div class="pr-pitch">Una PQRSD que vence sin respuesta es una sanción esperando materializarse. RADICA automatiza la radicación, asignación, seguimiento y reporte para que su entidad nunca incumpla un término legal.</div></div><div class="pr-cat">PQRSD · Público</div><div class="pr-status request">A Solicitud</div><a class="pr-link" href="mailto:info@lucant.co">Demo ↗</a></div>
+        <div class="prod-row"><div class="pr-code">SALUS</div><div><div class="pr-name">Sistema de Administración y Logística en Salud</div><div class="pr-pitch">La gestión hospitalaria no debería requerir cinco sistemas distintos. SALUS unifica admisión, historia clínica, farmacia y facturación en una sola plataforma para hospitales y ESE.</div></div><div class="pr-cat">Salud · ESE</div><div class="pr-status request">A Solicitud</div><a class="pr-link" href="mailto:info@lucant.co">Demo ↗</a></div>
+        <div class="prod-row"><div class="pr-code">SIAL</div><div><div class="pr-name">Sistema de Información y Administración Local</div><div class="pr-pitch">Las entidades territoriales toman decisiones todos los días sin los datos que las respalden. SIAL centraliza procesos y da estructura a las operaciones del gobierno local, organizado por dependencia.</div></div><div class="pr-cat">Territorial · Gov</div><div class="pr-status request">A Solicitud</div><a class="pr-link" href="mailto:info@lucant.co">Demo ↗</a></div>
+        <div class="prod-row"><div class="pr-code">SARI</div><div><div class="pr-name">Sistema de Administración de Resguardos Indígenas</div><div class="pr-pitch">La administración de resguardos tiene responsabilidades que el software genérico ignora. SARI centraliza beneficiarios, territorio y seguimiento comunitario para las comunidades Wayuu — construido con las comunidades que sirve.</div></div><div class="pr-cat">Indígena · Wayuu</div><div class="pr-status request">A Solicitud</div><a class="pr-link" href="mailto:info@lucant.co">Demo ↗</a></div>
       </div>
     </div>
   </div>
@@ -536,8 +540,8 @@ footer ul a:hover{color:var(--amber)}
     </div>
     <div class="news-grid">
       <div class="nc r d1"><div class="nc-img"><div class="nc-img-in ni1"></div><div class="nc-overlay"><span class="nc-cat">Lanzamiento</span></div></div><div class="nc-body"><div class="nc-date">2025</div><div class="nc-title">NPIA: La primera plataforma de revisión de productos para terminales de líquidos a granel</div><div class="nc-exc">Estructurada, aplicada y trazable. LUCANT entra al mercado industrial con la plataforma que los operadores de terminales necesitaban.</div><a class="nc-link" href="https://npia.lucant.co" target="_blank">Leer más</a></div></div>
-      <div class="nc r d2"><div class="nc-img"><div class="nc-img-in ni2"></div><div class="nc-overlay"><span class="nc-cat">Gestión de Activos</span></div></div><div class="nc-body"><div class="nc-date">2025</div><div class="nc-title">GALUX va más allá del alumbrado: ISO 55001 para cualquier operador de activos</div><div class="nc-exc">Construido para operadores municipales de alumbrado, GALUX ahora es desplegable para cualquier organización que gestiona activos físicos a escala.</div><a class="nc-link" href="https://lucant.co/go/galux.html" target="_blank">Leer más</a></div></div>
-      <div class="nc r d3"><div class="nc-img"><div class="nc-img-in ni3"></div><div class="nc-overlay"><span class="nc-cat">Territorio</span></div></div><div class="nc-body"><div class="nc-date">2024</div><div class="nc-title">ETNOTRACK: Consulta previa centralizada para proyectos en territorios étnicos</div><div class="nc-exc">Las empresas que operan en territorios con comunidades étnicas ya pueden rastrear cada compromiso, acta y visita en un sistema auditable.</div><a class="nc-link" href="https://lucant.co/go/etnotrack.html" target="_blank">Leer más</a></div></div>
+      <div class="nc r d2"><div class="nc-img"><div class="nc-img-in ni2"></div><div class="nc-overlay"><span class="nc-cat">Gestión de Activos</span></div></div><div class="nc-body"><div class="nc-date">2025</div><div class="nc-title">GALUX va más allá del alumbrado: ISO 55001 para cualquier operador de activos</div><div class="nc-exc">Construido para operadores municipales de alumbrado, GALUX ahora es desplegable para cualquier organización que gestiona activos físicos a escala.</div><a class="nc-link" href="mailto:info@lucant.co">Leer más</a></div></div>
+      <div class="nc r d3"><div class="nc-img"><div class="nc-img-in ni3"></div><div class="nc-overlay"><span class="nc-cat">Territorio</span></div></div><div class="nc-body"><div class="nc-date">2024</div><div class="nc-title">ETNOTRACK: Consulta previa centralizada para proyectos en territorios étnicos</div><div class="nc-exc">Las empresas que operan en territorios con comunidades étnicas ya pueden rastrear cada compromiso, acta y visita en un sistema auditable.</div><a class="nc-link" href="mailto:info@lucant.co">Leer más</a></div></div>
     </div>
   </div>
 </section>
@@ -547,8 +551,8 @@ footer ul a:hover{color:var(--amber)}
   <h2><em>Su operación merece</em>infraestructura<br>que funciona.</h2>
   <p>Desde el diseño hasta la puesta en marcha. Respuesta en menos de 24 horas.</p>
   <div class="cta-btns">
-    <a class="btn-a" style="font-size:.9rem;padding:.9rem 2rem" href="mailto:info@lucant.co">✉ info@lucant.co</a>
-    <a class="btn-o" style="font-size:.9rem;padding:.9rem 2rem" href="https://npia.lucant.co" target="_blank">⚗ Acceder a NPIA</a>
+    <a class="btn-a" style="font-size:.9rem;padding:.9rem 2rem" href="mailto:info@lucant.co">Solicitar Demo NPIA</a>
+    <a class="btn-o" style="font-size:.9rem;padding:.9rem 2rem" href="mailto:info@lucant.co">Cotizar</a>
   </div>
 </section>
 

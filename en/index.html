@@ -220,13 +220,13 @@ section{padding:5.5rem 3rem;border-bottom:1px solid var(--border)}
 .plat-cat-label span{font-size:.58rem;color:rgba(232,228,218,.18)}
 .prod-table{border:1px solid var(--border);border-top:none;border-radius:0 0 3px 3px;overflow:hidden;margin-bottom:0}
 .prod-th{
-  display:grid;grid-template-columns:96px 1fr 160px 72px;
+  display:grid;grid-template-columns:96px 1fr 140px 110px 72px;
   padding:.65rem 1.5rem;background:rgba(232,228,218,.03);
   border-bottom:1px solid var(--border);
 }
 .prod-th span{font-family:var(--H);font-size:.56rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(232,228,218,.18)}
 .prod-row{
-  display:grid;grid-template-columns:96px 1fr 160px 72px;
+  display:grid;grid-template-columns:96px 1fr 140px 110px 72px;
   padding:1.15rem 1.5rem;border-bottom:1px solid var(--border);
   align-items:start;transition:background .15s;position:relative;
 }
@@ -241,6 +241,10 @@ section{padding:5.5rem 3rem;border-bottom:1px solid var(--border)}
 .pr-cat{font-family:var(--H);font-size:.62rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(232,228,218,.28);padding-top:4px}
 .pr-link{font-family:var(--H);font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);padding-top:4px;transition:opacity .15s}
 .pr-link:hover{opacity:.7}
+.pr-status{font-family:var(--H);font-size:.6rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.2rem .55rem;border-radius:2px;padding-top:4px;width:fit-content;height:fit-content}
+.pr-status.live{color:#34d399;background:rgba(52,211,153,.08);border:1px solid rgba(52,211,153,.2)}
+.pr-status.demo{color:var(--amber);background:rgba(232,162,32,.08);border:1px solid rgba(232,162,32,.2)}
+.pr-status.request{color:rgba(232,228,218,.4);background:rgba(232,228,218,.04);border:1px solid rgba(232,228,218,.08)}
 
 /* ── SERVICES ── */
 .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:3px;overflow:hidden;margin-top:3rem}
@@ -393,7 +397,7 @@ footer ul a:hover{color:var(--amber)}
   .stat{border-bottom:1px solid var(--border)}
   .plat-intro{grid-template-columns:1fr}
   .prod-th,.prod-row{grid-template-columns:84px 1fr 80px}
-  .pr-cat{display:none}
+  .pr-cat,.pr-status{display:none}
   .fs-inner{grid-template-columns:1fr}
   .fs-vis{display:none}
   .why-grid{grid-template-columns:1fr}
@@ -618,8 +622,8 @@ footer ul a:hover{color:var(--amber)}
         <div class="npia-feat">Audit-grade traceability across every workflow transition</div>
       </div>
       <div class="npia-btns">
-        <a class="btn-a" href="https://npia.lucant.co" target="_blank">Access NPIA →</a>
-        <a class="btn-o" href="mailto:info@lucant.co">Request Demo</a>
+        <a class="btn-a" href="mailto:info@lucant.co">Request NPIA Demo →</a>
+        <a class="btn-o" href="https://npia.lucant.co" target="_blank" style="font-size:.75rem;padding:.65rem 1.1rem;opacity:.5">Client Login ↗</a>
       </div>
     </div>
     <div class="npia-right">
@@ -700,17 +704,19 @@ footer ul a:hover{color:var(--amber)}
     <div class="plat-cat r">
       <div class="plat-cat-label">Operations & Safety — Industrial <span>02 platforms</span></div>
       <div class="prod-table">
-        <div class="prod-th"><span>Platform</span><span>What it does — and why it matters</span><span>Category</span><span>Link</span></div>
+        <div class="prod-th"><span>Platform</span><span>What it does — and why it matters</span><span>Category</span><span>Status</span><span>Link</span></div>
         <div class="prod-row">
           <div class="pr-code">NPIA</div>
           <div><div class="pr-name">New Product Inquiry Analyzer</div><div class="pr-pitch">Your product approval process is only as good as its weakest step. NPIA enforces every one — SDS intake, attribute review, audit trail — as a single workflow that can't be shortcut. Built for bulk liquid storage terminals.</div></div>
           <div class="pr-cat">Industrial · Terminals</div>
-          <a class="pr-link" href="https://npia.lucant.co" target="_blank">Access ↗</a>
+          <div class="pr-status live">Live</div>
+          <a class="pr-link" href="mailto:info@lucant.co">Demo ↗</a>
         </div>
         <div class="prod-row">
           <div class="pr-code">MoCTrack</div>
           <div><div class="pr-name">Management of Change Tracker</div><div class="pr-pitch">A change that skips LOTO is a liability waiting to happen. MoCTrack makes it impossible — MOC → JSA → PTW → LOTO → Execution → PSSR → Closure, every gate enforced, every signature required, every transition logged.</div></div>
           <div class="pr-cat">Industrial · Safety</div>
+          <div class="pr-status demo">Private Demo</div>
           <a class="pr-link" href="mailto:info@lucant.co">Demo ↗</a>
         </div>
       </div>
@@ -720,12 +726,13 @@ footer ul a:hover{color:var(--amber)}
     <div class="plat-cat r">
       <div class="plat-cat-label">Asset Management <span>01 platform</span></div>
       <div class="prod-table">
-        <div class="prod-th"><span>Platform</span><span>What it does — and why it matters</span><span>Category</span><span>Link</span></div>
+        <div class="prod-th"><span>Platform</span><span>What it does — and why it matters</span><span>Category</span><span>Status</span><span>Link</span></div>
         <div class="prod-row">
           <div class="pr-code">GALUX</div>
           <div><div class="pr-name">Asset Management Platform — ISO 55001</div><div class="pr-pitch">What you don't track, you can't optimize. GALUX gives operators real-time visibility across their full asset portfolio — faults, maintenance cycles, compliance status, and KPIs — under ISO 55001. Built for public lighting operators. Ready for any asset-intensive organization.</div></div>
           <div class="pr-cat">Asset Management</div>
-          <a class="pr-link" href="https://lucant.co/go/galux.html" target="_blank">Demo ↗</a>
+          <div class="pr-status demo">Private Demo</div>
+          <a class="pr-link" href="mailto:info@lucant.co">Demo ↗</a>
         </div>
       </div>
     </div>
@@ -734,23 +741,26 @@ footer ul a:hover{color:var(--amber)}
     <div class="plat-cat r">
       <div class="plat-cat-label">Territory & Compliance <span>03 platforms</span></div>
       <div class="prod-table">
-        <div class="prod-th"><span>Platform</span><span>What it does — and why it matters</span><span>Category</span><span>Link</span></div>
+        <div class="prod-th"><span>Platform</span><span>What it does — and why it matters</span><span>Category</span><span>Status</span><span>Link</span></div>
         <div class="prod-row">
           <div class="pr-code">ETNOTRACK</div>
           <div><div class="pr-name">Prior Consultation & Ethnic Compliance</div><div class="pr-pitch">Missing a prior consultation commitment doesn't just create legal risk — it stops your project. ETNOTRACK centralizes every minute, commitment, and field visit so nothing falls through the gaps between stages or team members.</div></div>
           <div class="pr-cat">Territory · Compliance</div>
-          <a class="pr-link" href="https://lucant.co/go/etnotrack.html" target="_blank">Demo ↗</a>
+          <div class="pr-status demo">Private Demo</div>
+          <a class="pr-link" href="mailto:info@lucant.co">Demo ↗</a>
         </div>
         <div class="prod-row">
           <div class="pr-code">TRAZO</div>
           <div><div class="pr-name">Contract Control & Management</div><div class="pr-pitch">Public contracts expire while nobody's watching. TRAZO tracks every deadline, minute, and advance — and alerts before it's too late. Your entity stays compliant without manual oversight.</div></div>
           <div class="pr-cat">Contracts · Public</div>
-          <a class="pr-link" href="https://lucant.co/go/trazo.html" target="_blank">Demo ↗</a>
+          <div class="pr-status demo">Private Demo</div>
+          <a class="pr-link" href="mailto:info@lucant.co">Demo ↗</a>
         </div>
         <div class="prod-row">
           <div class="pr-code">GEOCAT</div>
           <div><div class="pr-name">SaaS Cadastral Geoportal</div><div class="pr-pitch">Citizens shouldn't need to visit an office for a cadastral certificate. GEOCAT puts your municipality's property registry online — QR certificates, tax settlement, PSE payments. LADM_COL SINIC V1.0 compliant.</div></div>
           <div class="pr-cat">Cadastral · Municipal</div>
+          <div class="pr-status live">Live</div>
           <a class="pr-link" href="https://lucant.co/geocat.html" target="_blank">Open ↗</a>
         </div>
       </div>
@@ -760,36 +770,41 @@ footer ul a:hover{color:var(--amber)}
     <div class="plat-cat r">
       <div class="plat-cat-label">Public Administration <span>05 platforms</span></div>
       <div class="prod-table">
-        <div class="prod-th"><span>Platform</span><span>What it does — and why it matters</span><span>Category</span><span>Link</span></div>
+        <div class="prod-th"><span>Platform</span><span>What it does — and why it matters</span><span>Category</span><span>Status</span><span>Link</span></div>
         <div class="prod-row">
           <div class="pr-code">PIAP</div>
           <div><div class="pr-name">Integrated PAE Administration Platform</div><div class="pr-pitch">PAE operators running on Excel are one audit away from a crisis. PIAP replaces spreadsheets with a structured, traceable system for the full contract lifecycle — operations, settlement, payroll, suppliers, invoices.</div></div>
           <div class="pr-cat">School Feeding</div>
+          <div class="pr-status live">Live</div>
           <a class="pr-link" href="https://lucant.co/piap.html" target="_blank">Open ↗</a>
         </div>
         <div class="prod-row">
           <div class="pr-code">RADICA</div>
           <div><div class="pr-name">PQRSD Management Platform</div><div class="pr-pitch">A PQRSD that expires without response is a sanction waiting to happen. RADICA automates filing, assignment, tracking, and reporting so your entity never misses a statutory deadline.</div></div>
           <div class="pr-cat">PQRSD · Public</div>
-          <a class="pr-link" href="https://lucant.co/go/radica.html" target="_blank">Demo ↗</a>
+          <div class="pr-status request">On Request</div>
+          <a class="pr-link" href="mailto:info@lucant.co">Demo ↗</a>
         </div>
         <div class="prod-row">
           <div class="pr-code">SALUS</div>
           <div><div class="pr-name">Health Administration & Logistics System</div><div class="pr-pitch">Hospital management shouldn't require five different systems. SALUS unifies admission, medical records, pharmacy, and billing in one platform — built for hospitals and ESE.</div></div>
           <div class="pr-cat">Healthcare · ESE</div>
-          <a class="pr-link" href="https://lucant.co/go/salus.html" target="_blank">Demo ↗</a>
+          <div class="pr-status request">On Request</div>
+          <a class="pr-link" href="mailto:info@lucant.co">Demo ↗</a>
         </div>
         <div class="prod-row">
           <div class="pr-code">SIAL</div>
           <div><div class="pr-name">Local Information & Administration System</div><div class="pr-pitch">Territorial entities make decisions every day without the data to back them up. SIAL centralizes processes and brings structure to local government operations, organized by department.</div></div>
           <div class="pr-cat">Territorial · Gov</div>
-          <a class="pr-link" href="https://lucant.co/go/sial.html" target="_blank">Demo ↗</a>
+          <div class="pr-status request">On Request</div>
+          <a class="pr-link" href="mailto:info@lucant.co">Demo ↗</a>
         </div>
         <div class="prod-row">
           <div class="pr-code">SARI</div>
           <div><div class="pr-name">Indigenous Reserve Administration System</div><div class="pr-pitch">Indigenous reserve administration carries responsibilities that generic software ignores. SARI centralizes beneficiaries, territory, and community tracking for Wayuu communities — built with the communities it serves.</div></div>
           <div class="pr-cat">Indigenous · Wayuu</div>
-          <a class="pr-link" href="https://lucant.co/go/sari.html" target="_blank">Demo ↗</a>
+          <div class="pr-status request">On Request</div>
+          <a class="pr-link" href="mailto:info@lucant.co">Demo ↗</a>
         </div>
       </div>
     </div>
@@ -927,7 +942,7 @@ footer ul a:hover{color:var(--amber)}
           <div class="nc-date">2025</div>
           <div class="nc-title">GALUX expands beyond public lighting: ISO 55001 for any asset operator</div>
           <div class="nc-exc">Built for municipal lighting operators, GALUX is now deployable for any organization managing physical assets at scale — under ISO 55001.</div>
-          <a class="nc-link" href="https://lucant.co/go/galux.html" target="_blank">Read more</a>
+          <a class="nc-link" href="mailto:info@lucant.co">Read more</a>
         </div>
       </div>
       <div class="nc r d3">
@@ -936,7 +951,7 @@ footer ul a:hover{color:var(--amber)}
           <div class="nc-date">2024</div>
           <div class="nc-title">ETNOTRACK: Centralizing prior consultation for projects in ethnic territories</div>
           <div class="nc-exc">Companies operating in territories with ethnic communities can now track every commitment, minute, and field visit in one auditable system.</div>
-          <a class="nc-link" href="https://lucant.co/go/etnotrack.html" target="_blank">Read more</a>
+          <a class="nc-link" href="mailto:info@lucant.co">Read more</a>
         </div>
       </div>
     </div>
@@ -952,8 +967,8 @@ footer ul a:hover{color:var(--amber)}
   </h2>
   <p>From design to commissioning. Response in under 24 hours.</p>
   <div class="cta-btns">
-    <a class="btn-a" style="font-size:.9rem;padding:.9rem 2rem" href="mailto:info@lucant.co">✉ info@lucant.co</a>
-    <a class="btn-o" style="font-size:.9rem;padding:.9rem 2rem" href="https://npia.lucant.co" target="_blank">⚗ Access NPIA</a>
+    <a class="btn-a" style="font-size:.9rem;padding:.9rem 2rem" href="mailto:info@lucant.co">Request NPIA Demo</a>
+    <a class="btn-o" style="font-size:.9rem;padding:.9rem 2rem" href="mailto:info@lucant.co">Get a Quote</a>
   </div>
 </section>
 
