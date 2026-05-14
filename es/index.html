@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>LUCANT — Software. Seguridad. Infraestructura.</title>
+<meta name="description" content="11 plataformas propias. Seguridad electrónica. Energía solar. Redes y centros de datos. Un equipo — desde el diseño hasta la puesta en marcha."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Figtree',sans-serif;background:#0f0e0b;color:#e8e4da;overflow-x:hidden;line-height:1.6}
+a{text-decoration:none;color:inherit}
+button{cursor:pointer;font-family:'Figtree',sans-serif;border:none;background:none}
+:root{
+  --bg:#0f0e0b;--surface:#161410;--card:#1a1814;
+  --amber:#e8a320;--amber2:#f0b438;
+  --white:#fff;--cream:#e8e4da;
+  --muted:rgba(232,228,218,.32);--faint:rgba(232,228,218,.1);
+  --border:rgba(232,228,218,.08);--border2:rgba(232,228,218,.13);
+  --H:'Barlow',sans-serif;--B:'Figtree',sans-serif;
+}
+#nav{position:fixed;top:0;left:0;right:0;z-index:400;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 3rem;background:rgba(15,14,11,.9);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:box-shadow .3s}
+#nav.scrolled{box-shadow:0 4px 30px rgba(0,0,0,.5)}
+.logo{display:flex;align-items:center;gap:.45rem;font-family:var(--H);font-weight:900;font-size:1.1rem;letter-spacing:.07em;color:var(--white)}
+.logo-mark{color:var(--amber);font-size:1.25rem;line-height:1}
+.nav-links{display:flex;height:64px;list-style:none}
+.nav-links a{display:flex;align-items:center;padding:0 1.15rem;height:100%;font-size:.82rem;font-weight:500;color:var(--muted);transition:color .15s;border-bottom:2px solid transparent;letter-spacing:.03em}
+.nav-links a:hover{color:var(--cream)}
+.lang-switch{display:flex;align-items:center;gap:.75rem}
+.lang-btn{font-family:var(--H);font-size:.72rem;font-weight:700;letter-spacing:.1em;color:rgba(232,228,218,.35);transition:color .15s;padding:.25rem 0;border-bottom:1px solid transparent}
+.lang-btn:hover{color:var(--cream)}
+.lang-btn.active{color:var(--amber);border-bottom-color:var(--amber)}
+.lang-sep{color:rgba(232,228,218,.15);font-size:.8rem}
+.nav-cta{display:inline-flex;align-items:center;gap:.45rem;padding:.5rem 1.35rem;background:var(--amber);color:#0f0e0b;font-family:var(--H);font-size:.8rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;border-radius:3px;transition:background .15s}
+.nav-cta:hover{background:var(--amber2)}
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:8rem 3rem 0;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:64px 64px;pointer-events:none}
+.hero::after{content:'';position:absolute;width:900px;height:900px;border-radius:50%;background:radial-gradient(circle,rgba(232,162,32,.07) 0%,transparent 68%);bottom:-200px;left:-100px;pointer-events:none}
+.hero-eyebrow{font-family:var(--H);font-size:.7rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--amber);display:flex;align-items:center;gap:.55rem;margin-bottom:2rem;position:relative;z-index:1}
+.hero-eyebrow i{color:rgba(232,162,32,.35);font-style:normal}
+.hero h1{font-family:var(--H);font-weight:900;font-size:clamp(4rem,10vw,10rem);line-height:.92;letter-spacing:-.035em;position:relative;z-index:1;margin-bottom:2.5rem}
+.h1-w{color:var(--white);display:block}
+.h1-a{color:var(--amber);display:block}
+.h1-m{color:rgba(232,228,218,.15);display:block}
+.hero-body{display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;flex-wrap:wrap;margin-bottom:4rem;position:relative;z-index:1}
+.hero-sub{font-size:1rem;color:var(--muted);max-width:460px;line-height:1.85}
+.hero-btns{display:flex;gap:.85rem;flex-wrap:wrap;flex-shrink:0}
+.btn-a{display:inline-flex;align-items:center;gap:.55rem;padding:.9rem 1.75rem;background:var(--amber);color:#0f0e0b;font-family:var(--H);font-size:.85rem;font-weight:800;letter-spacing:.07em;text-transform:uppercase;border-radius:3px;transition:background .15s}
+.btn-a:hover{background:var(--amber2)}
+.btn-a svg,.btn-o svg{width:16px;height:16px;flex-shrink:0}
+.btn-o{display:inline-flex;align-items:center;gap:.55rem;padding:.9rem 1.75rem;border:1px solid var(--border2);color:rgba(232,228,218,.6);font-family:var(--H);font-size:.85rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;border-radius:3px;transition:all .15s;background:rgba(232,228,218,.04)}
+.btn-o:hover{border-color:rgba(232,228,218,.3);color:var(--cream)}
+.hero-strip{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--border);position:relative;z-index:1}
+.hs{padding:1.6rem 2rem;border-right:1px solid var(--border);transition:background .18s}
+.hs:last-child{border-right:none}
+.hs:hover{background:rgba(232,162,32,.04)}
+.hs-tag{font-family:var(--H);font-size:.6rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(232,228,218,.28);margin-bottom:.35rem}
+.hs-val{font-family:var(--H);font-weight:800;font-size:1rem;color:var(--white);margin-bottom:.18rem;line-height:1.2}
+.hs-sub{font-size:.72rem;color:rgba(232,228,218,.3);line-height:1.4}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--border)}
+.stat{padding:2.5rem 3rem;border-right:1px solid var(--border)}
+.stat:last-child{border-right:none}
+.stat-n{font-family:var(--H);font-weight:900;font-size:3.8rem;color:var(--white);line-height:1;display:block;margin-bottom:.3rem}
+.stat-n sub{font-size:1.8rem;color:var(--amber);vertical-align:baseline}
+.stat-l{font-family:var(--H);font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(232,228,218,.3)}
+.ticker{overflow:hidden;border-bottom:1px solid var(--border);padding:.85rem 0;background:var(--surface)}
+.ticker-t{display:flex;gap:2.5rem;animation:run 32s linear infinite;width:max-content;white-space:nowrap}
+.ti{font-family:var(--H);font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(232,228,218,.18);display:flex;align-items:center;gap:.55rem}
+.ti::before{content:'·';color:rgba(232,228,218,.1)}
+.ti.on{color:rgba(232,228,218,.48)}
+@keyframes run{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+section{padding:5.5rem 3rem;border-bottom:1px solid var(--border)}
+.ct{max-width:1180px;margin:0 auto}
+.ey{font-family:var(--H);font-size:.65rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);margin-bottom:.6rem;display:flex;align-items:center;gap:.55rem}
+.ey::before{content:'';width:16px;height:2px;background:var(--amber)}
+.st{font-family:var(--H);font-weight:900;font-size:clamp(2.2rem,4.5vw,3.8rem);color:var(--white);line-height:1;letter-spacing:-.035em;margin-bottom:.75rem}
+.sb{font-size:.95rem;color:var(--muted);max-width:480px;line-height:1.85}
+.sol-wrap{padding:0;border-bottom:1px solid var(--border)}
+.sol-head{padding:3.5rem 3rem 2rem;border-bottom:1px solid var(--border)}
+.sol-grid{display:grid;grid-template-columns:repeat(4,1fr);height:540px}
+.sc{position:relative;overflow:hidden;border-right:1px solid rgba(232,228,218,.06);display:flex;flex-direction:column;justify-content:flex-end;padding:2.25rem;cursor:pointer;transition:flex .45s cubic-bezier(.4,0,.2,1);flex:1}
+.sc:last-child{border-right:none}
+.sc:hover{flex:1.5}
+.sc-bg{position:absolute;inset:0;transition:transform .45s ease}
+.sc:hover .sc-bg{transform:scale(1.05)}
+.sc::before{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(to top,rgba(10,9,7,.97) 0%,rgba(10,9,7,.55) 50%,rgba(10,9,7,.15) 100%)}
+.sc-bg-1{background:linear-gradient(150deg,#07153a 0%,#0c2a85 55%,#1247d6 100%)}
+.sc-bg-2{background:linear-gradient(150deg,#0a1008 0%,#153d1a 55%,#1e6b2a 100%)}
+.sc-bg-3{background:linear-gradient(150deg,#1a0d00 0%,#6b3000 55%,#a34f00 100%)}
+.sc-bg-4{background:linear-gradient(150deg,#060b18 0%,#0b1a38 55%,#122b5e 100%)}
+.sc-bg::after{content:'';position:absolute;width:260px;height:260px;border-radius:50%;border:55px solid rgba(255,255,255,.035);top:-70px;right:-70px}
+.sc-content{position:relative;z-index:2}
+.sc-num{font-family:var(--H);font-size:.58rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(232,228,218,.25);margin-bottom:1.75rem;display:block}
+.sc-title{font-family:var(--H);font-weight:900;font-size:1.4rem;color:var(--white);line-height:1.1;margin-bottom:.5rem}
+.sc-desc{font-size:.78rem;color:rgba(232,228,218,.52);line-height:1.7;max-height:0;overflow:hidden;opacity:0;transition:max-height .4s ease,opacity .35s;margin-bottom:0}
+.sc:hover .sc-desc{max-height:90px;opacity:1;margin-bottom:.9rem}
+.sc-cta{font-family:var(--H);font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);display:flex;align-items:center;gap:.4rem;transition:gap .2s}
+.sc:hover .sc-cta{gap:.75rem}
+.npia-spot{padding:0;border-bottom:1px solid var(--border);background:var(--surface);overflow:hidden}
+.npia-spot-inner{display:grid;grid-template-columns:1fr 420px;min-height:560px;position:relative}
+.npia-spot-inner::before{content:'NPIA';position:absolute;right:-20px;top:50%;transform:translateY(-50%);font-family:var(--H);font-weight:900;font-size:min(22vw,260px);color:rgba(232,228,218,.025);line-height:1;letter-spacing:-.05em;pointer-events:none;user-select:none;z-index:0}
+.npia-left{padding:5rem 4rem 5rem 3rem;border-right:1px solid var(--border);display:flex;flex-direction:column;justify-content:center;position:relative;z-index:1}
+.npia-kicker{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--H);font-size:.6rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);border:1px solid rgba(232,162,32,.2);background:rgba(232,162,32,.07);padding:.28rem .85rem;border-radius:2px;margin-bottom:1.5rem;width:fit-content}
+.npia-product-name{font-family:var(--H);font-weight:900;font-size:clamp(3.5rem,7vw,6.5rem);color:var(--white);line-height:.9;letter-spacing:-.04em;margin-bottom:.35rem}
+.npia-full{font-size:.85rem;color:rgba(232,228,218,.3);font-weight:500;letter-spacing:.04em;margin-bottom:1.5rem}
+.npia-desc{font-size:.95rem;color:rgba(232,228,218,.52);line-height:1.85;max-width:460px;margin-bottom:1.75rem}
+.npia-feats{display:flex;flex-direction:column;gap:.7rem;margin-bottom:2.25rem}
+.npia-feat{display:flex;align-items:baseline;gap:.85rem;font-size:.82rem;color:rgba(232,228,218,.55);line-height:1.5}
+.npia-feat::before{content:'—';color:var(--amber);flex-shrink:0;font-size:.65rem}
+.npia-btns{display:flex;gap:.75rem;flex-wrap:wrap}
+.npia-right{padding:3.5rem 2.5rem;display:flex;flex-direction:column;justify-content:center;gap:0;position:relative;z-index:1}
+.npia-spec{padding:1.6rem 0;border-bottom:1px solid var(--border)}
+.npia-spec:last-child{border-bottom:none}
+.nsp-label{font-family:var(--H);font-size:.6rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(232,228,218,.22);margin-bottom:.45rem}
+.nsp-val{font-family:var(--H);font-weight:800;font-size:.92rem;color:var(--white);line-height:1.3;margin-bottom:.2rem}
+.nsp-sub{font-size:.72rem;color:rgba(232,228,218,.28)}
+.seg-wrap{padding:0;border-bottom:1px solid var(--border);background:var(--surface)}
+.seg-head{padding:3.5rem 3rem 2rem;border-bottom:1px solid var(--border)}
+.seg-grid{display:grid;grid-template-columns:repeat(4,1fr)}
+.sg{padding:2.5rem;border-right:1px solid var(--border);transition:background .18s;position:relative;overflow:hidden}
+.sg:last-child{border-right:none}
+.sg:hover{background:rgba(232,162,32,.04)}
+.sg-num{font-family:var(--H);font-size:.58rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(232,228,218,.18);margin-bottom:1.5rem;display:block}
+.sg h3{font-family:var(--H);font-weight:800;font-size:1.1rem;color:var(--white);line-height:1.2;margin-bottom:.65rem}
+.sg p{font-size:.8rem;color:rgba(232,228,218,.38);line-height:1.75;margin-bottom:1rem}
+.sg-link{font-family:var(--H);font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);display:flex;align-items:center;gap:.4rem;transition:gap .18s}
+.sg:hover .sg-link{gap:.7rem}
+.plat-wrap{background:var(--surface)}
+.plat-intro{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:end;margin-bottom:3.5rem}
+.plat-cat{margin-bottom:2.5rem}
+.plat-cat-label{font-family:var(--H);font-size:.62rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(232,228,218,.3);padding:.6rem 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin-bottom:0;display:flex;align-items:center;justify-content:space-between}
+.plat-cat-label span{font-size:.58rem;color:rgba(232,228,218,.18)}
+.prod-table{border:1px solid var(--border);border-top:none;border-radius:0 0 3px 3px;overflow:hidden;margin-bottom:0}
+.prod-th{display:grid;grid-template-columns:96px 1fr 160px 72px;padding:.65rem 1.5rem;background:rgba(232,228,218,.03);border-bottom:1px solid var(--border)}
+.prod-th span{font-family:var(--H);font-size:.56rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(232,228,218,.18)}
+.prod-row{display:grid;grid-template-columns:96px 1fr 160px 72px;padding:1.15rem 1.5rem;border-bottom:1px solid var(--border);align-items:start;transition:background .15s;position:relative}
+.prod-row:last-child{border-bottom:none}
+.prod-row::before{content:'';position:absolute;left:0;top:0;bottom:0;width:0;background:var(--amber);transition:width .18s}
+.prod-row:hover{background:rgba(232,162,32,.04)}
+.prod-row:hover::before{width:2px}
+.prod-row>*{position:relative;z-index:1}
+.pr-code{font-family:var(--H);font-weight:900;font-size:1rem;color:var(--white);letter-spacing:.02em;padding-top:2px}
+.pr-name{font-family:var(--H);font-size:.82rem;font-weight:700;color:var(--cream);margin-bottom:.3rem;line-height:1.2}
+.pr-pitch{font-size:.73rem;color:rgba(232,228,218,.35);line-height:1.6}
+.pr-cat{font-family:var(--H);font-size:.62rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(232,228,218,.28);padding-top:4px}
+.pr-link{font-family:var(--H);font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);padding-top:4px;transition:opacity .15s}
+.pr-link:hover{opacity:.7}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:3px;overflow:hidden;margin-top:3rem}
+.svc-card{background:var(--bg);padding:2rem;transition:background .18s;position:relative;overflow:hidden}
+.svc-card::after{content:'';position:absolute;left:0;top:0;bottom:0;width:0;background:var(--amber);transition:width .2s}
+.svc-card:hover{background:rgba(232,162,32,.04)}
+.svc-card:hover::after{width:2px}
+.svc-n{font-family:var(--H);font-size:.58rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(232,228,218,.18);margin-bottom:.75rem;display:block}
+.svc-card h3{font-family:var(--H);font-weight:800;font-size:.95rem;color:var(--white);margin-bottom:.4rem}
+.svc-card p{font-size:.78rem;color:rgba(232,228,218,.35);line-height:1.72}
+.fs{border-bottom:1px solid var(--border)}
+.fs-inner{display:grid;grid-template-columns:1fr 1fr;min-height:460px}
+.fs-vis{display:flex;align-items:center;justify-content:center;padding:4rem;position:relative;overflow:hidden}
+.fs-vis-blue{background:linear-gradient(150deg,#060f2a 0%,#0c2060 50%,#1247d6 100%)}
+.fs-pat{position:absolute;inset:0;background-image:radial-gradient(rgba(232,228,218,.05) 1px,transparent 1px);background-size:22px 22px}
+.fs-mock{position:relative;z-index:1;background:rgba(232,228,218,.06);border:1px solid rgba(232,228,218,.12);border-radius:4px;padding:1.75rem;width:100%;max-width:300px}
+.fs-mock-label{font-family:var(--H);font-size:.58rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(232,228,218,.25);margin-bottom:1rem}
+.fs-mock-row{display:flex;align-items:center;gap:.8rem;padding:.65rem 0;border-bottom:1px solid rgba(232,228,218,.07)}
+.fs-mock-row:last-child{border-bottom:none}
+.fs-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.fd-a{background:var(--amber)}.fd-g{background:#34d399}.fd-b{background:#60a5fa}.fd-r{background:#f87171}
+.fs-mock-text{font-size:.76rem;color:rgba(232,228,218,.55)}
+.fs-mock-val{font-family:var(--H);font-weight:700;font-size:.76rem;color:var(--white);margin-left:auto}
+.fs-content{padding:5rem 4rem;display:flex;flex-direction:column;justify-content:center;background:var(--surface)}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--border);border-radius:3px;overflow:hidden;margin-top:3rem}
+.wi{padding:2.75rem;border-right:1px solid var(--border);transition:background .18s}
+.wi:last-child{border-right:none}
+.wi:hover{background:rgba(232,162,32,.04)}
+.wi-n{font-family:var(--H);font-weight:900;font-size:3.5rem;color:rgba(232,228,218,.05);line-height:1;margin-bottom:.6rem}
+.wi h3{font-family:var(--H);font-weight:800;font-size:1.05rem;color:var(--white);margin-bottom:.55rem}
+.wi p{font-size:.8rem;color:rgba(232,228,218,.38);line-height:1.78}
+.proc-section{background:var(--surface)}
+.proc-tabs{display:flex;border-bottom:1px solid var(--border);margin-bottom:2.5rem}
+.ptab{padding:.75rem 1.5rem;font-family:var(--H);font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(232,228,218,.3);border-bottom:2px solid transparent;margin-bottom:-1px;transition:all .15s}
+.ptab.on{color:var(--amber);border-bottom-color:var(--amber)}
+.ptab:hover{color:var(--cream)}
+.proc-steps{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--border);border-radius:3px;overflow:hidden}
+.ps{padding:2rem;border-right:1px solid var(--border);background:var(--bg)}
+.ps:last-child{border-right:none}
+.ps-n{font-family:var(--H);font-weight:900;font-size:2.8rem;color:rgba(232,228,218,.05);line-height:1;margin-bottom:.5rem}
+.ps h4{font-family:var(--H);font-weight:800;font-size:.9rem;color:var(--white);margin-bottom:.35rem}
+.ps p{font-size:.76rem;color:rgba(232,228,218,.35);line-height:1.72}
+.news-wrap{background:var(--surface)}
+.news-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);overflow:hidden;border-radius:3px;margin-top:3rem}
+.nc{background:var(--bg);overflow:hidden;transition:background .18s}
+.nc:hover{background:rgba(232,162,32,.04)}
+.nc-img{height:155px;position:relative;overflow:hidden}
+.nc-img-in{width:100%;height:100%;transition:transform .35s}
+.nc:hover .nc-img-in{transform:scale(1.05)}
+.ni1{background:linear-gradient(150deg,#0a1f5a,#1247d6)}
+.ni2{background:linear-gradient(150deg,#0f2a14,#1a6b35)}
+.ni3{background:linear-gradient(150deg,#2a1200,#8b4513)}
+.nc-overlay{position:absolute;inset:0;display:flex;align-items:flex-end;padding:.85rem;background:linear-gradient(to top,rgba(10,9,7,.65),transparent)}
+.nc-cat{font-family:var(--H);font-size:.57rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);border:1px solid rgba(232,162,32,.3);background:rgba(232,162,32,.08);padding:.15rem .5rem;border-radius:2px}
+.nc-body{padding:1.5rem}
+.nc-date{font-family:var(--H);font-size:.58rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(232,228,218,.2);margin-bottom:.45rem}
+.nc-title{font-family:var(--H);font-weight:800;font-size:.95rem;color:var(--white);line-height:1.35;margin-bottom:.6rem}
+.nc-exc{font-size:.75rem;color:rgba(232,228,218,.32);line-height:1.7;margin-bottom:.85rem}
+.nc-link{font-family:var(--H);font-size:.63rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);display:flex;align-items:center;gap:.3rem;transition:gap .18s}
+.nc:hover .nc-link{gap:.6rem}
+.nc-link::after{content:'→'}
+.cta-section{text-align:center;padding:7rem 3rem;background:var(--surface);border-bottom:none;position:relative;overflow:hidden}
+.cta-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 110%,rgba(232,162,32,.07) 0%,transparent 60%);pointer-events:none}
+.cta-ey{font-family:var(--H);font-size:.65rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--amber);margin-bottom:1.25rem;display:flex;align-items:center;justify-content:center;gap:.6rem}
+.cta-ey::before,.cta-ey::after{content:'';width:22px;height:1px;background:rgba(232,162,32,.4)}
+.cta-section h2{font-family:var(--H);font-weight:900;font-size:clamp(2.8rem,6.5vw,6rem);color:var(--white);line-height:.95;letter-spacing:-.04em;margin-bottom:.65rem;position:relative;z-index:1}
+.cta-section h2 em{display:block;font-style:italic;font-weight:300;color:rgba(232,228,218,.2);font-size:.65em;letter-spacing:-.01em}
+.cta-section p{color:rgba(232,228,218,.35);margin-bottom:2.5rem;font-size:.95rem;position:relative;z-index:1}
+.cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;position:relative;z-index:1}
+footer{border-top:1px solid var(--border)}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;border-bottom:1px solid var(--border)}
+.fc{padding:3rem;border-right:1px solid var(--border)}
+.fc:last-child{border-right:none}
+.foot-logo{font-family:var(--H);font-weight:900;font-size:1rem;letter-spacing:.07em;color:var(--white);display:flex;align-items:center;gap:.4rem;margin-bottom:.85rem}
+.foot-logo .m{color:var(--amber)}
+.foot-tag{font-size:.8rem;color:rgba(232,228,218,.25);line-height:1.85;max-width:250px}
+footer h4{font-family:var(--H);font-size:.58rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(232,228,218,.2);margin-bottom:.9rem}
+footer ul{list-style:none;display:flex;flex-direction:column;gap:.5rem}
+footer ul a{font-size:.8rem;color:rgba(232,228,218,.32);transition:color .15s;display:flex;align-items:center;gap:.45rem}
+footer ul a::before{content:'—';font-size:.55rem;color:rgba(232,228,218,.1)}
+footer ul a:hover{color:var(--amber)}
+.foot-bottom{padding:1.25rem 3rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem}
+.foot-bottom span{font-family:var(--H);font-size:.62rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(232,228,218,.18)}
+.r{opacity:0;transform:translateY(20px);transition:opacity .65s ease,transform .65s ease}
+.r.in{opacity:1;transform:translateY(0)}
+.r.d1{transition-delay:.1s}.r.d2{transition-delay:.2s}.r.d3{transition-delay:.3s}.r.d4{transition-delay:.4s}
+.btn-as{display:inline-flex;align-items:center;gap:.4rem;padding:.6rem 1.3rem;background:var(--amber);color:#0f0e0b;font-family:var(--H);font-size:.76rem;font-weight:800;letter-spacing:.07em;text-transform:uppercase;border-radius:3px;transition:background .15s}
+.btn-as:hover{background:var(--amber2)}
+.btn-os{display:inline-flex;align-items:center;gap:.4rem;padding:.6rem 1.3rem;border:1px solid var(--border2);color:rgba(232,228,218,.5);font-family:var(--H);font-size:.76rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;border-radius:3px;transition:all .15s;background:rgba(232,228,218,.04)}
+.btn-os:hover{border-color:rgba(232,228,218,.3);color:var(--cream)}
+@media(max-width:1024px){
+  #nav{padding:0 1.75rem}
+  .hero{padding:7rem 1.75rem 0}
+  .sol-grid{grid-template-columns:1fr 1fr;height:auto}
+  .sc{min-height:280px;flex:none!important;border-bottom:1px solid rgba(232,228,218,.06)}
+  .sc-desc{max-height:70px!important;opacity:1!important;margin-bottom:.75rem!important}
+  .seg-grid{grid-template-columns:1fr 1fr}
+  .sg{border-bottom:1px solid var(--border)}
+  .stats{grid-template-columns:1fr 1fr}
+  .stat{border-bottom:1px solid var(--border)}
+  .plat-intro{grid-template-columns:1fr}
+  .prod-th,.prod-row{grid-template-columns:84px 1fr 80px}
+  .pr-cat{display:none}
+  .fs-inner{grid-template-columns:1fr}
+  .fs-vis{display:none}
+  .why-grid{grid-template-columns:1fr}
+  .wi{border-right:none;border-bottom:1px solid var(--border)}
+  .proc-steps{grid-template-columns:1fr 1fr}
+  .news-grid{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr 1fr}
+  .fc{border-bottom:1px solid var(--border)}
+  .foot-bottom{padding:1.25rem 1.75rem}
+  .hero-strip{grid-template-columns:1fr 1fr}
+  .hs:nth-child(2){border-right:none}
+  .svc-grid{grid-template-columns:1fr 1fr}
+  .npia-spot-inner{grid-template-columns:1fr}
+  .npia-right{display:none}
+  .npia-left{padding:4rem 2rem}
+}
+@media(max-width:640px){
+  .nav-links{display:none}
+  .hero h1{font-size:clamp(3.2rem,14vw,6rem)}
+  .stats{grid-template-columns:1fr 1fr}
+  .stat{border-right:none}
+  .sol-grid,.seg-grid,.svc-grid,.proc-steps{grid-template-columns:1fr}
+  .sc,.sg{border-right:none}
+  .hero-strip{grid-template-columns:1fr}
+  .hs{border-right:none}
+  .foot-grid{grid-template-columns:1fr}
+  .foot-bottom{flex-direction:column;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a class="logo" href="#"><span class="logo-mark">L·</span>LUCANT</a>
+  <ul class="nav-links">
+    <li><a href="#solutions">Soluciones</a></li>
+    <li><a href="#platforms">Plataformas</a></li>
+    <li><a href="#services">Servicios</a></li>
+    <li><a href="#about">Nosotros</a></li>
+    <li><a href="#contact">Contacto</a></li>
+  </ul>
+  <div class="lang-switch">
+    <a class="lang-btn active" href="/es/" onclick="localStorage.setItem('lucant_lang','es')">ES</a>
+    <span class="lang-sep">|</span>
+    <a class="lang-btn" href="/en/" onclick="localStorage.setItem('lucant_lang','en')">EN</a>
+  </div>
+  <a class="nav-cta" href="mailto:info@lucant.co">Cotizar</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-eyebrow r">
+    Software <i>·</i> Seguridad <i>·</i> Energía <i>·</i> Redes
+  </div>
+  <h1 class="r d1">
+    <span class="h1-w">Construido para</span>
+    <span class="h1-a">operar su negocio.</span>
+    <span class="h1-m">De inicio a fin.</span>
+  </h1>
+  <div class="hero-body r d2">
+    <p class="hero-sub">11 plataformas propias. Seguridad electrónica. Energía solar. Infraestructura de datos. Un equipo — desde el diseño hasta la puesta en marcha.</p>
+    <div class="hero-btns">
+      <a class="btn-a" href="#platforms">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="1" width="14" height="14" rx="2"/><polyline points="4,8 7,11 12,5"/></svg>
+        Ver Plataformas
+      </a>
+      <a class="btn-o" href="#services">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="8" cy="8" r="7"/><line x1="8" y1="5" x2="8" y2="11"/><line x1="5" y1="8" x2="11" y2="8"/></svg>
+        Ver Servicios
+      </a>
+    </div>
+  </div>
+  <div class="hero-strip r d3">
+    <div class="hs"><div class="hs-tag">Software</div><div class="hs-val">11 Plataformas</div><div class="hs-sub">Sector público, industrial y territorio</div></div>
+    <div class="hs"><div class="hs-tag">Seguridad Electrónica</div><div class="hs-val">CCTV · Acceso · Incendio</div><div class="hs-sub">Diseño, instalación y mantenimiento</div></div>
+    <div class="hs"><div class="hs-tag">Energía</div><div class="hs-val">Solar Fotovoltaico</div><div class="hs-sub">On-grid y off-grid. Cualquier ubicación.</div></div>
+    <div class="hs"><div class="hs-tag">Infraestructura</div><div class="hs-val">Redes y Data Centers</div><div class="hs-sub">Cableado certificado hasta sala de datos completa</div></div>
+  </div>
+</div>
+
+<div class="stats">
+  <div class="stat r"><span class="stat-n">11</span><div class="stat-l">Plataformas propias</div></div>
+  <div class="stat r d1"><span class="stat-n">9</span><div class="stat-l">Líneas de servicio</div></div>
+  <div class="stat r d2"><span class="stat-n">4</span><div class="stat-l">Áreas de solución</div></div>
+  <div class="stat r d3"><span class="stat-n">100<sub>%</sub></span><div class="stat-l">Hecho en Colombia</div></div>
+</div>
+
+<div class="ticker">
+  <div class="ticker-t">
+    <span class="ti on">CCTV</span><span class="ti">Control de Acceso</span><span class="ti on">Detección de Incendio</span><span class="ti">Cableado Estructurado</span><span class="ti on">Centros de Datos</span><span class="ti">Energía Solar</span><span class="ti on">Automatización</span><span class="ti">Proyectos MGA</span><span class="ti on">Gestión de Activos ISO 55001</span><span class="ti">Consulta Previa</span><span class="ti on">MOC · JSA · PTW · LOTO</span><span class="ti">Alumbrado Público</span><span class="ti on">Gestión Hospitalaria</span><span class="ti">Geoportal Catastral</span><span class="ti on">Gestión Contractual</span><span class="ti">PQRSD</span>
+    <span class="ti on">CCTV</span><span class="ti">Control de Acceso</span><span class="ti on">Detección de Incendio</span><span class="ti">Cableado Estructurado</span><span class="ti on">Centros de Datos</span><span class="ti">Energía Solar</span><span class="ti on">Automatización</span><span class="ti">Proyectos MGA</span><span class="ti on">Gestión de Activos ISO 55001</span><span class="ti">Consulta Previa</span><span class="ti on">MOC · JSA · PTW · LOTO</span><span class="ti">Alumbrado Público</span><span class="ti on">Gestión Hospitalaria</span><span class="ti">Geoportal Catastral</span><span class="ti on">Gestión Contractual</span><span class="ti">PQRSD</span>
+  </div>
+</div>
+
+<div class="sol-wrap" id="solutions">
+  <div class="sol-head"><div class="ey">Soluciones</div><h2 class="st">Cuatro líneas de trabajo.<br>Un equipo responsable.</h2></div>
+  <div class="sol-grid">
+    <div class="sc r"><div class="sc-bg sc-bg-1"></div><div class="sc-content"><span class="sc-num">01 — Software</span><div class="sc-title">Plataformas Propias</div><div class="sc-desc">11 plataformas desarrolladas internamente para entidades públicas, operadores industriales y proyectos territoriales. El código es nuestro. La relación también.</div><span class="sc-cta">Ver plataformas</span></div></div>
+    <div class="sc r d1"><div class="sc-bg sc-bg-2"></div><div class="sc-content"><span class="sc-num">02 — Seguridad</span><div class="sc-title">Seguridad Electrónica</div><div class="sc-desc">CCTV, control de acceso y detección de incendio — diseñados, instalados y mantenidos por nuestro propio equipo. Sin subcontratistas. Sin vacíos de responsabilidad.</div><span class="sc-cta">Solicitar cotización</span></div></div>
+    <div class="sc r d2"><div class="sc-bg sc-bg-3"></div><div class="sc-content"><span class="sc-num">03 — Energía</span><div class="sc-title">Solar y Automatización</div><div class="sc-desc">Sistemas fotovoltaicos on-grid y off-grid para edificios y sitios remotos. Monitoreo en tiempo real, mantenimiento preventivo y automatización vía BACnet/KNX.</div><span class="sc-cta">Solicitar cotización</span></div></div>
+    <div class="sc r d3"><div class="sc-bg sc-bg-4"></div><div class="sc-content"><span class="sc-num">04 — Infraestructura</span><div class="sc-title">Redes y Centros de Datos</div><div class="sc-desc">Cableado Cat 6A certificado, fibra OM4, switches L3, Wi-Fi empresarial y diseño completo de sala de datos. Desde el primer cable hasta la puesta en marcha.</div><span class="sc-cta">Solicitar cotización</span></div></div>
+  </div>
+</div>
+
+<div class="npia-spot" id="npia">
+  <div class="npia-spot-inner">
+    <div class="npia-left r">
+      <div class="npia-kicker">✦ Plataforma Destacada · Industrial</div>
+      <div class="npia-product-name">NPIA</div>
+      <div class="npia-full">New Product Inquiry Analyzer</div>
+      <p class="npia-desc">Su proceso de aprobación de productos es tan bueno como su eslabón más débil. NPIA hace cumplir cada uno — revisión de atributos, captura de SDS, trazabilidad de auditoría — como un flujo único que no se puede abreviar. Construido para terminales de almacenamiento de líquidos a granel.</p>
+      <div class="npia-feats">
+        <div class="npia-feat">Revisión estructurada con snapshots de atributos por candidato</div>
+        <div class="npia-feat">Captura de SDS y evidencia documental en cada etapa</div>
+        <div class="npia-feat">Trazabilidad de auditoría a través de cada transición del flujo</div>
+      </div>
+      <div class="npia-btns">
+        <a class="btn-a" href="https://npia.lucant.co" target="_blank">Acceder a NPIA →</a>
+        <a class="btn-o" href="mailto:info@lucant.co">Solicitar Demo</a>
+      </div>
+    </div>
+    <div class="npia-right">
+      <div class="npia-spec r d1"><div class="nsp-label">Sector</div><div class="nsp-val">Terminales de Almacenamiento de Líquidos</div><div class="nsp-sub">Puertos, parques de tanques e instalaciones industriales</div></div>
+      <div class="npia-spec r d2"><div class="nsp-label">Flujo</div><div class="nsp-val">Solicitud → Revisión Técnica → Aprobación</div><div class="nsp-sub">Trazabilidad completa. Ningún paso omitible.</div></div>
+      <div class="npia-spec r d3"><div class="nsp-label">Cumplimiento</div><div class="nsp-val">Gestión de SDS y Evidencia Documental</div><div class="nsp-sub">Documentación estructurada para preparación regulatoria</div></div>
+      <div class="npia-spec r d4"><div class="nsp-label">Acceso</div><div class="nsp-val">npia.lucant.co</div><div class="nsp-sub">Plataforma activa — solicite credenciales en info@lucant.co</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="seg-wrap" id="segments">
+  <div class="seg-head"><div class="ey">A Quién Servimos</div><h2 class="st">Entornos complejos.<br>Clientes exigentes.</h2></div>
+  <div class="seg-grid">
+    <div class="sg r"><span class="sg-num">01 / 04</span><h3>Entidades Públicas</h3><p>Alcaldías, hospitales, secretarías e institutos. Organizaciones donde un término vencido es una sanción y un documento perdido es una responsabilidad.</p><span class="sg-link">Ver plataformas →</span></div>
+    <div class="sg r d1"><span class="sg-num">02 / 04</span><h3>Operadores Industriales</h3><p>Terminales de almacenamiento de líquidos a granel e instalaciones industriales donde una compuerta de seguridad omitida o un cambio no documentado puede detener operaciones — o algo peor.</p><span class="sg-link">Ver NPIA y MoCTrack →</span></div>
+    <div class="sg r d2"><span class="sg-num">03 / 04</span><h3>Operadores de Activos</h3><p>Cualquier organización que gestiona activos físicos a escala — alumbrado público, equipos industriales, redes de servicios — que necesita visibilidad y control bajo ISO 55001.</p><span class="sg-link">Ver GALUX →</span></div>
+    <div class="sg r d3"><span class="sg-num">04 / 04</span><h3>Proyectos Territoriales</h3><p>Minería, energía, renovables e infraestructura que opera en territorios donde la consulta previa no es opcional y los compromisos comunitarios deben rastrearse.</p><span class="sg-link">Ver ETNOTRACK →</span></div>
+  </div>
+</div>
+
+<section class="plat-wrap" id="platforms">
+  <div class="ct">
+    <div class="plat-intro r">
+      <div><div class="ey">Plataformas</div><h2 class="st">11 plataformas.<br>Construidas en LUCANT.</h2></div>
+      <div>
+        <p class="sb">Cada plataforma es diseñada, desarrollada y soportada internamente. Cuando necesita un cambio, habla con quien la construyó.</p>
+        <div style="margin-top:1.5rem;display:flex;gap:.75rem;flex-wrap:wrap">
+          <a class="btn-as" href="mailto:info@lucant.co">Solicitar Demo</a>
+          <a class="btn-os" href="mailto:info@lucant.co">Hablar con Ventas</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="plat-cat r">
+      <div class="plat-cat-label">Operaciones y Seguridad — Industrial <span>02 plataformas</span></div>
+      <div class="prod-table">
+        <div class="prod-th"><span>Plataforma</span><span>Qué hace — y por qué importa</span><span>Categoría</span><span>Enlace</span></div>
+        <div class="prod-row"><div class="pr-code">NPIA</div><div><div class="pr-name">New Product Inquiry Analyzer</div><div class="pr-pitch">Su proceso de aprobación de productos es tan bueno como su eslabón más débil. NPIA hace cumplir cada uno — revisión de atributos, captura de SDS, trazabilidad de auditoría — como un flujo único que no se puede abreviar. Para terminales de líquidos a granel.</div></div><div class="pr-cat">Industrial · Terminales</div><a class="pr-link" href="https://npia.lucant.co" target="_blank">Acceder ↗</a></div>
+        <div class="prod-row"><div class="pr-code">MoCTrack</div><div><div class="pr-name">Management of Change Tracker</div><div class="pr-pitch">Un cambio que omite el LOTO es una responsabilidad esperando materializarse. MoCTrack lo hace imposible — MOC → JSA → PTW → LOTO → Ejecución → RVAP → Cierre, cada compuerta cumplida, cada firma requerida, cada transición registrada.</div></div><div class="pr-cat">Industrial · Seguridad</div><a class="pr-link" href="mailto:info@lucant.co">Demo ↗</a></div>
+      </div>
+    </div>
+
+    <div class="plat-cat r">
+      <div class="plat-cat-label">Gestión de Activos <span>01 plataforma</span></div>
+      <div class="prod-table">
+        <div class="prod-th"><span>Plataforma</span><span>Qué hace — y por qué importa</span><span>Categoría</span><span>Enlace</span></div>
+        <div class="prod-row"><div class="pr-code">GALUX</div><div><div class="pr-name">Plataforma de Gestión de Activos — ISO 55001</div><div class="pr-pitch">Lo que no se mide no se puede optimizar. GALUX da a los operadores visibilidad en tiempo real de su portafolio completo de activos — fallas, ciclos de mantenimiento, estado de cumplimiento e indicadores — bajo ISO 55001. Construido para alumbrado público. Listo para cualquier organización intensiva en activos.</div></div><div class="pr-cat">Gestión de Activos</div><a class="pr-link" href="https://lucant.co/go/galux.html" target="_blank">Demo ↗</a></div>
+      </div>
+    </div>
+
+    <div class="plat-cat r">
+      <div class="plat-cat-label">Territorio y Cumplimiento <span>03 plataformas</span></div>
+      <div class="prod-table">
+        <div class="prod-th"><span>Plataforma</span><span>Qué hace — y por qué importa</span><span>Categoría</span><span>Enlace</span></div>
+        <div class="prod-row"><div class="pr-code">ETNOTRACK</div><div><div class="pr-name">Consulta Previa y Cumplimiento Étnico</div><div class="pr-pitch">Incumplir un compromiso en consulta previa no solo crea riesgo legal — paraliza su proyecto. ETNOTRACK centraliza cada acta, compromiso y visita de campo para que nada se pierda entre etapas o miembros del equipo.</div></div><div class="pr-cat">Territorio · Cumplimiento</div><a class="pr-link" href="https://lucant.co/go/etnotrack.html" target="_blank">Demo ↗</a></div>
+        <div class="prod-row"><div class="pr-code">TRAZO</div><div><div class="pr-name">Control y Gestión Contractual</div><div class="pr-pitch">Los contratos públicos vencen mientras nadie los vigila. TRAZO rastrea cada plazo, acta y anticipo — y alerta antes de que sea tarde. Su entidad se mantiene en cumplimiento sin supervisión manual.</div></div><div class="pr-cat">Contratos · Público</div><a class="pr-link" href="https://lucant.co/go/trazo.html" target="_blank">Demo ↗</a></div>
+        <div class="prod-row"><div class="pr-code">GEOCAT</div><div><div class="pr-name">Geoportal Catastral SaaS</div><div class="pr-pitch">Los ciudadanos no deberían ir a una oficina por un certificado catastral. GEOCAT pone el registro predial de su municipio en línea — certificados con QR, liquidación de predial, pagos PSE. Conforme con LADM_COL SINIC V1.0.</div></div><div class="pr-cat">Catastral · Municipal</div><a class="pr-link" href="https://lucant.co/geocat.html" target="_blank">Abrir ↗</a></div>
+      </div>
+    </div>
+
+    <div class="plat-cat r">
+      <div class="plat-cat-label">Administración Pública <span>05 plataformas</span></div>
+      <div class="prod-table">
+        <div class="prod-th"><span>Plataforma</span><span>Qué hace — y por qué importa</span><span>Categoría</span><span>Enlace</span></div>
+        <div class="prod-row"><div class="pr-code">PIAP</div><div><div class="pr-name">Plataforma Integrada de Administración PAE</div><div class="pr-pitch">Los operadores del PAE que trabajan en Excel están a una auditoría de una crisis. PIAP reemplaza las hojas de cálculo con un sistema estructurado y trazable para el ciclo completo del contrato — operaciones, liquidación, nómina, proveedores, facturas.</div></div><div class="pr-cat">Alimentación Escolar</div><a class="pr-link" href="https://lucant.co/piap.html" target="_blank">Abrir ↗</a></div>
+        <div class="prod-row"><div class="pr-code">RADICA</div><div><div class="pr-name">Plataforma de Gestión PQRSD</div><div class="pr-pitch">Una PQRSD que vence sin respuesta es una sanción esperando materializarse. RADICA automatiza la radicación, asignación, seguimiento y reporte para que su entidad nunca incumpla un término legal.</div></div><div class="pr-cat">PQRSD · Público</div><a class="pr-link" href="https://lucant.co/go/radica.html" target="_blank">Demo ↗</a></div>
+        <div class="prod-row"><div class="pr-code">SALUS</div><div><div class="pr-name">Sistema de Administración y Logística en Salud</div><div class="pr-pitch">La gestión hospitalaria no debería requerir cinco sistemas distintos. SALUS unifica admisión, historia clínica, farmacia y facturación en una sola plataforma para hospitales y ESE.</div></div><div class="pr-cat">Salud · ESE</div><a class="pr-link" href="https://lucant.co/go/salus.html" target="_blank">Demo ↗</a></div>
+        <div class="prod-row"><div class="pr-code">SIAL</div><div><div class="pr-name">Sistema de Información y Administración Local</div><div class="pr-pitch">Las entidades territoriales toman decisiones todos los días sin los datos que las respalden. SIAL centraliza procesos y da estructura a las operaciones del gobierno local, organizado por dependencia.</div></div><div class="pr-cat">Territorial · Gov</div><a class="pr-link" href="https://lucant.co/go/sial.html" target="_blank">Demo ↗</a></div>
+        <div class="prod-row"><div class="pr-code">SARI</div><div><div class="pr-name">Sistema de Administración de Resguardos Indígenas</div><div class="pr-pitch">La administración de resguardos tiene responsabilidades que el software genérico ignora. SARI centraliza beneficiarios, territorio y seguimiento comunitario para las comunidades Wayuu — construido con las comunidades que sirve.</div></div><div class="pr-cat">Indígena · Wayuu</div><a class="pr-link" href="https://lucant.co/go/sari.html" target="_blank">Demo ↗</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="ct">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1.5rem;margin-bottom:0" class="r">
+      <div>
+        <div class="ey">Servicios Técnicos</div>
+        <h2 class="st">El lado del hardware.<br>El mismo equipo.</h2>
+        <p class="sb" style="margin-top:.5rem">No delegamos a un subcontratista. Cada servicio es ejecutado por el mismo equipo que construye el software.</p>
+      </div>
+      <a class="btn-as" href="mailto:info@lucant.co">Solicitar Cotización</a>
+    </div>
+    <div class="svc-grid">
+      <div class="svc-card r"><span class="svc-n">01</span><h3>CCTV y Videovigilancia</h3><p>Sistemas de cámaras IP para cualquier entorno. Centrales de monitoreo con grabación continua, acceso remoto y gestión profesional de video.</p></div>
+      <div class="svc-card r d1"><span class="svc-n">02</span><h3>Control de Acceso</h3><p>Lectores, controladores, cerraduras electromagnéticas, torniquetes y barreras vehiculares. Gestión centralizada de permisos. Trazabilidad completa de ingresos.</p></div>
+      <div class="svc-card r d2"><span class="svc-n">03</span><h3>Detección de Incendio</h3><p>Paneles direccionables, detectores de humo, temperatura y CO₂, sirenas y módulos de control. Instalados bajo norma UL.</p></div>
+      <div class="svc-card r"><span class="svc-n">04</span><h3>Redes y Cableado Estructurado</h3><p>Cableado Cat 6A y fibra OM4 certificado, switches L3, Wi-Fi empresarial. Diseñado, documentado y probado.</p></div>
+      <div class="svc-card r d1"><span class="svc-n">05</span><h3>Centros de Datos</h3><p>Diseño y construcción completa de sala de datos. Racks, PDU, gestión de cables, puesta a tierra física y servidores.</p></div>
+      <div class="svc-card r d2"><span class="svc-n">06</span><h3>Automatización de Edificios</h3><p>HVAC vía BACnet, iluminación KNX, medición de energía Power Monitoring. Gráficos operativos y puesta en marcha incluidos.</p></div>
+      <div class="svc-card r"><span class="svc-n">07</span><h3>Energía Solar</h3><p>Sistemas fotovoltaicos on-grid y off-grid. Monitoreo de producción en tiempo real y mantenimiento preventivo.</p></div>
+      <div class="svc-card r d1"><span class="svc-n">08</span><h3>Desarrollo de Software a la Medida</h3><p>Si ninguna de nuestras 11 plataformas encaja exactamente, construimos lo que necesita. Aplicaciones web, dashboards y herramientas de gestión.</p></div>
+      <div class="svc-card r d2"><span class="svc-n">09</span><h3>Formulación de Proyectos de Inversión</h3><p>Proyectos MGA y Marco Lógico DNP con documentos técnicos, estudios de mercado y registro en SUIFP.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="fs">
+  <div class="fs-inner">
+    <div class="fs-vis fs-vis-blue">
+      <div class="fs-pat"></div>
+      <div class="fs-mock r">
+        <div class="fs-mock-label">// MoCTrack — Cadena de Seguridad</div>
+        <div class="fs-mock-row"><div class="fs-dot fd-g"></div><div class="fs-mock-text">MOC autorizado</div><div class="fs-mock-val">✓ Firmado</div></div>
+        <div class="fs-mock-row"><div class="fs-dot fd-g"></div><div class="fs-mock-text">JSA completo</div><div class="fs-mock-val">✓ Firmado</div></div>
+        <div class="fs-mock-row"><div class="fs-dot fd-g"></div><div class="fs-mock-text">PTW emitido</div><div class="fs-mock-val">✓ Firmado</div></div>
+        <div class="fs-mock-row"><div class="fs-dot fd-a"></div><div class="fs-mock-text">LOTO aplicado</div><div class="fs-mock-val">En progreso</div></div>
+        <div class="fs-mock-row"><div class="fs-dot fd-r"></div><div class="fs-mock-text">Ejecución</div><div class="fs-mock-val">Bloqueado</div></div>
+      </div>
+    </div>
+    <div class="fs-content r">
+      <div class="ey">MoCTrack</div>
+      <h2 class="st" style="font-size:clamp(1.8rem,3vw,2.8rem)">Ninguna compuerta<br>omitida. Ninguna<br>firma pendiente.</h2>
+      <p class="sb" style="margin-bottom:1.75rem">La cadena completa de seguridad operacional — MOC → JSA → PTW → LOTO → Ejecución → RVAP → Cierre — como una secuencia aplicada. Una etapa no puede avanzar sin su evidencia y firmas requeridas. Aplicación de LOTO en backend y UI.</p>
+      <div style="display:flex;gap:.75rem;flex-wrap:wrap">
+        <a class="btn-as" href="mailto:info@lucant.co">Solicitar Demo</a>
+        <a class="btn-os" href="mailto:info@lucant.co">Más Información</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section id="about">
+  <div class="ct">
+    <div class="r"><div class="ey">Por Qué LUCANT</div><h2 class="st">Un contrato.<br>Responsabilidad total.</h2></div>
+    <div class="why-grid">
+      <div class="wi r"><div class="wi-n">01</div><h3>No subcontratamos.</h3><p>Cada servicio — software, seguridad, energía, redes — lo ejecuta nuestro propio equipo. Cuando algo necesita solución, no espera a que un proveedor llame a otro proveedor.</p></div>
+      <div class="wi r d1"><div class="wi-n">02</div><h3>Conocemos el territorio.</h3><p>Contratación pública colombiana, consulta étnica, regulaciones municipales, cumplimiento industrial. Hemos construido para todo — porque lo hemos vivido. No teorías. Despliegues reales.</p></div>
+      <div class="wi r d2"><div class="wi-n">03</div><h3>El código es nuestro.</h3><p>Cada plataforma es diseñada, construida y soportada internamente. Sin núcleo de terceros bajo licencia. Cuando necesita un cambio, habla con quien lo construyó.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="proc-section">
+  <div class="ct">
+    <div class="r"><div class="ey">Proceso</div><h2 class="st">Cómo entregamos.</h2></div>
+    <div class="proc-tabs">
+      <button class="ptab on" onclick="tab('tech',this)">Servicios Técnicos</button>
+      <button class="ptab" onclick="tab('saas',this)">Plataformas SaaS</button>
+    </div>
+    <div id="tab-tech" class="proc-steps">
+      <div class="ps"><div class="ps-n">01</div><h4>Diagnóstico</h4><p>Visita en sitio para evaluar requerimientos, restricciones y alcance antes de cualquier propuesta.</p></div>
+      <div class="ps"><div class="ps-n">02</div><h4>Diseño y Cotización</h4><p>Propuesta técnica con planos, especificaciones, referencias de marca y cronograma realista.</p></div>
+      <div class="ps"><div class="ps-n">03</div><h4>Ejecución</h4><p>Instalación, configuración y puesta en marcha por nuestro propio equipo. Acta de entrega incluida.</p></div>
+      <div class="ps"><div class="ps-n">04</div><h4>Soporte</h4><p>Garantía, mantenimiento preventivo y soporte técnico continuo. No es opcional.</p></div>
+    </div>
+    <div id="tab-saas" class="proc-steps" style="display:none">
+      <div class="ps"><div class="ps-n">01</div><h4>Demo</h4><p>Mostramos la plataforma funcionando con un caso real de su sector. 20 minutos, sin diapositivas.</p></div>
+      <div class="ps"><div class="ps-n">02</div><h4>Piloto</h4><p>Entorno configurado con datos de su entidad. Ve exactamente cómo será producción.</p></div>
+      <div class="ps"><div class="ps-n">03</div><h4>Implementación</h4><p>Parametrización, migración de datos y capacitación de usuarios. No nos vamos hasta que funcione.</p></div>
+      <div class="ps"><div class="ps-n">04</div><h4>Soporte Continuo</h4><p>Actualizaciones, acompañamiento y soporte técnico incluido en cada contrato.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="news-wrap" id="news">
+  <div class="ct">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1rem" class="r">
+      <div><div class="ey">Noticias y Actualizaciones</div><h2 class="st">Lo nuevo.</h2></div>
+      <a class="btn-os" href="mailto:info@lucant.co">Contáctenos</a>
+    </div>
+    <div class="news-grid">
+      <div class="nc r d1"><div class="nc-img"><div class="nc-img-in ni1"></div><div class="nc-overlay"><span class="nc-cat">Lanzamiento</span></div></div><div class="nc-body"><div class="nc-date">2025</div><div class="nc-title">NPIA: La primera plataforma de revisión de productos para terminales de líquidos a granel</div><div class="nc-exc">Estructurada, aplicada y trazable. LUCANT entra al mercado industrial con la plataforma que los operadores de terminales necesitaban.</div><a class="nc-link" href="https://npia.lucant.co" target="_blank">Leer más</a></div></div>
+      <div class="nc r d2"><div class="nc-img"><div class="nc-img-in ni2"></div><div class="nc-overlay"><span class="nc-cat">Gestión de Activos</span></div></div><div class="nc-body"><div class="nc-date">2025</div><div class="nc-title">GALUX va más allá del alumbrado: ISO 55001 para cualquier operador de activos</div><div class="nc-exc">Construido para operadores municipales de alumbrado, GALUX ahora es desplegable para cualquier organización que gestiona activos físicos a escala.</div><a class="nc-link" href="https://lucant.co/go/galux.html" target="_blank">Leer más</a></div></div>
+      <div class="nc r d3"><div class="nc-img"><div class="nc-img-in ni3"></div><div class="nc-overlay"><span class="nc-cat">Territorio</span></div></div><div class="nc-body"><div class="nc-date">2024</div><div class="nc-title">ETNOTRACK: Consulta previa centralizada para proyectos en territorios étnicos</div><div class="nc-exc">Las empresas que operan en territorios con comunidades étnicas ya pueden rastrear cada compromiso, acta y visita en un sistema auditable.</div><a class="nc-link" href="https://lucant.co/go/etnotrack.html" target="_blank">Leer más</a></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section" id="contact" style="border-bottom:none">
+  <div class="cta-ey">¿Listo para empezar?</div>
+  <h2><em>Su operación merece</em>infraestructura<br>que funciona.</h2>
+  <p>Desde el diseño hasta la puesta en marcha. Respuesta en menos de 24 horas.</p>
+  <div class="cta-btns">
+    <a class="btn-a" style="font-size:.9rem;padding:.9rem 2rem" href="mailto:info@lucant.co">✉ info@lucant.co</a>
+    <a class="btn-o" style="font-size:.9rem;padding:.9rem 2rem" href="https://npia.lucant.co" target="_blank">⚗ Acceder a NPIA</a>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-grid">
+    <div class="fc"><div class="foot-logo"><span class="m">L·</span>LUCANT</div><div class="foot-tag">Software, seguridad electrónica, energía solar e infraestructura de datos. Un equipo — desde el diseño hasta la puesta en marcha. Colombia.</div></div>
+    <div class="fc"><h4>Plataformas</h4><ul><li><a href="https://npia.lucant.co" target="_blank">NPIA ↗</a></li><li><a href="#platforms">MoCTrack</a></li><li><a href="#platforms">GALUX</a></li><li><a href="#platforms">ETNOTRACK</a></li><li><a href="https://lucant.co/piap.html" target="_blank">PIAP</a></li><li><a href="#platforms">TRAZO</a></li><li><a href="https://lucant.co/geocat.html" target="_blank">GEOCAT ↗</a></li></ul></div>
+    <div class="fc"><h4>Servicios</h4><ul><li><a href="#services">CCTV y Seguridad</a></li><li><a href="#services">Control de Acceso</a></li><li><a href="#services">Redes</a></li><li><a href="#services">Centros de Datos</a></li><li><a href="#services">Energía Solar</a></li><li><a href="#services">Automatización</a></li></ul></div>
+    <div class="fc"><h4>Contacto</h4><ul><li><a href="mailto:info@lucant.co">info@lucant.co</a></li><li><a href="#contact">Solicitar Cotización</a></li><li><a href="#platforms">Todas las Plataformas</a></li></ul></div>
+  </div>
+  <div class="foot-bottom"><span>© 2025 LUCANT — Todos los derechos reservados</span><span>Colombia</span></div>
+</footer>
+
+<script>
+window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',scrollY>20));
+function tab(t,btn){document.getElementById('tab-tech').style.display=t==='tech'?'grid':'none';document.getElementById('tab-saas').style.display=t==='saas'?'grid':'none';document.querySelectorAll('.ptab').forEach(b=>b.classList.remove('on'));btn.classList.add('on')}
+const obs=new IntersectionObserver(en=>en.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target)}}),{threshold:.07});
+document.querySelectorAll('.r').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
