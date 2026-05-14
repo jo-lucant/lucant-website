@@ -27,7 +27,7 @@ const publicFiles = [
 publicFiles.forEach(f => {
   app.get('/' + f, (req, res) => res.sendFile(path.join(__dirname, f)));
 });
-app.use('/go', express.static(path.join(__dirname, 'go')));
+app.get(['/go', '/go/', '/go/:slug'], (req, res) => res.redirect(302, '/en/#platforms'));
 
 app.get('*', (req, res) => res.redirect('/'));
 
